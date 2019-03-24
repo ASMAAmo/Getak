@@ -28,12 +28,12 @@ import getak.app.com.getak.R;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
-    //Drawer
+    //Drawer int
     @BindView(R.id.drawer_layout)
     DrawerLayout drawer;
     ActionBarDrawerToggle toggle;
     @BindView(R.id.toolbar)
-    //Toolbar
+    //Toolbar int
     Toolbar toolbar;
     @BindView(R.id.toolbar_title)
     TextView titleTv;
