@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/sidemenu"
+    android:layout_height="match_parent">
+<RelativeLayout
+    android:id="@+id/relall"
+    android:layout_width="match_parent"
+    android:background="@color/sidemenu"
+    android:layout_height="wrap_content"
+    >
+<RelativeLayout
+    android:id="@+id/linall"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentRight="true"
+    android:layout_marginLeft="25dp"
+    android:orientation="vertical">
+    <ImageView
+        android:id="@+id/imgLogo"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="15dp"
+        android:layout_centerInParent="true"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
+
+
+    <com.andexert.library.RippleView
+        android:id="@+id/rel_home"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_below="@+id/imgLogo"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentRight="true"
+        rv_centered="true">
+
+        <TextView
+            android:id="@+id/txt_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:text="الرئيسيه"
+            android:layout_alignParentRight="true"
+            android:drawableRight="@drawable/ic_main"
+            android:drawablePadding="10dp"
+            android:layout_centerInParent="true"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:textSize="16dp" />
+
+    </com.andexert.library.RippleView>
+    <com.andexert.library.RippleView
+        android:id="@+id/rel_account"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_below="@+id/rel_home"
+        android:layout_alignParentRight="true"
+        rv_centered="true">
+
+        <TextView
+            android:id="@+id/txt_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:text="حسابي"
+            android:layout_centerInParent="true"
+            android:drawableRight="@drawable/ic_account"
+            android:drawablePadding="10dp"
+            android:layout_alignParentRight="true"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:textSize="16dp" />
+
+    </com.andexert.library.RippleView>
+    <com.andexert.library.RippleView
+        android:id="@+id/rel_Flights"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_below="@+id/rel_account"
+        android:layout_marginTop="15dp"
+        android:layout_alignParentRight="true"
+        rv_centered="true">
+
+        <TextView
+            android:id="@+id/txt_flights"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:layout_centerInParent="true"
+            android:text="رحلاتي"
+            android:drawableRight="@drawable/ic_flights"
+            android:drawablePadding="10dp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:textSize="16dp" />
+
+    </com.andexert.library.RippleView>
+</RelativeLayout>
+</RelativeLayout>
+</ScrollView>

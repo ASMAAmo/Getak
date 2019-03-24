@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Getak</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="getak">Getak</string>
+    <string name="navigation_drawer_open" />
+    <string name="navigation_drawer_close" />
+    <string name="my_account">My Account</string>
+    <string name="my_trips">My Trips</string>
+    <string name="favorite_places">Favorite Places</string>
+    <string name="messages">Messages</string>
+    <string name="support">Support</string>
+    <string name="settings">Settings</string>
+    <string name="home">Home</string>
+</resources>
