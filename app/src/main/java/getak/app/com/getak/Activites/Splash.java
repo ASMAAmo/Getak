@@ -20,7 +20,7 @@ public class Splash extends BaseActivity {
                         sleep(100);
                         mythread = mythread + 100;
                     }
-                    startActivity(new Intent(Splash.this, MainActivity.class));
+                    startActivity(new Intent(Splash.this, IntroActivity.class));
 
                 } catch (InterruptedException ie) {
                     ie.printStackTrace();

@@ -3,6 +3,7 @@
     package="getak.app.com.getak">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".BaseActivity"></activity>
+        <activity android:name=".Activites.LoginActivity"></activity>
+        <activity android:name=".Activites.IntroActivity" />
+        <activity android:name=".BaseActivity" />
         <activity
             android:name=".Activites.Splash"
             android:theme="@style/Theme.AppCompat.NoActionBar">
