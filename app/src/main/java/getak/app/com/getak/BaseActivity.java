@@ -23,7 +23,7 @@ public class BaseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_base);
         Window window = this.getWindow();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimary));
+            window.setStatusBarColor(ContextCompat.getColor(this, R.color.statusbarcolor));
         }
     }
 

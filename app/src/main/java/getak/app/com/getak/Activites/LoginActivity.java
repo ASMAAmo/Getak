@@ -7,9 +7,10 @@ import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import getak.app.com.getak.BaseActivity;
 import getak.app.com.getak.R;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity {
 
     @BindView(R.id.login_type_tab)
     TabLayout loginTypeSwitch;

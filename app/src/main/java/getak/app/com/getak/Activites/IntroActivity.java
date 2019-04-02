@@ -31,5 +31,10 @@ public class IntroActivity extends BaseActivity {
         startActivity(new Intent(IntroActivity.this,LoginActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
     }
 
+    //Login button Action
+    @OnClick(R.id.register_btn)
+    void register(){
+        startActivity(new Intent(IntroActivity.this,RegisterActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+    }
 
 }
