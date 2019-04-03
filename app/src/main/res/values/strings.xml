@@ -26,4 +26,7 @@
     <string name="re_password">Re Password</string>
     <string name="email">Email</string>
     <string name="name">Name</string>
+    <string name="code">Code</string>
+    <string name="next">Next</string>
+    <string name="activation_code">Activation Code</string>
 </resources>

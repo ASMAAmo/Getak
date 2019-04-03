@@ -34,7 +34,7 @@ public class IntroActivity extends BaseActivity {
     //Login button Action
     @OnClick(R.id.register_btn)
     void register(){
-        startActivity(new Intent(IntroActivity.this,RegisterActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+        startActivity(new Intent(IntroActivity.this,PhoneNumberActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
     }
 
 }
