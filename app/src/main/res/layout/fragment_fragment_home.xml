@@ -5,7 +5,7 @@
     tools:context="getak.app.com.getak.Fragments.FragmentHome">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.google.android.gms.maps.MapView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="@string/hello_blank_fragment" />

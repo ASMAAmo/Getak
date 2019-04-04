@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="wrap_content">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_margin="5dp"
+    android:id="@+id/img_trip"
+    android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/txtbankname"
+        android:layout_width="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="5dp"
+        android:textSize="13sp"
+        android:layout_marginTop="5dp"
+        android:text="Awda Bank"
+        android:layout_below="@+id/img_trip"
+        android:textColor="@android:color/black"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_below="@+id/txtbankname"
+        android:id="@+id/v"
+        android:layout_marginTop="5dp"
+        android:background="@color/statusbarcolor"
+        android:layout_height="1dp" />
+    <TextView
+        android:id="@+id/txtaccountnum"
+        android:layout_width="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="10dp"
+        android:text="1239998765500"
+        android:layout_below="@+id/v"
+        android:layout_marginLeft="5dp"
+        android:textSize="13sp"
+        android:textColor="@android:color/black"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/txtname"
+        android:layout_width="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="10dp"
+        android:text="Ahmed mohamed"
+        android:layout_below="@+id/txtaccountnum"
+        android:layout_marginLeft="5dp"
+        android:textSize="13sp"
+        android:layout_marginBottom="5dp"
+        android:textColor="@android:color/black"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/txtsal"
+        android:layout_width="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="5dp"
+        android:text="1190"
+        android:layout_below="@+id/txtname"
+        android:layout_marginRight="5dp"
+        android:textSize="13sp"
+        android:textColor="@android:color/white"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

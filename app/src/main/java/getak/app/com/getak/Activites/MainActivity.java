@@ -130,7 +130,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
             }
             case R.id.rel_fav_places : {
-                switchToPage(MY_FAV_PLACES,null,getResources().getString(R.string.favorite_places));
+                switchToPage(MY_TRIPS,null,getResources().getString(R.string.favorite_places));
                 drawer.closeDrawers();
                 break;
             }

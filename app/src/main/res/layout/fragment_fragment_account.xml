@@ -1,13 +1,175 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView   xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="getak.app.com.getak.Fragments.Fragment_account">
+    android:scrollbars="none"
+    android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        tools:context="getak.app.com.getak.Fragments.Fragment_account">
+        <!--<de.hdodenhof.circleimageview.CircleImageView-->
+            <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+            <!--android:id="@+id/profile_image"-->
+            <!--android:layout_width="96dp"-->
+            <!--android:layout_height="96dp"-->
+            <!--android:src="@drawable/download"-->
+            <!--android:layout_alignParentLeft="true"-->
+            <!--android:layout_marginLeft="15dp"-->
+            <!--android:layout_marginTop="20dp"-->
+            <!--app:civ_border_width="2dp"-->
+            <!--app:civ_border_color="#FF000000"/>-->
+        <LinearLayout
+            android:id="@+id/login_inputs_box"
+            android:layout_below="@+id/profile_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/txt_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:text="@string/name"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_15sdp" />
 
-</FrameLayout>
+            <EditText
+                android:id="@+id/name_input"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:background="@drawable/input_txt_bg"
+                android:padding="@dimen/_5sdp" />
+            <TextView
+                android:id="@+id/user_login_lbl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:text="@string/phone_number"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_15sdp" />
+
+            <EditText
+                android:id="@+id/user_name_input"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:background="@drawable/input_txt_bg"
+                android:hint="+96XXXXXXXXXXXXX"
+                android:padding="@dimen/_5sdp" />
+            <TextView
+                android:id="@+id/txt_mail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:text="@string/name"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_15sdp" />
+
+            <EditText
+                android:id="@+id/email_input"
+                android:layout_width="match_parent"
+                android:inputType="textEmailAddress"
+                android:layout_height="@dimen/_35sdp"
+                android:background="@drawable/input_txt_bg"
+                android:padding="@dimen/_5sdp" />
+            <TextView
+                android:id="@+id/txt_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:text="@string/address"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_15sdp" />
+
+            <EditText
+                android:id="@+id/email_address"
+                android:layout_width="match_parent"
+                android:inputType="textEmailAddress"
+                android:layout_height="@dimen/_35sdp"
+                android:background="@drawable/input_txt_bg"
+                android:padding="@dimen/_5sdp" />
+            <TextView
+                android:id="@+id/txt_gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:text="@string/gender"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_15sdp" />
+
+            <EditText
+                android:id="@+id/gender_input"
+                android:layout_width="match_parent"
+                android:inputType="text"
+                android:layout_height="@dimen/_35sdp"
+                android:background="@drawable/input_txt_bg"
+                android:padding="@dimen/_5sdp" />
+            <TextView
+                android:id="@+id/txt_age"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:text="@string/age"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_15sdp" />
+
+            <EditText
+                android:id="@+id/age_input"
+                android:layout_width="match_parent"
+                android:inputType="text"
+                android:layout_height="@dimen/_35sdp"
+                android:background="@drawable/input_txt_bg"
+                android:padding="@dimen/_5sdp" />
+            <TextView
+                android:id="@+id/password_lbl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:text="@string/password"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_15sdp" />
+
+            <EditText
+                android:id="@+id/password_input"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:background="@drawable/input_txt_bg"
+                android:padding="@dimen/_5sdp" />
+            <TextView
+                android:id="@+id/passwordconf_lbl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:text="@string/confirm_password"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_15sdp" />
+
+            <EditText
+                android:id="@+id/passwordconf_input"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:background="@drawable/input_txt_bg"
+                android:padding="@dimen/_5sdp" />
+            <Button
+                android:id="@+id/login_btn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:background="@drawable/button_bg"
+                android:text="@string/save"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_15sdp" />
+        </LinearLayout>
+
+    </RelativeLayout>
+</ScrollView>

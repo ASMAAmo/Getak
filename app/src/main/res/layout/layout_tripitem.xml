@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/sidemenu"
+    android:layout_height="wrap_content">
+<ImageView
+    android:layout_width="match_parent"
+    android:layout_margin="5dp"
+    android:id="@+id/img_trip"
+    android:background="@drawable/trips"
+    android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/txtdate"
+        android:layout_width="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="5dp"
+        android:textSize="13sp"
+        android:layout_marginTop="5dp"
+        android:text="13-9-1188"
+        android:layout_below="@+id/img_trip"
+        android:textColor="@android:color/white"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/txtname"
+        android:layout_width="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="5dp"
+        android:text="Ahmed"
+        android:layout_below="@+id/txtdate"
+        android:layout_marginLeft="5dp"
+        android:textSize="13sp"
+        android:textColor="@android:color/white"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/txtcarnum"
+        android:layout_width="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="5dp"
+        android:text="Nissan"
+        android:layout_below="@+id/txtname"
+        android:layout_marginLeft="5dp"
+        android:textSize="13sp"
+        android:textColor="@android:color/white"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/txtsal"
+        android:layout_width="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="5dp"
+        android:text="1190"
+        android:layout_below="@+id/txtname"
+        android:layout_marginRight="5dp"
+        android:textSize="13sp"
+        android:textColor="@android:color/white"
+        android:layout_height="wrap_content" />
+</RelativeLayout>
