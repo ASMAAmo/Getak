@@ -11,7 +11,8 @@
         <!--android:id="@+id/profile_image"-->
         <!--android:layout_width="96dp"-->
         <!--android:layout_height="96dp"-->
-        <!--android:src="@drawable/download"-->
+        <!--android:src="@drawable/logo"-->
+        <!--android:scaleType="fitCenter"-->
         <!--android:layout_centerHorizontal="true"-->
         <!--android:layout_marginTop="30dp"-->
         <!--app:civ_border_width="2dp"-->

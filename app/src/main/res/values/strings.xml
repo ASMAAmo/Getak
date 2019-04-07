@@ -4,8 +4,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="getak">Getak</string>
-    <string name="navigation_drawer_open" />
-    <string name="navigation_drawer_close" />
+    <string name="navigation_drawer_open" translatable="false" />
+    <string name="navigation_drawer_close" translatable="false" />
     <string name="my_account">My Account</string>
     <string name="my_trips">My Trips</string>
     <string name="favorite_places">Favorite Places</string>
@@ -36,4 +36,19 @@
     <string name="age">Age</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="subject">Subject</string>
+    <string name="contracts">Contracts</string>
+    <string name="no_contracts">No Contracts</string>
+    <string name="customer_name">Customer Name :</string>
+    <string name="driver_name">Driver Name :</string>
+    <string name="place_of_going">Place of going :</string>
+    <string name="place_of_return">Place of return :</string>
+    <string name="time_of_going">Time Of Going :</string>
+    <string name="time_of_return">Time Of Return :</string>
+    <string name="start_of_contract">Start of contract :</string>
+    <string name="end_of_contract">End of contract :</string>
+    <string name="total_amount">Total Amount :</string>
+    <string name="days">Days :</string>
+    <string name="start">Start</string>
+    <string name="target">Target</string>
+    <string name="approve_the_terms_and_conditions">Approve the terms and conditions</string>
 </resources>

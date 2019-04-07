@@ -16,7 +16,7 @@ import butterknife.ButterKnife;
 import getak.app.com.getak.R;
 
 
-public class Fragment_account extends Fragment {
+public class FragmentAccount extends Fragment {
     @BindView(R.id.profile_image)
     de.hdodenhof.circleimageview.CircleImageView profile_image;
     @BindView(R.id.name_input)
@@ -35,19 +35,14 @@ public class Fragment_account extends Fragment {
     EditText password_input;
     @BindView(R.id.passwordconf_input)
     EditText passwordconf_input;
-    @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
-    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view= inflater.inflate(R.layout.fragment_fragment_account, container,
-                true);
-        ButterKnife.bind(getActivity());
+        View view = inflater.inflate(R.layout.fragment_fragment_account, container, false);
         // Inflate the layout for this fragment
+        ButterKnife.bind(this,view);
         return view;
     }
 }

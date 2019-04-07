@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import getak.app.com.getak.BaseActivity;
 import getak.app.com.getak.R;
+import getak.app.com.getak.Session.SessionHelper;
 
 public class Splash extends BaseActivity {
 

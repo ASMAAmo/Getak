@@ -5,7 +5,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -15,15 +14,15 @@ import com.andexert.library.RippleView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import getak.app.com.getak.BaseActivity;
+import getak.app.com.getak.Fragments.FragmentAccount;
+import getak.app.com.getak.Fragments.FragmentContracts;
 import getak.app.com.getak.Fragments.FragmentFavPlaces;
 import getak.app.com.getak.Fragments.FragmentHome;
 import getak.app.com.getak.Fragments.FragmentMessages;
 import getak.app.com.getak.Fragments.FragmentMyTrips;
 import getak.app.com.getak.Fragments.FragmentSettings;
 import getak.app.com.getak.Fragments.FragmentSupport;
-import getak.app.com.getak.Fragments.Fragment_account;
 import getak.app.com.getak.R;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
@@ -53,6 +52,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     RippleView relSupportBtn;
     @BindView(R.id.rel_settings)
     RippleView relSettingsBtn;
+    @BindView(R.id.rel_contracts)
+    RippleView relContracts;
+
+
+
 
     //Pages
     public static final int HOME = 0;
@@ -62,6 +66,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     public static final int MESSAGES = 4;
     public static final int SUPPORT = 5;
     public static final int SETTINGS = 6;
+    public static final int CONTRACTS=7;
     public static int pageIndex=0;
 
 
@@ -81,6 +86,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         relSettingsBtn.setOnClickListener(this);
         relFavPlacesBtn.setOnClickListener(this);
         relHometBtn.setOnClickListener(this);
+        relContracts.setOnClickListener(this);
         switchToPage(HOME,null,getResources().getString(R.string.home));
 
     }
@@ -94,9 +100,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toggle.setDrawerIndicatorEnabled(false);
+        toggle.setDrawerIndicatorEnabled(true);
         getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(false);
-        toggle.setHomeAsUpIndicator(R.drawable.ic_menu);
         toggle.setToolbarNavigationClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -125,7 +130,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
             }
             case R.id.rel_my_account : {
-                switchToPage(HOME,null,getResources().getString(R.string.my_account));
+                switchToPage(MY_ACCOUNT,null,getResources().getString(R.string.my_account));
                 drawer.closeDrawers();
                 break;
             }
@@ -154,6 +159,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 drawer.closeDrawers();
                 break;
             }
+
+            case R.id.rel_contracts : {
+                switchToPage(CONTRACTS,null,getResources().getString(R.string.contracts));
+                drawer.closeDrawers();
+                break;
+            }
         }
     }
 
@@ -171,7 +182,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             }
 
             case MY_ACCOUNT: {
-                Fragment_account fragmentAccount =new Fragment_account();
+                FragmentAccount fragmentAccount =new FragmentAccount();
                 transaction.replace(R.id.main_container, fragmentAccount);
                 pageIndex = MY_ACCOUNT;
                 transaction.commit();
@@ -220,6 +231,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 FragmentSettings fragmentSettings =new FragmentSettings();
                 transaction.replace(R.id.main_container, fragmentSettings);
                 pageIndex = SETTINGS;
+                transaction.commit();
+                titleTv.setText(name);
+                break;
+            }
+
+            case CONTRACTS : {
+                FragmentContracts fragmentContracts =new FragmentContracts();
+                transaction.replace(R.id.main_container, fragmentContracts);
+                pageIndex = CONTRACTS;
                 transaction.commit();
                 titleTv.setText(name);
                 break;
