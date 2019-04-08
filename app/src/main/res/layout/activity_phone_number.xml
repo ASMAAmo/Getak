@@ -27,18 +27,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/code_input"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_35sdp"
-                android:layout_weight="3"
-                android:background="@android:color/transparent"
-                android:ems="10"
-                android:hint="@string/code"
-                android:inputType="phone"
-                android:padding="@dimen/_5sdp" />
-
             <EditText
                 android:id="@+id/phone_input"
                 android:layout_width="match_parent"
@@ -48,6 +36,19 @@
                 android:hint="@string/phone_number"
                 android:inputType="phone"
                 android:padding="@dimen/_5sdp" />
+            <EditText
+                android:id="@+id/code_input"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_weight="3"
+
+                android:background="@android:color/transparent"
+                android:ems="10"
+                android:hint="@string/code"
+                android:inputType="phone"
+                android:padding="@dimen/_5sdp" />
+
+
         </LinearLayout>
 
     </LinearLayout>

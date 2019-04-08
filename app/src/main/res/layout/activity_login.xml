@@ -18,7 +18,8 @@
 
         <TextView
             android:id="@+id/user_login_lbl"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_gravity="right"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/_10sdp"
             android:text="@string/phone_number"
@@ -35,7 +36,8 @@
 
         <TextView
             android:id="@+id/password_lbl"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_gravity="right"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_10sdp"
@@ -58,14 +60,15 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/_30sdp"
-        android:text="Customer Login"
         android:textColor="@android:color/black"
         android:textSize="@dimen/_15sdp" />
 
     <android.support.design.widget.TabLayout
         android:id="@+id/login_type_tab"
         android:layout_width="@dimen/_200sdp"
+        android:layout_alignParentRight="true"
         android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/_10sdp"
         android:layout_below="@id/login_lbl"
         android:layout_marginTop="@dimen/_30sdp"
         android:background="@android:color/transparent"

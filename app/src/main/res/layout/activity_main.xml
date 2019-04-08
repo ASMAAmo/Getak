@@ -8,220 +8,220 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
-   <include
-       layout="@layout/home_continer"
-       android:layout_width="match_parent"
-       android:layout_height="match_parent" />
+    <include
+        layout="@layout/home_continer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
-   <android.support.design.widget.NavigationView
-       android:id="@+id/nav_view"
-       android:layout_width="@dimen/_170sdp"
-       android:layout_height="match_parent"
-       android:layout_gravity="start"
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="@dimen/_170sdp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
 
-       android:background="@color/sidemenu"
-       android:fitsSystemWindows="true">
+        android:background="@color/sidemenu"
+        android:fitsSystemWindows="true">
 
-      <RelativeLayout
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-         <LinearLayout
-             android:id="@+id/user_layout"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:layout_marginTop="@dimen/_25sdp"
-             android:layout_marginBottom="@dimen/_10sdp"
-             android:orientation="vertical">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="@dimen/_60sdp"
-                android:layout_height="@dimen/_60sdp"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_person_black_24dp"
-                app:civ_border_color="@color/white"
-                app:civ_border_width="@dimen/_1sdp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:text="Welcome"
-                android:textColor="@color/white" />
-
-         </LinearLayout>
-
-         <LinearLayout
-             android:id="@+id/side_menu_box"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:layout_below="@+id/user_layout"
-             android:layout_centerInParent="false"
-             android:orientation="vertical">
-
-            <com.andexert.library.RippleView
-                android:id="@+id/rel_home"
+            <LinearLayout
+                android:id="@+id/user_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true">
+                android:layout_marginTop="@dimen/_25sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:orientation="vertical">
 
-               <TextView
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:layout_alignParentStart="true"
-                   android:drawableStart="@drawable/ic_account"
-                   android:drawablePadding="@dimen/_5sdp"
-                   android:gravity="center_vertical"
-                   android:padding="@dimen/_2sdp"
-                   android:text="@string/home"
-                   android:textColor="@color/white"
-                   android:textSize="@dimen/_15sdp" />
-            </com.andexert.library.RippleView>
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="@dimen/_60sdp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_person_black_24dp"
+                    app:civ_border_color="@color/white"
+                    app:civ_border_width="@dimen/_1sdp" />
 
-            <com.andexert.library.RippleView
-                android:id="@+id/rel_my_account"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="Welcome"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/side_menu_box"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true">
+                android:layout_below="@+id/user_layout"
+                android:layout_centerInParent="false"
+                android:orientation="vertical">
 
-               <TextView
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:layout_alignParentStart="true"
-                   android:drawableStart="@drawable/ic_account"
-                   android:drawablePadding="@dimen/_5sdp"
-                   android:gravity="center_vertical"
-                   android:padding="@dimen/_2sdp"
-                   android:text="@string/my_account"
-                   android:textColor="@color/white"
-                   android:textSize="@dimen/_15sdp" />
-            </com.andexert.library.RippleView>
+                <com.andexert.library.RippleView
+                    android:id="@+id/rel_home"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true">
 
-            <com.andexert.library.RippleView
-                android:id="@+id/rel_my_trips"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:drawableStart="@drawable/ic_account"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/_2sdp"
+                        android:text="@string/home"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_15sdp" />
+                </com.andexert.library.RippleView>
 
-               <TextView
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:layout_alignParentStart="true"
-                   android:drawableStart="@drawable/ic_flights"
-                   android:drawablePadding="@dimen/_5sdp"
-                   android:gravity="center_vertical"
-                   android:padding="@dimen/_2sdp"
-                   android:text="@string/my_trips"
-                   android:textColor="@color/white"
-                   android:textSize="@dimen/_15sdp" />
-            </com.andexert.library.RippleView>
+                <com.andexert.library.RippleView
+                    android:id="@+id/rel_my_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true">
 
-            <com.andexert.library.RippleView
-                android:id="@+id/rel_fav_places"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:drawableStart="@drawable/ic_account"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/_2sdp"
+                        android:text="@string/my_account"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_15sdp" />
+                </com.andexert.library.RippleView>
 
-               <TextView
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:layout_alignParentStart="true"
-                   android:drawableStart="@drawable/ic_flights"
-                   android:drawablePadding="@dimen/_5sdp"
-                   android:gravity="center_vertical"
-                   android:padding="@dimen/_2sdp"
-                   android:text="@string/favorite_places"
-                   android:textColor="@color/white"
-                   android:textSize="@dimen/_15sdp" />
-            </com.andexert.library.RippleView>
+                <com.andexert.library.RippleView
+                    android:id="@+id/rel_my_trips"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true">
 
-            <com.andexert.library.RippleView
-                android:id="@+id/rel_messages"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:drawableStart="@drawable/ic_flights"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/_2sdp"
+                        android:text="@string/my_trips"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_15sdp" />
+                </com.andexert.library.RippleView>
 
-               <TextView
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:layout_alignParentStart="true"
-                   android:drawableStart="@drawable/ic_flights"
-                   android:drawablePadding="@dimen/_5sdp"
-                   android:gravity="center_vertical"
-                   android:padding="@dimen/_2sdp"
-                   android:text="@string/messages"
-                   android:textColor="@color/white"
-                   android:textSize="@dimen/_15sdp" />
-            </com.andexert.library.RippleView>
+                <com.andexert.library.RippleView
+                    android:id="@+id/rel_fav_places"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true">
 
-            <com.andexert.library.RippleView
-                android:id="@+id/rel_contracts"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:drawableStart="@drawable/ic_flights"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/_2sdp"
+                        android:text="@string/favorite_places"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_15sdp" />
+                </com.andexert.library.RippleView>
 
-               <TextView
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:layout_alignParentStart="true"
-                   android:drawableStart="@drawable/ic_flights"
-                   android:drawablePadding="@dimen/_5sdp"
-                   android:gravity="center_vertical"
-                   android:padding="@dimen/_2sdp"
-                   android:text="@string/contracts"
-                   android:textColor="@color/white"
-                   android:textSize="@dimen/_15sdp" />
-            </com.andexert.library.RippleView>
+                <com.andexert.library.RippleView
+                    android:id="@+id/rel_messages"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true">
 
-            <com.andexert.library.RippleView
-                android:id="@+id/rel_support"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:drawableStart="@drawable/ic_flights"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/_2sdp"
+                        android:text="@string/messages"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_15sdp" />
+                </com.andexert.library.RippleView>
 
-               <TextView
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:layout_alignParentStart="true"
-                   android:drawableStart="@drawable/ic_flights"
-                   android:drawablePadding="@dimen/_5sdp"
-                   android:gravity="center_vertical"
-                   android:padding="@dimen/_2sdp"
-                   android:text="@string/support"
-                   android:textColor="@color/white"
-                   android:textSize="@dimen/_15sdp" />
-            </com.andexert.library.RippleView>
+                <com.andexert.library.RippleView
+                    android:id="@+id/rel_contracts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true">
 
-            <com.andexert.library.RippleView
-                android:id="@+id/rel_settings"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:drawableStart="@drawable/ic_flights"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/_2sdp"
+                        android:text="@string/contracts"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_15sdp" />
+                </com.andexert.library.RippleView>
 
-               <TextView
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:layout_alignParentStart="true"
-                   android:drawableStart="@drawable/ic_flights"
-                   android:drawablePadding="@dimen/_5sdp"
-                   android:gravity="center_vertical"
-                   android:padding="@dimen/_2sdp"
-                   android:text="@string/settings"
-                   android:textColor="@color/white"
-                   android:textSize="@dimen/_15sdp" />
-            </com.andexert.library.RippleView>
-         </LinearLayout>
+                <com.andexert.library.RippleView
+                    android:id="@+id/rel_support"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:drawableStart="@drawable/ic_flights"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/_2sdp"
+                        android:text="@string/support"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_15sdp" />
+                </com.andexert.library.RippleView>
+
+                <com.andexert.library.RippleView
+                    android:id="@+id/rel_settings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:drawableStart="@drawable/ic_flights"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/_2sdp"
+                        android:text="@string/settings"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_15sdp" />
+                </com.andexert.library.RippleView>
+            </LinearLayout>
 
 
 
 
 
 
-      </RelativeLayout>
+        </RelativeLayout>
 
-   </android.support.design.widget.NavigationView>
+    </android.support.design.widget.NavigationView>
 
 
 

@@ -5,15 +5,15 @@
     android:layout_height="wrap_content">
 <ImageView
     android:layout_width="match_parent"
-    android:layout_margin="5dp"
+    android:layout_margin="7dp"
     android:id="@+id/img_trip"
     android:background="@drawable/trips"
     android:layout_height="wrap_content" />
     <TextView
         android:id="@+id/txtdate"
         android:layout_width="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="5dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
         android:textSize="13sp"
         android:layout_marginTop="5dp"
         android:text="13-9-1188"
@@ -23,33 +23,35 @@
     <TextView
         android:id="@+id/txtname"
         android:layout_width="wrap_content"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
         android:layout_marginTop="5dp"
         android:text="Ahmed"
         android:layout_below="@+id/txtdate"
-        android:layout_marginLeft="5dp"
+        android:layout_marginRight="10dp"
         android:textSize="13sp"
         android:textColor="@android:color/white"
         android:layout_height="wrap_content" />
     <TextView
         android:id="@+id/txtcarnum"
         android:layout_width="wrap_content"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
         android:layout_marginTop="5dp"
         android:text="Nissan"
         android:layout_below="@+id/txtname"
-        android:layout_marginLeft="5dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="@dimen/_10sdp"
         android:textSize="13sp"
         android:textColor="@android:color/white"
         android:layout_height="wrap_content" />
     <TextView
         android:id="@+id/txtsal"
         android:layout_width="wrap_content"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true"
         android:layout_marginTop="5dp"
         android:text="1190"
+        android:layout_marginBottom="@dimen/_10sdp"
         android:layout_below="@+id/txtname"
-        android:layout_marginRight="5dp"
+        android:layout_marginLeft="10dp"
         android:textSize="13sp"
         android:textColor="@android:color/white"
         android:layout_height="wrap_content" />
