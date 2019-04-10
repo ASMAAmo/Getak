@@ -10,11 +10,11 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_44sdp"
+        android:layout_height="@dimen/_35sdp"
         android:layout_centerInParent="true"
         android:background="@drawable/code_input_bg">
         <com.andexert.library.RippleView
-            android:layout_width="@dimen/_40sdp"
+            android:layout_width="@dimen/_30sdp"
             android:layout_height="match_parent"
             android:layout_margin="@dimen/_2sdp"
             android:id="@+id/confirm_btn"
@@ -28,10 +28,12 @@
         </com.andexert.library.RippleView>
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="35dp"
             android:layout_weight="1"
             android:id="@+id/activation_code_input"
             android:maxLength="12"
+            android:text=""
+            android:textColor="@color/sidemenu"
             android:background="@android:color/transparent"
             android:hint="@string/activation_code"
             android:gravity="center"/>

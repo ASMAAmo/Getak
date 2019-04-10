@@ -36,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_marginTop="5dp"
-        android:text="Nissan"
+        android:text="موديل السياره Nissan"
         android:layout_below="@+id/txtname"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="@dimen/_10sdp"

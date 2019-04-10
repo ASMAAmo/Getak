@@ -33,49 +33,6 @@ public class FragmentSettings extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        langSwitch.addTab(langSwitch.newTab().setText("عربي"));
-        langSwitch.addTab(langSwitch.newTab().setText("English"));
-        if(SessionHelper.isArabic(getContext())){
-            langSwitch.getTabAt(0).select();
-        }else if(SessionHelper.isEnglish(getContext())){
-            langSwitch.getTabAt(1).select();
-        }
 
-        langSwitch.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                switch (tab.getPosition()){
-                    case 0 : {
-                        SessionHelper.setLanguageArabic(getContext(), new SessionHelper.OnSessionUpdate() {
-                            @Override
-                            public void refreshActivity() {
-                                BaseActivity.restartApp(getContext());
-                            }
-                        });
-                        break;
-                    }
-
-                    case 1 : {
-                        SessionHelper.setLanguageEnglish(getContext(), new SessionHelper.OnSessionUpdate() {
-                            @Override
-                            public void refreshActivity() {
-                                BaseActivity.restartApp(getContext());
-                            }
-                        });
-                        break;
-                    }
-                }
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
     }
 }

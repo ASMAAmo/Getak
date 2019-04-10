@@ -26,16 +26,16 @@
                 android:layout_marginStart="@dimen/_5sdp"
                 android:layout_marginEnd="@dimen/_5sdp"
                 android:text="@string/customer_name"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/_15sdp" />
+                android:textColor="@color/sidemenu"
+                android:textSize="@dimen/_13sdp" />
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Ali Rabie"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/_15sdp" />
+                android:textColor="@color/sidemenu"
+                android:textSize="@dimen/_13sdp" />
         </LinearLayout>
 
         <LinearLayout
@@ -52,16 +52,16 @@
                 android:layout_marginStart="@dimen/_5sdp"
                 android:layout_marginEnd="@dimen/_5sdp"
                 android:text="@string/driver_name"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/_15sdp" />
+                android:textColor="@color/sidemenu"
+                android:textSize="@dimen/_13sdp" />
 
             <TextView
                 android:id="@+id/driver_name_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Ahmed Mohammed"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/_15sdp" />
+                android:textColor="@color/sidemenu"
+                android:textSize="@dimen/_13sdp" />
         </LinearLayout>
 
         <LinearLayout
@@ -78,16 +78,16 @@
                 android:layout_marginStart="@dimen/_5sdp"
                 android:layout_marginEnd="@dimen/_5sdp"
                 android:text="@string/place_of_going"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/_15sdp" />
+                android:textColor="@color/sidemenu"
+                android:textSize="@dimen/_13sdp" />
 
             <TextView
                 android:id="@+id/target_location_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Menofya"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/_15sdp" />
+                android:textColor="@color/sidemenu"
+                android:textSize="@dimen/_13sdp" />
         </LinearLayout>
 
         <LinearLayout
@@ -104,16 +104,16 @@
                 android:layout_marginStart="@dimen/_5sdp"
                 android:layout_marginEnd="@dimen/_5sdp"
                 android:text="@string/place_of_return"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/_15sdp" />
+                android:textColor="@color/sidemenu"
+                android:textSize="@dimen/_13sdp" />
 
             <TextView
                 android:id="@+id/place_return_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Cairo"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/_15sdp" />
+                android:textColor="@color/sidemenu"
+                android:textSize="@dimen/_13sdp" />
         </LinearLayout>
 
         <LinearLayout
@@ -130,16 +130,16 @@
                 android:layout_marginStart="@dimen/_5sdp"
                 android:layout_marginEnd="@dimen/_5sdp"
                 android:text="@string/time_of_going"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/_15sdp" />
+                android:textColor="@color/sidemenu"
+                android:textSize="@dimen/_13sdp" />
 
             <TextView
                 android:id="@+id/going_time_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="10:00 AM"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/_15sdp" />
+                android:textColor="@color/sidemenu"
+                android:textSize="@dimen/_13sdp" />
         </LinearLayout>
 
         <LinearLayout
@@ -156,16 +156,16 @@
                 android:layout_marginStart="@dimen/_5sdp"
                 android:layout_marginEnd="@dimen/_5sdp"
                 android:text="@string/time_of_return"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/_15sdp" />
+                android:textColor="@color/sidemenu"
+                android:textSize="@dimen/_13sdp" />
 
             <TextView
                 android:id="@+id/return_time_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="12:00 AM"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/_15sdp" />
+                android:textColor="@color/sidemenu"
+                android:textSize="@dimen/_13sdp" />
         </LinearLayout>
 
         <LinearLayout
@@ -183,15 +183,15 @@
                 android:layout_marginEnd="@dimen/_5sdp"
                 android:text="@string/start_of_contract"
                 android:textColor="@android:color/black"
-                android:textSize="@dimen/_15sdp" />
+                android:textSize="@dimen/_13sdp" />
 
             <TextView
                 android:id="@+id/contract_start_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="12/2/2019"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/_15sdp" />
+                android:textColor="@color/sidemenu"
+                android:textSize="@dimen/_13sdp" />
         </LinearLayout>
 
         <LinearLayout
@@ -208,16 +208,16 @@
                 android:layout_marginStart="@dimen/_5sdp"
                 android:layout_marginEnd="@dimen/_5sdp"
                 android:text="@string/end_of_contract"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/_15sdp" />
+                android:textColor="@color/sidemenu"
+                android:textSize="@dimen/_13sdp" />
 
             <TextView
                 android:id="@+id/contract_end_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="12/2/2020"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/_15sdp" />
+                android:textColor="@color/sidemenu"
+                android:textSize="@dimen/_13sdp" />
         </LinearLayout>
 
         <LinearLayout
@@ -234,16 +234,16 @@
                 android:layout_marginStart="@dimen/_5sdp"
                 android:layout_marginEnd="@dimen/_5sdp"
                 android:text="@string/total_amount"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/_15sdp" />
+                android:textColor="@color/sidemenu"
+                android:textSize="@dimen/_13sdp" />
 
             <TextView
                 android:id="@+id/total_amount_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="100.0"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/_15sdp" />
+                android:textColor="@color/sidemenu"
+                android:textSize="@dimen/_13sdp" />
         </LinearLayout>
 
         <LinearLayout
@@ -260,16 +260,16 @@
                 android:layout_marginStart="@dimen/_5sdp"
                 android:layout_marginEnd="@dimen/_5sdp"
                 android:text="@string/days"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/_15sdp" />
+                android:textColor="@color/sidemenu"
+                android:textSize="@dimen/_13sdp" />
 
             <TextView
                 android:id="@+id/days_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Sat , Sun , Mon"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/_15sdp" />
+                android:textColor="@color/sidemenu"
+                android:textSize="@dimen/_13sdp" />
         </LinearLayout>
 
         <LinearLayout
@@ -283,23 +283,25 @@
             <Button
                 android:id="@+id/start_btn"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_marginStart="@dimen/_3sdp"
                 android:layout_marginEnd="@dimen/_3sdp"
                 android:layout_weight="1"
                 android:background="@drawable/button_bg"
                 android:text="@string/start"
+                android:textSize="13sp"
                 android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/end_btn"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_marginStart="@dimen/_3sdp"
                 android:layout_marginEnd="@dimen/_3sdp"
                 android:layout_weight="1"
                 android:background="@drawable/button_bg"
                 android:text="@string/target"
+                android:textSize="@dimen/_13sdp"
                 android:textColor="@color/white" />
 
         </LinearLayout>

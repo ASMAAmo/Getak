@@ -22,31 +22,31 @@
         <Button
             android:id="@+id/login_btn"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_35sdp"
+            android:layout_height="@dimen/_30sdp"
             android:background="@drawable/button_bg"
             android:text="@string/login"
             android:textColor="@color/white"
-            android:textSize="@dimen/_15sdp" />
+            android:textSize="@dimen/_13sdp" />
 
         <Button
             android:id="@+id/register_btn"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_35sdp"
+            android:layout_height="@dimen/_30sdp"
             android:layout_marginTop="@dimen/_20sdp"
             android:background="@drawable/button_bg"
             android:text="@string/register"
             android:textColor="@color/white"
-            android:textSize="@dimen/_15sdp" />
+            android:textSize="@dimen/_13sdp" />
 
         <Button
             android:id="@+id/skip_btn"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_35sdp"
+            android:layout_height="@dimen/_30sdp"
             android:layout_marginTop="@dimen/_20sdp"
             android:background="@drawable/button_bg"
             android:text="@string/skip"
             android:textColor="@color/white"
-            android:textSize="@dimen/_15sdp" />
+            android:textSize="@dimen/_13sdp" />
     </LinearLayout>
 
 </RelativeLayout>

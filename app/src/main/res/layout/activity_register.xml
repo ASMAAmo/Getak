@@ -23,13 +23,17 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/_10sdp"
             android:text="@string/name"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/_15sdp" />
+            android:textColor="@color/sidemenu"
+            android:textSize="@dimen/_13sdp" />
 
         <EditText
             android:id="@+id/name_input"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_35sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:inputType="text"
+            android:singleLine="true"
+            android:textSize="13sp"
+            android:textColor="@color/sidemenu"
             android:background="@drawable/input_txt_bg"
             android:padding="@dimen/_5sdp" />
         <TextView
@@ -40,16 +44,18 @@
             android:layout_marginTop="@dimen/_5sdp"
             android:layout_marginBottom="@dimen/_10sdp"
             android:text="@string/phone_number"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/_15sdp" />
+            android:textColor="@color/sidemenu"
+            android:textSize="@dimen/_13sdp" />
 
         <EditText
             android:id="@+id/phone_input"
-            android:layout_gravity="right"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_35sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:inputType="number"
+            android:textSize="13sp"
+            android:singleLine="true"
+            android:textColor="@color/sidemenu"
             android:background="@drawable/input_txt_bg"
-            android:hint="+96XXXXXXXXXXXXX"
             android:padding="@dimen/_5sdp" />
         <TextView
             android:id="@+id/email_lbl"
@@ -60,12 +66,15 @@
             android:layout_marginBottom="@dimen/_10sdp"
             android:text="@string/email"
             android:textColor="@android:color/black"
-            android:textSize="@dimen/_15sdp" />
+            android:textSize="@dimen/_13sdp" />
 
         <EditText
             android:id="@+id/email_input"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_35sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:inputType="textEmailAddress"
+            android:singleLine="true"
+            android:textColor="@color/sidemenu"
             android:background="@drawable/input_txt_bg"
             android:padding="@dimen/_5sdp" />
 
@@ -79,12 +88,16 @@
             android:layout_marginTop="@dimen/_5sdp"
             android:text="@string/password"
             android:textColor="@android:color/black"
-            android:textSize="@dimen/_15sdp" />
+            android:textSize="@dimen/_13sdp" />
 
         <EditText
             android:id="@+id/password_input"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_35sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:inputType="textPassword"
+            android:singleLine="true"
+            android:password="true"
+            android:textColor="@color/sidemenu"
             android:background="@drawable/input_txt_bg"
             android:padding="@dimen/_5sdp" />
         <TextView
@@ -96,12 +109,16 @@
             android:layout_marginBottom="@dimen/_10sdp"
             android:text="@string/re_password"
             android:textColor="@android:color/black"
-            android:textSize="@dimen/_15sdp" />
+            android:textSize="@dimen/_13sdp" />
 
         <EditText
             android:id="@+id/re_password_input"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_35sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:inputType="textPassword"
+            android:singleLine="true"
+            android:password="true"
+            android:textColor="@color/sidemenu"
             android:background="@drawable/input_txt_bg"
             android:padding="@dimen/_5sdp" />
 
@@ -111,9 +128,11 @@
 
     <android.support.design.widget.TabLayout
         android:id="@+id/reg_type_tab"
-        android:layout_width="@dimen/_200sdp"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="35dp"
         android:layout_below="@id/login_lbl"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
        android:layout_marginTop="@dimen/_20sdp"
         android:background="@android:color/transparent"
         app:tabBackground="@drawable/tab_background"
@@ -146,10 +165,10 @@
         <Button
             android:id="@+id/register_btn"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_35sdp"
+            android:layout_height="@dimen/_30sdp"
             android:background="@drawable/button_bg"
             android:text="@string/register"
             android:textColor="@color/white"
-            android:textSize="@dimen/_15sdp" />
+            android:textSize="@dimen/_13sdp" />
     </LinearLayout>
 </RelativeLayout>

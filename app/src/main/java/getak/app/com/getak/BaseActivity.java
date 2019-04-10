@@ -31,6 +31,12 @@ public class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
         SessionHelper.configLanguage(this);
+        SessionHelper.setLanguageArabic(getApplicationContext(), new SessionHelper.OnSessionUpdate() {
+            @Override
+            public void refreshActivity() {
+                //
+            }
+        });
         setContentView(R.layout.activity_base);
         Window window = this.getWindow();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
