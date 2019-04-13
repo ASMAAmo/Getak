@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 28
@@ -11,12 +12,24 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+    signingConfigs {
+        release {
+            storeFile file("F:/My Work/My Freelance Work/Getak/Getak Key Store/GetakKeyStore.jks")
+            storePassword "123456"
+            keyAlias "GetakKey"
+            keyPassword "123456"
+        }
+    }
+
+
     buildTypes {
         release {
             buildConfigField("String", "BASIC_URL", "\"https://baseUrl.com/\"")
             buildConfigField("String", "API_URl", "\"https://baseUrl.com/api/\"")
             buildConfigField("int", "DELAY", "0")
             minifyEnabled false
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
@@ -39,6 +52,9 @@ dependencies {
     api 'com.android.support:design:28.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     implementation 'com.android.support:support-v4:28.0.0'
+    implementation 'com.google.android.gms:play-services:11.0.4'
+    implementation 'com.google.android.gms:play-services-maps:11.0.4'
+    implementation 'com.google.firebase:firebase-messaging:11.0.4'
     testImplementation 'junit:junit:4.12'
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
     implementation 'com.patrickpissurno:ripple-effect:1.3.1'
@@ -51,7 +67,6 @@ dependencies {
     implementation 'com.hbb20:ccp:2.2.6'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     implementation 'de.hdodenhof:circleimageview:3.0.0'
-    implementation 'com.google.android.gms:play-services:11.0.4'
 
 
 }
