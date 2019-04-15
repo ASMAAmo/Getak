@@ -67,6 +67,7 @@ dependencies {
     implementation 'com.hbb20:ccp:2.2.6'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     implementation 'de.hdodenhof:circleimageview:3.0.0'
+    implementation 'org.greenrobot:eventbus:3.0.0'
 
 
 }

@@ -1,12 +1,17 @@
 package getak.app.com.getak.Activites;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.opengl.Visibility;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -56,7 +61,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     RippleView relContracts;
 
 
-
+    MenuItem itemAddContract;
 
     //Pages
     public static final int HOME = 0;
@@ -93,7 +98,22 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
 
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.option_menu, menu);
+        itemAddContract = menu.findItem(R.id.addcontract_action);
+        itemAddContract.setVisible(false);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId()==R.id.addcontract_action){
+           startActivity(new Intent(this,AddContractActivity.class));
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @SuppressLint("RestrictedApi")
     private void setUpSideMenuDrawer(Toolbar toolbar) {
@@ -126,42 +146,53 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         switch (v.getId()){
             case R.id.rel_home : {
                 switchToPage(HOME,null,getResources().getString(R.string.home));
+                itemAddContract.setVisible(false);
                 drawer.closeDrawers();
                 break;
             }
             case R.id.rel_my_account : {
                 switchToPage(MY_ACCOUNT,null,getResources().getString(R.string.my_account));
+                itemAddContract.setVisible(false);
                 drawer.closeDrawers();
                 break;
             }
             case R.id.rel_fav_places : {
                 switchToPage(MY_TRIPS,null,getResources().getString(R.string.favorite_places));
+                itemAddContract.setVisible(false);
                 drawer.closeDrawers();
                 break;
             }
             case R.id.rel_my_trips : {
                 switchToPage(MY_TRIPS,null,getResources().getString(R.string.my_trips));
+                itemAddContract.setVisible(false);
                 drawer.closeDrawers();
                 break;
             }
             case R.id.rel_messages : {
                 switchToPage(MESSAGES,null,getResources().getString(R.string.messages));
+                itemAddContract.setVisible(false);
                 drawer.closeDrawers();
                 break;
             }
             case R.id.rel_support : {
                 switchToPage(SUPPORT,null,getResources().getString(R.string.support));
+                itemAddContract.setVisible(false);
                 drawer.closeDrawers();
                 break;
             }
             case R.id.rel_settings : {
                 switchToPage(SETTINGS,null,getResources().getString(R.string.settings));
+                itemAddContract.setVisible(false);
                 drawer.closeDrawers();
                 break;
             }
 
             case R.id.rel_contracts : {
                 switchToPage(CONTRACTS,null,getResources().getString(R.string.contracts));
+                //Check if user is driver or clint
+                if(true) {
+                    itemAddContract.setVisible(true);
+                }
                 drawer.closeDrawers();
                 break;
             }

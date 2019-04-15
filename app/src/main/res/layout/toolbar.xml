@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/lightblue"
-    local:theme="@style/AppTheme">
+    local:theme="@style/ToolbarTheme">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
