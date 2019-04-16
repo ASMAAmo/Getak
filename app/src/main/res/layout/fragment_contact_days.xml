@@ -19,7 +19,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/days_list"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_240sdp"
+        android:layout_height="@dimen/_200sdp"
         android:layout_above="@+id/back_btn"></android.support.v7.widget.RecyclerView>
 
 

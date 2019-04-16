@@ -1,14 +1,308 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Fragments.AddingContractSteps.ConfirmFragment">
+    android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
+        android:layout_margin="@dimen/_5sdp"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        tools:context=".Fragments.AddingContractSteps.ConfirmFragment">
 
-</FrameLayout>
+        <!-- TODO: Update blank fragment layout -->
+        <TextView
+            android:id="@+id/user_name_lbl"
+            android:layout_width="wrap_content"
+            android:layout_gravity="right"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:text="@string/driver_name"
+            android:textColor="@color/sidemenu"
+            android:textSize="@dimen/_13sdp" />
+
+        <EditText
+            android:id="@+id/name_input"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:inputType="text"
+            android:layout_below="@+id/user_name_lbl"
+            android:singleLine="true"
+            android:textSize="13sp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:textColor="@color/sidemenu"
+            android:background="@drawable/input_txt_bg"
+            android:padding="@dimen/_5sdp" />
+        <TextView
+            android:id="@+id/user_startdate_lbl"
+            android:layout_width="wrap_content"
+            android:layout_gravity="right"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/name_input"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:text="@string/start_of_contract"
+            android:textColor="@color/sidemenu"
+            android:textSize="@dimen/_13sdp" />
+
+        <EditText
+            android:id="@+id/ed_startdate"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:inputType="text"
+            android:singleLine="true"
+            android:textSize="13sp"
+            android:layout_below="@+id/user_startdate_lbl"
+            android:textColor="@color/sidemenu"
+            android:background="@drawable/input_txt_bg"
+            android:padding="@dimen/_5sdp" />
+        <TextView
+            android:id="@+id/enddate"
+            android:layout_width="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="5dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:text="@string/end_of_contract"
+            android:gravity="right"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/ed_startdate"
+            android:textColor="@color/sidemenu"
+            android:textSize="@dimen/_13sdp" />
+
+        <EditText
+            android:id="@+id/ed_enddate"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:inputType="text"
+            android:layout_below="@+id/enddate"
+            android:singleLine="true"
+            android:textSize="13sp"
+            android:textColor="@color/sidemenu"
+            android:background="@drawable/input_txt_bg"
+            android:padding="@dimen/_5sdp" />
+        <TextView
+            android:id="@+id/startplace"
+            android:layout_width="wrap_content"
+            android:layout_gravity="right"
+            android:layout_below="@+id/ed_enddate"
+            android:layout_marginTop="5dp"
+            android:layout_alignParentRight="true"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:text="@string/place_of_going"
+            android:textColor="@color/sidemenu"
+            android:textSize="@dimen/_13sdp" />
+
+        <EditText
+            android:id="@+id/ed_startplace"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:inputType="text"
+            android:layout_below="@+id/startplace"
+            android:singleLine="true"
+            android:textSize="13sp"
+            android:textColor="@color/sidemenu"
+            android:background="@drawable/input_txt_bg"
+            android:padding="@dimen/_5sdp" />
+        <TextView
+            android:id="@+id/endplace"
+            android:layout_width="wrap_content"
+            android:layout_gravity="right"
+            android:layout_below="@+id/ed_startplace"
+            android:layout_marginTop="5dp"
+            android:layout_alignParentRight="true"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:text="@string/place_of_return"
+            android:textColor="@color/sidemenu"
+            android:textSize="@dimen/_13sdp" />
+
+        <EditText
+            android:id="@+id/ed_endplace"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:inputType="text"
+            android:layout_below="@+id/endplace"
+            android:singleLine="true"
+            android:textSize="13sp"
+            android:textColor="@color/sidemenu"
+            android:background="@drawable/input_txt_bg"
+            android:padding="@dimen/_5sdp" />
+        <TextView
+            android:id="@+id/timego"
+            android:layout_width="wrap_content"
+            android:layout_gravity="right"
+            android:layout_below="@+id/ed_endplace"
+            android:layout_marginTop="5dp"
+            android:layout_alignParentRight="true"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:text="@string/time_of_going"
+            android:textColor="@color/sidemenu"
+            android:textSize="@dimen/_13sdp" />
+
+        <EditText
+            android:id="@+id/ed_timego"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:inputType="text"
+            android:layout_below="@+id/timego"
+            android:singleLine="true"
+            android:textSize="13sp"
+            android:textColor="@color/sidemenu"
+            android:background="@drawable/input_txt_bg"
+            android:padding="@dimen/_5sdp" />
+        <TextView
+            android:id="@+id/timeleave"
+            android:layout_width="wrap_content"
+            android:layout_gravity="right"
+            android:layout_below="@+id/ed_timego"
+            android:layout_marginTop="5dp"
+            android:layout_alignParentRight="true"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:text="@string/time_of_return"
+            android:textColor="@color/sidemenu"
+            android:textSize="@dimen/_13sdp" />
+
+        <EditText
+            android:id="@+id/ed_timeleave"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:inputType="text"
+            android:layout_below="@+id/timeleave"
+            android:singleLine="true"
+            android:textSize="13sp"
+            android:textColor="@color/sidemenu"
+            android:background="@drawable/input_txt_bg"
+            android:padding="@dimen/_5sdp" />
+        <TextView
+            android:id="@+id/numberofpeople"
+            android:layout_width="wrap_content"
+            android:layout_gravity="right"
+            android:layout_below="@+id/ed_timeleave"
+            android:layout_marginTop="5dp"
+            android:layout_alignParentRight="true"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:text="عدد الأشخاص"
+            android:textColor="@color/sidemenu"
+            android:textSize="@dimen/_13sdp" />
+
+        <EditText
+            android:id="@+id/ed_numofpeople"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:inputType="text"
+            android:layout_below="@+id/numberofpeople"
+            android:singleLine="true"
+            android:textSize="13sp"
+            android:textColor="@color/sidemenu"
+            android:background="@drawable/input_txt_bg"
+            android:padding="@dimen/_5sdp" />
+        <TextView
+            android:id="@+id/daysflight"
+            android:layout_width="wrap_content"
+            android:layout_gravity="right"
+            android:layout_below="@+id/ed_numofpeople"
+            android:layout_marginTop="5dp"
+            android:layout_alignParentRight="true"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:text="@string/daysss"
+            android:textColor="@color/sidemenu"
+            android:textSize="@dimen/_13sdp" />
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/daysflight"
+            android:id="@+id/myRadioGroup"
+            android:inputType="text"
+            android:layout_gravity="right"
+            android:layout_alignParentRight="true"
+            android:checkedButton="@+id/saturday" >
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/saturday"
+                android:button="@null"
+                android:drawablePadding="30dp"
+                android:drawableRight="@android:drawable/btn_radio"
+                android:layout_gravity="right"
+                android:text="@string/sat" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/sunday"
+                android:button="@null"
+                android:drawablePadding="30dp"
+                android:drawableRight="@android:drawable/btn_radio"
+                android:layout_gravity="right"
+                android:text="@string/sun" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/monday"
+                android:button="@null"
+                android:drawablePadding="30dp"
+                android:drawableRight="@android:drawable/btn_radio"
+                android:layout_gravity="right"
+                android:text="@string/mon" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tuesday"
+                android:button="@null"
+                android:drawablePadding="30dp"
+                android:drawableRight="@android:drawable/btn_radio"
+                android:layout_gravity="right"
+                android:text="@string/tue" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/wednesday"
+                android:button="@null"
+                android:drawablePadding="30dp"
+                android:drawableRight="@android:drawable/btn_radio"
+                android:layout_gravity="right"
+                android:text="@string/wed" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/thursday"
+                android:button="@null"
+                android:drawablePadding="30dp"
+                android:drawableRight="@android:drawable/btn_radio"
+                android:layout_gravity="right"
+                android:text="@string/the" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/friday"
+                android:button="@null"
+                android:drawablePadding="30dp"
+                android:drawableRight="@android:drawable/btn_radio"
+                android:layout_gravity="right"
+                android:text="@string/fri" />
+
+        </RadioGroup>
+        <Button
+            android:id="@+id/login_btn"
+            android:layout_width="200dp"
+            android:layout_height="@dimen/_30sdp"
+            android:background="@drawable/button_bg"
+            android:text="@string/save"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/myRadioGroup"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_13sdp" />
+    </RelativeLayout>
+</ScrollView>

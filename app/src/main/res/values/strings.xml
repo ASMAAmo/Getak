@@ -4,8 +4,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="getak">جيتك</string>
-    <string name="navigation_drawer_open" />
-    <string name="navigation_drawer_close" />
+    <string name="navigation_drawer_open" translatable="false" />
+    <string name="navigation_drawer_close" translatable="false" />
     <string name="my_account">حسابي</string>
     <string name="my_trips">رحلاتى</string>
     <string name="favorite_places">الأماكن المفضله</string>
@@ -52,5 +52,13 @@
     <string name="start">بداية</string>
     <string name="target">ذهاب</string>
     <string name="approve_the_terms_and_conditions">الموافقة على الشروط والأحكام</string>
-    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_maps" translatable="false">Map</string>
+    <string name="daysss">الأيام</string>
+    <string name="sat">السبت</string>
+    <string name="sun">الأحد</string>
+    <string name="mon">الأثنين</string>
+    <string name="tue">الثلاثاء</string>
+    <string name="wed">الأربعاء</string>
+    <string name="fri">الجمعة</string>
+    <string name="the">الخميس</string>
 </resources>

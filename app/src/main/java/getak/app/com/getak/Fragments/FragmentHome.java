@@ -4,7 +4,6 @@ package getak.app.com.getak.Fragments;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Location;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -14,7 +13,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -27,9 +25,6 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-
 import getak.app.com.getak.GpsUtils.GPSTracker;
 import getak.app.com.getak.R;
 
@@ -39,17 +34,16 @@ public class FragmentHome extends Fragment implements OnMapReadyCallback, Google
     public static GoogleMap map;
     GoogleApiClient mpiclients;
     Location mlastLocation;
-    private FusedLocationProviderClient mFusedLocationProviderClient;
-    LocationManager locationManager;
+    public FusedLocationProviderClient mFusedLocationProviderClient;
     LocationRequest mLocationrequest;
-    GPSTracker gpsTracker ;
+    GPSTracker gpsTracker;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mFusedLocationProviderClient = LocationServices
                 .getFusedLocationProviderClient(getActivity());
-        gpsTracker=new GPSTracker(getActivity().getApplicationContext());
     }
 
 
@@ -65,13 +59,11 @@ public class FragmentHome extends Fragment implements OnMapReadyCallback, Google
     }
 
 
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        gpsTracker = new GPSTracker(getContext());
     }
-
-
 
 
     @Override
@@ -93,13 +85,13 @@ public class FragmentHome extends Fragment implements OnMapReadyCallback, Google
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
+        Log.e("Location Error : ",connectionResult.getErrorMessage());
     }
 
     @Override
     public void onLocationChanged(Location location) {
-        mlastLocation= location;
-        LatLng latLng = new LatLng(location.getLatitude(),location.getLongitude());
+        mlastLocation = location;
+        LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
         map.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         map.animateCamera(CameraUpdateFactory.zoomTo(15));
     }
@@ -134,6 +126,9 @@ public class FragmentHome extends Fragment implements OnMapReadyCallback, Google
         mpiclients = new GoogleApiClient.Builder(getActivity()).addConnectionCallbacks(this).addOnConnectionFailedListener(this).addApi(LocationServices.API).addApi(Places.GEO_DATA_API).build();
         mpiclients.connect();
     }
+
+
+
 
 
 }
