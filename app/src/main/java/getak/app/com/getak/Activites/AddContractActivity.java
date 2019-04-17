@@ -34,7 +34,7 @@ public class AddContractActivity extends BaseActivity {
     ContractDaysFragment contractDaysFragment;
     DriversListFragment driversListFragment;
     ConfirmFragment confirmFragment;
-
+//
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -15,12 +15,12 @@
     <RelativeLayout
         android:id="@+id/main_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="170dp"
         android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginEnd="@dimen/_10sdp"
         android:background="@drawable/main_search_bg"
-        android:padding="@dimen/_10sdp">
+        android:padding="@dimen/_5sdp">
 
         <TextView
             android:id="@+id/go_lbl"
@@ -30,12 +30,12 @@
             android:padding="@dimen/_5sdp"
             android:text="أين تريد أن تذهب ؟"
             android:textColor="@color/white"
-            android:textSize="@dimen/_15sdp" />
+            android:textSize="@dimen/_13sdp" />
 
         <android.support.v7.widget.SearchView
             android:id="@+id/search_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/_30sdp"
             android:layout_below="@id/go_lbl"
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_10sdp"
@@ -50,7 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/search_view"
-            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -62,7 +62,7 @@
                 android:gravity="center"
                 android:text="المنزل"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_14sdp" />
+                android:textSize="@dimen/_13sdp" />
 
             <TextView
                 android:id="@+id/textView6"
@@ -72,7 +72,7 @@
                 android:gravity="center"
                 android:text="العمل"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_14sdp" />
+                android:textSize="@dimen/_13sdp" />
 
             <TextView
                 android:id="@+id/textView5"
@@ -82,7 +82,7 @@
                 android:gravity="center"
                 android:text="السوق"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_14sdp" />
+                android:textSize="@dimen/_13sdp" />
         </LinearLayout>
     </RelativeLayout>
 
