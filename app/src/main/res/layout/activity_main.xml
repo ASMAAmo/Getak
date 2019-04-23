@@ -38,6 +38,7 @@
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="@dimen/_40sdp"
                     android:layout_height="@dimen/_40sdp"
+                    android:id="@+id/avatar"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_person_black_24dp"
                     app:civ_border_color="@color/white"
@@ -194,7 +195,24 @@
                         android:textColor="@color/white"
                         android:textSize="@dimen/_15sdp" />
                 </com.andexert.library.RippleView>
+                <com.andexert.library.RippleView
+                    android:id="@+id/rel_logout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true">
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:drawableStart="@drawable/ic_main"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/_2sdp"
+                        android:text="@string/logout"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_15sdp" />
+                </com.andexert.library.RippleView>
                 <com.andexert.library.RippleView
                     android:id="@+id/rel_settings"
                     android:layout_width="match_parent"

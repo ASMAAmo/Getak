@@ -30,18 +30,10 @@ public class GenericInterceptor implements Interceptor {
         Request request;
         if (SessionHelper.isLogin(context)) {
             request = chain.request().newBuilder()
-                    .addHeader("LanguageCode", SessionHelper.getUserLanguageCode(context))
-                    .addHeader("RegistrationToken", SessionHelper.getPushNotificationToken(context))
-                    .addHeader("OperatingSystemType", ANDROID)
-                    .addHeader("OperatingSystemVersion", BuildConfig.VERSION_NAME)
                     .addHeader("Accept", "application/json")
                     .build();
         } else {
             request = chain.request().newBuilder()
-                    .addHeader("LanguageCode", SessionHelper.getUserLanguageCode(context))
-                    .addHeader("RegistrationToken",  SessionHelper.getPushNotificationToken(context))
-                    .addHeader("OperatingSystemType", ANDROID)
-                    .addHeader("OperatingSystemVersion", BuildConfig.VERSION_NAME)
                     .addHeader("Accept", "application/json")
                     .build();
         }

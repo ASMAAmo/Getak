@@ -8,6 +8,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import getak.app.com.getak.BaseActivity;
 import getak.app.com.getak.R;
+import getak.app.com.getak.Session.SessionHelper;
 
 public class IntroActivity extends BaseActivity {
 
@@ -18,6 +19,14 @@ public class IntroActivity extends BaseActivity {
         ButterKnife.bind(this);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if(SessionHelper.isLogin(this)){
+            startActivity(new Intent(this,MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+            IntroActivity.this.finish();
+        }
+    }
 
     //Skip button Action
     @OnClick(R.id.skip_btn)
@@ -34,7 +43,7 @@ public class IntroActivity extends BaseActivity {
     //Login button Action
     @OnClick(R.id.register_btn)
     void register(){
-        startActivity(new Intent(IntroActivity.this,PhoneNumberActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+        startActivity(new Intent(IntroActivity.this,RegisterActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
     }
 
 }

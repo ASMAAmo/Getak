@@ -5,10 +5,17 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
+import android.support.annotation.NonNull;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
+
+import getak.app.com.getak.Model.Responses.UserModel;
 
 public class SessionHelper {
     private static final String SHARED_PREFERENCES_FILE = "com.getak.sharedpreferences";
@@ -22,7 +29,39 @@ public class SessionHelper {
 
     private static final String AR = "ar";
     private static final String EN = "en";
-    private static final String USER_INFO = "userinfo";
+    private static final String USER_INFO = SHARED_PREFERENCES_FILE + ".userinfo";
+
+    private static UserModel userSession;
+
+
+
+
+    public static void setUserSession(Context context, UserModel fUserSession) {
+        SharedPreferences sharedPref = context.getSharedPreferences(SHARED_PREFERENCES_FILE, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(fUserSession);
+        editor.putString(USER_INFO, json);
+        editor.apply();
+        userSession = fUserSession;
+    }
+
+
+    @NonNull
+    public static UserModel getUserSession(Context context) {
+        if (userSession == null) {
+            SharedPreferences sharedPref = context.getSharedPreferences(SHARED_PREFERENCES_FILE, Context.MODE_PRIVATE);
+            String json = sharedPref.getString(USER_INFO, null);
+            if (json != null) {
+                Type type = new TypeToken<UserModel>() {
+                }.getType();
+                Gson gson = new Gson();
+                userSession = gson.fromJson(json, type);
+            }
+        }
+        return userSession;
+    }
+
 
 
     public static void setUserLanguageSession(Context context, String Language, OnSessionUpdate onSessionUpdate) {
@@ -136,7 +175,7 @@ public class SessionHelper {
         return sharedPref.getString(key, null);
     }
     public static boolean isLogin(Context context) {
-        return true;
+        return getUserSession(context) != null;
     }
 
     public static void logout(Context context, SessionCallBack sessionCallBack) {
@@ -145,10 +184,8 @@ public class SessionHelper {
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.clear();
         editor.apply();
-
         // Reset session
-//        userSession = null;
-
+        userSession = null;
         // Notify
         sessionCallBack.setOnLogout();
     }

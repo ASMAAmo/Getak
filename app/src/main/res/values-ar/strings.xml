@@ -60,4 +60,13 @@
     <string name="fri">الجمعة</string>
     <string name="the">الخميس</string>
     <string name="savechang">حفظ التغيرات</string>
+    <string name="reqage">كلمة المرور مطلوبه</string>
+    <string name="passreq">أعد إدخال كلمة المرور</string>
+    <string name="addressreq">العنوان مطلوب</string>
+    <string name="agereq">السن مطلوب</string>
+    <string name="emailvalid">البريد الإلكتروني غير صحيح</string>
+    <string name="namereq">الأسم مطلوب</string>
+    <string name="phonereq">رقم الجوال مطلوب</string>
+    <string name="logout">تسجيل خروج</string>
+    <string name="usernamereq">أدخل أسم المستخدم</string>
 </resources>

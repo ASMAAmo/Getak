@@ -16,10 +16,16 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.andexert.library.RippleView;
+import com.squareup.picasso.Picasso;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 import getak.app.com.getak.BaseActivity;
+import getak.app.com.getak.Events.ContractCreationStepsEvent;
 import getak.app.com.getak.Fragments.FragmentAccount;
 import getak.app.com.getak.Fragments.FragmentContracts;
 import getak.app.com.getak.Fragments.FragmentFavPlaces;
@@ -29,6 +35,7 @@ import getak.app.com.getak.Fragments.FragmentMyTrips;
 import getak.app.com.getak.Fragments.FragmentSettings;
 import getak.app.com.getak.Fragments.FragmentSupport;
 import getak.app.com.getak.R;
+import getak.app.com.getak.Session.SessionHelper;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
@@ -59,6 +66,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     RippleView relSettingsBtn;
     @BindView(R.id.rel_contracts)
     RippleView relContracts;
+    @BindView(R.id.rel_logout)
+    RippleView relLogOut;
+    @BindView(R.id.avatar)
+    CircleImageView avatar;
+
 
 
     MenuItem itemAddContract;
@@ -84,6 +96,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setUpSideMenuDrawer(toolbar);
+        if(SessionHelper.isLogin(this)){
+            relLogOut.setVisibility(View.VISIBLE);
+        }else {
+            relLogOut.setVisibility(View.GONE);
+        }
         relMyAccountBtn.setOnClickListener(this);
         relMyTripsBtn.setOnClickListener(this);
         relMyMessagesBtn.setOnClickListener(this);
@@ -92,11 +109,35 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         relFavPlacesBtn.setOnClickListener(this);
         relHometBtn.setOnClickListener(this);
         relContracts.setOnClickListener(this);
+        relLogOut.setOnClickListener(this);
         switchToPage(HOME,null,getResources().getString(R.string.home));
+        EventBus.getDefault().register(this);
 
     }
 
+    @Subscribe
+    public void onEvent(ContractCreationStepsEvent event){
+        if (event.isSucess()){
+            relMyAccountBtn.setVisibility(View.VISIBLE);
+            avatar.setVisibility(View.VISIBLE);
+            relLogOut.setVisibility(View.VISIBLE);
+            Picasso.get().load(SessionHelper.getUserSession(this).getClientAvatar())
+                    .fit()
+                    .into(avatar);
+        }
+    }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -194,6 +235,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                     itemAddContract.setVisible(true);
                 }
                 drawer.closeDrawers();
+                break;
+            }
+
+            case R.id.rel_logout : {
+                SessionHelper.logout(this, new SessionHelper.SessionCallBack() {
+                    @Override
+                    public void setOnLogout() {
+                        restartApp(MainActivity.this);
+                    }
+                });
                 break;
             }
         }
