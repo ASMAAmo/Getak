@@ -67,6 +67,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'com.jakewharton:butterknife:8.8.1'
     implementation 'com.hbb20:ccp:2.2.6'
+    implementation 'com.kaopiz:kprogresshud:1.2.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     implementation 'de.hdodenhof:circleimageview:3.0.0'
     implementation 'org.greenrobot:eventbus:3.0.0'

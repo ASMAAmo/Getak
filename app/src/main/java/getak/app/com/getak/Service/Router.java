@@ -7,6 +7,7 @@ import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface Router {
 
@@ -18,5 +19,8 @@ public interface Router {
     @POST("login")
     Call<Result<ClientLoginResponse>> login(@Body RequestBody requestBody);
 
+    //Get Profile for client
+    @POST("clientProfile/{id}")
+    Call<Result<ClientRegisterationData>> getProfile(@Path("id") int id);
 
 }

@@ -80,4 +80,35 @@ public class AccountPresenter {
             }
         });
     }
+    public static void getClientProfile(Context context, int id, final AccountView view){
+        Call<Result<ClientRegisterationData>> getProfileCall = ServiceBuilder.getRouter(context).getProfile(id);
+        view.loading(true);
+        getProfileCall.enqueue(new Callback<Result<ClientRegisterationData>>() {
+            @Override
+            public void onResponse(Call<Result<ClientRegisterationData>> call, Response<Result<ClientRegisterationData>> response) {
+                view.loading(false);
+                if(response.isSuccessful()){
+                    view.onSuccess(response.body());
+                }else {
+                    try {
+                        JSONObject jsonObject = new JSONObject(response.errorBody().string());
+                        String ErrorMessage="";
+                        if (!jsonObject.getBoolean("status"))
+                            ErrorMessage = jsonObject.getString("message");
+                        view.onFailed(ErrorMessage);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Result<ClientRegisterationData>> call, Throwable t) {
+                view.loading(false);
+                view.onFailed(t.getMessage());
+            }
+        });
+    }
 }

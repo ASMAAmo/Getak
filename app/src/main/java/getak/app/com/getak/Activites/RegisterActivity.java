@@ -19,6 +19,8 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.kaopiz.kprogresshud.KProgressHUD;
+
 import org.greenrobot.eventbus.EventBus;
 
 import java.io.File;
@@ -41,6 +43,7 @@ import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 
 public class RegisterActivity extends BaseActivity implements AccountView {
+    public static KProgressHUD dialog;
     @BindView(R.id.reg_type_tab)
     TabLayout regTypeSwitch;
     @BindView(R.id.name_input)
@@ -70,6 +73,7 @@ public class RegisterActivity extends BaseActivity implements AccountView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
+        dialog=new KProgressHUD(this);
         regTypeSwitch.addTab(regTypeSwitch.newTab().setText(R.string.cust));
         regTypeSwitch.addTab(regTypeSwitch.newTab().setText(R.string.driv));
         regTypeSwitch.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -248,7 +252,13 @@ public class RegisterActivity extends BaseActivity implements AccountView {
 
     @Override
     public void loading(boolean status) {
-
+        if(status){
+            dialog.show();
+        }else {
+            if (dialog.isShowing()) {
+                dialog.dismiss();
+            }
+        }
     }
 
     @Override

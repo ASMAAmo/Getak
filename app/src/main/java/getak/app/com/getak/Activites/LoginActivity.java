@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.kaopiz.kprogresshud.KProgressHUD;
+
 import org.greenrobot.eventbus.EventBus;
 
 import butterknife.BindView;
@@ -34,6 +36,7 @@ public class LoginActivity extends BaseActivity implements AccountView {
     public static final String DEVICE_TYPE = "deviceType";
     public static final String TOKEN = "token";
     public static final String LOGIN_TYPE = "loginType";
+    public static KProgressHUD dialog;
     @BindView(R.id.login_type_tab)
     TabLayout loginTypeSwitch;
     @BindView(R.id.login_lbl)
@@ -44,11 +47,13 @@ public class LoginActivity extends BaseActivity implements AccountView {
     EditText passwordInput;
     String loginType="client";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+        dialog=new KProgressHUD(this);
         loginTypeSwitch.addTab(loginTypeSwitch.newTab().setText(R.string.cust));
         loginTypeSwitch.addTab(loginTypeSwitch.newTab().setText(R.string.driv));
         loginTypeSwitch.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -133,6 +138,12 @@ public class LoginActivity extends BaseActivity implements AccountView {
 
     @Override
     public void loading(boolean status) {
-
+        if(status){
+            dialog.show();
+        }else {
+            if (dialog.isShowing()) {
+                dialog.dismiss();
+            }
+        }
     }
 }

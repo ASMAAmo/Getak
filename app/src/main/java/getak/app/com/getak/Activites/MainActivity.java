@@ -1,6 +1,8 @@
 package getak.app.com.getak.Activites;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.opengl.Visibility;
 import android.support.v4.app.FragmentTransaction;
@@ -112,6 +114,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         relLogOut.setOnClickListener(this);
         switchToPage(HOME,null,getResources().getString(R.string.home));
         EventBus.getDefault().register(this);
+        if(SessionHelper.isLogin(this)) {
+            Picasso.get()
+                    .load("https://"+SessionHelper.getUserSession(this).getClientAvatar())
+                    .placeholder(R.drawable.ic_person_black_24dp)
+                    .into(avatar);
+        }
 
     }
 
@@ -192,26 +200,42 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
             }
             case R.id.rel_my_account : {
-                switchToPage(MY_ACCOUNT,null,getResources().getString(R.string.my_account));
-                itemAddContract.setVisible(false);
+                if(SessionHelper.isLogin(this)) {
+                    switchToPage(MY_ACCOUNT, null, getResources().getString(R.string.my_account));
+                    itemAddContract.setVisible(false);
+                }else {
+                    startActivity(new Intent(this,LoginActivity.class));
+                }
                 drawer.closeDrawers();
                 break;
             }
             case R.id.rel_fav_places : {
-                switchToPage(MY_TRIPS,null,getResources().getString(R.string.favorite_places));
-                itemAddContract.setVisible(false);
+                if(SessionHelper.isLogin(this)) {
+                    switchToPage(MY_TRIPS,null,getResources().getString(R.string.favorite_places));
+                    itemAddContract.setVisible(false);
+                }else {
+                    startActivity(new Intent(this,LoginActivity.class));
+                }
                 drawer.closeDrawers();
                 break;
             }
             case R.id.rel_my_trips : {
-                switchToPage(MY_TRIPS,null,getResources().getString(R.string.my_trips));
-                itemAddContract.setVisible(false);
+                if(SessionHelper.isLogin(this)) {
+                    switchToPage(MY_TRIPS,null,getResources().getString(R.string.my_trips));
+                    itemAddContract.setVisible(false);
+                }else {
+                    startActivity(new Intent(this,LoginActivity.class));
+                }
                 drawer.closeDrawers();
                 break;
             }
             case R.id.rel_messages : {
-                switchToPage(MESSAGES,null,getResources().getString(R.string.messages));
-                itemAddContract.setVisible(false);
+                if(SessionHelper.isLogin(this)) {
+                    switchToPage(MESSAGES,null,getResources().getString(R.string.messages));
+                    itemAddContract.setVisible(false);
+                }else {
+                    startActivity(new Intent(this,LoginActivity.class));
+                }
                 drawer.closeDrawers();
                 break;
             }
@@ -229,10 +253,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             }
 
             case R.id.rel_contracts : {
-                switchToPage(CONTRACTS,null,getResources().getString(R.string.contracts));
-                //Check if user is driver or clint
-                if(true) {
-                    itemAddContract.setVisible(true);
+                if(SessionHelper.isLogin(this)) {
+                    switchToPage(CONTRACTS,null,getResources().getString(R.string.contracts));
+                    //Check if user is driver or clint
+                    if(true) {
+                        itemAddContract.setVisible(true);
+                    }
+                }else {
+                    startActivity(new Intent(this,LoginActivity.class));
                 }
                 drawer.closeDrawers();
                 break;
@@ -330,4 +358,27 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     }
 
 
+    @Override
+    public void onBackPressed() {
+        if(getSupportFragmentManager().getBackStackEntryCount()==0) {
+            final AlertDialog.Builder builder =
+                    new AlertDialog.Builder(MainActivity.this);
+            builder.setTitle(getResources().getString(R.string.app_name));
+            builder.setMessage(getString(R.string.exit));
+            builder.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    MainActivity.this.finish();
+                }
+            });
+            builder.setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.dismiss();
+                }
+            });
+            builder.show();
+            return;
+        }
+    }
 }

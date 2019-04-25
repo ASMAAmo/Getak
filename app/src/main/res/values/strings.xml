@@ -71,4 +71,7 @@
     <string name="phonereq">رقم الجوال مطلوب</string>
     <string name="logout">تسجيل خروج</string>
     <string name="usernamereq">أدخل أسم المستخدم</string>
+    <string name="exit">هل تريد الخروج من التطبيق ؟</string>
+    <string name="yes">نعم</string>
+    <string name="no">لا</string>
 </resources>
