@@ -3,34 +3,19 @@ package getak.app.com.getak.Model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class Contractmodel {
-    @SerializedName("data")
+    @SerializedName("contracts")
     @Expose
-    private Data_contact data;
-    @SerializedName("status")
-    @Expose
-    private Boolean status;
-    @SerializedName("message")
-    @Expose
-    private String message;
+    private List<Contract> contracts = null;
 
-    public Data_contact getData() {
-        return data;
+    public List<Contract> getContracts() {
+        return contracts;
     }
 
-    public void setData(Data_contact data) {
-        this.data = data;
-    }
+    public void setContracts(List<Contract> contracts) {
+        this.contracts = contracts;
 
-    public Boolean getStatus() {
-        return status;
-    }
-
-    public void setStatus(Boolean status) {
-        this.status = status;
-    }
-
-    public String getMessage() {
-        return message;
     }
 }

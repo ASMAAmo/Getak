@@ -7,14 +7,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.List;
+
+import getak.app.com.getak.Model.Contract;
+import getak.app.com.getak.Model.Contractmodel;
 import getak.app.com.getak.R;
 
 public class ContractsAdapter extends RecyclerView.Adapter<ContractsAdapter.ContractsAdb> {
 
     Context context;
+    List<Contract> contracts ;
 
-    public ContractsAdapter(Context context) {
+    public ContractsAdapter(Context context, List<Contract> contracts) {
         this.context = context;
+        this.contracts = contracts;
     }
 
     @NonNull
@@ -32,7 +38,7 @@ public class ContractsAdapter extends RecyclerView.Adapter<ContractsAdapter.Cont
 
     @Override
     public int getItemCount() {
-        return 10;
+        return contracts.size();
     }
 
     public static class ContractsAdb extends RecyclerView.ViewHolder{

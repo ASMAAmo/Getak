@@ -1,5 +1,6 @@
 package getak.app.com.getak.Service;
 
+import getak.app.com.getak.Model.Contract;
 import getak.app.com.getak.Model.Contractmodel;
 import getak.app.com.getak.Model.ContactsModel;
 import getak.app.com.getak.Model.FavModel;
@@ -38,5 +39,5 @@ public interface Router {
 Call<FavModel> getfav(@Body Object data);
 // get contracts
 @POST("clientContracts")
-Call<Contractmodel> getContracts(@Body Object data);
+Call<Result<ContactsModel>> getContracts(@Body Object data);
 }

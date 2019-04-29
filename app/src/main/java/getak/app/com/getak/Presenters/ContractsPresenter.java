@@ -6,6 +6,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import getak.app.com.getak.Model.ContactsModel;
 import getak.app.com.getak.Model.Contract;
@@ -22,15 +23,15 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ContractsPresenter {
-    public static void getContracts(Context context, int id, final ContractsView view){
-        Call<Result<Contractmodel>> getContracts = ServiceBuilder.getRouter(context).getContracts(id);
+    public static void getContracts(Context context, HashMap id, final ContractsView view){
+        Call<Result<ContactsModel>> getContracts = ServiceBuilder.getRouter(context).getContracts(id);
         view.loading(true);
-        getContracts.enqueue(new Callback<Result<Contractmodel>>() {
+        getContracts.enqueue(new Callback<Result<ContactsModel>>() {
             @Override
-            public void onResponse(Call<Result<Contractmodel>> call, Response<Result<Contractmodel>> response) {
+            public void onResponse(Call<Result<ContactsModel>> call, Response<Result<ContactsModel>> response) {
                 view.loading(false);
                 if(response.isSuccessful()){
-                    view.onSuccess(response.body());
+                    view.onSuccess(response.body().getData());
                 }else {
                     try {
                         JSONObject jsonObject = new JSONObject(response.errorBody().string());
@@ -47,7 +48,7 @@ public class ContractsPresenter {
             }
 
             @Override
-            public void onFailure(Call<Result<Contractmodel>> call, Throwable t) {
+            public void onFailure(Call<Result<ContactsModel>> call, Throwable t) {
                 view.loading(false);
                 view.onFailed(t.getMessage());
             }
