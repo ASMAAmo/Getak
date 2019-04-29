@@ -20,11 +20,9 @@ public interface Router {
     //Register
     @POST("registerClient")
     Call<Result<ClientRegisterationData>> register(@Body RequestBody requestBody);
-
     //Login
     @POST("login")
     Call<Result<ClientLoginResponse>> login(@Body RequestBody requestBody);
-
     //Get Profile for client
     @POST("clientProfile/{id}")
     Call<Result<ClientRegisterationData>> getProfile(@Path("id") int id);
@@ -33,11 +31,13 @@ public interface Router {
     Call<MyTrips> getTrips(@Body Object data,@Query("page") String page);
     // contact us
     @POST("contactUs")
-    Call<Result<Contractmodel>> contactUs(@Body RequestBody requestBody);
-// get fav
-@POST("favoritePlaces")
-Call<FavModel> getfav(@Body Object data);
-// get contracts
-@POST("clientContracts")
-Call<Result<ContactsModel>> getContracts(@Body Object data);
+    Call<Result<ContactsModel>> contactUs(@Body RequestBody requestBody);
+    // get fav
+    @POST("favoritePlaces")
+    Call<FavModel> getfav(@Body Object data);
+    // get contracts
+    @POST("clientContracts")
+    Call<Result<Contractmodel>> getContracts(@Body Object data);
+
+
 }

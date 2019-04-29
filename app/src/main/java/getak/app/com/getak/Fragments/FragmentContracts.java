@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.kaopiz.kprogresshud.KProgressHUD;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -35,6 +37,7 @@ public class FragmentContracts extends Fragment implements ContractsView {
     RecyclerView contractsList;
     ContractsAdapter contractsAdapter;
     List<Contract> contracts =new ArrayList<>();
+    public static KProgressHUD dialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,6 +61,7 @@ public class FragmentContracts extends Fragment implements ContractsView {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         emptyFlag.setVisibility(View.GONE);
+        dialog=new KProgressHUD(getContext());
         contractsAdapter=new ContractsAdapter(getContext(),contracts);
         contractsList.setAdapter(contractsAdapter);
         contractsList.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -74,6 +78,12 @@ public class FragmentContracts extends Fragment implements ContractsView {
             contractsAdapter.notifyDataSetChanged();
         }
 
+        if(contracts.isEmpty()){
+            emptyFlag.setVisibility(View.VISIBLE);
+        }else {
+            emptyFlag.setVisibility(View.GONE);
+        }
+
     }
 
     @Override
@@ -84,6 +94,12 @@ public class FragmentContracts extends Fragment implements ContractsView {
 
     @Override
     public void loading(boolean status) {
-
+        if(status){
+            dialog.show();
+        }else {
+            if (dialog.isShowing()) {
+                dialog.dismiss();
+            }
+        }
     }
 }

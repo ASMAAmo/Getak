@@ -24,11 +24,11 @@ import retrofit2.Response;
 
 public class ContractsPresenter {
     public static void getContracts(Context context, HashMap id, final ContractsView view){
-        Call<Result<ContactsModel>> getContracts = ServiceBuilder.getRouter(context).getContracts(id);
+        Call<Result<Contractmodel>> getContracts = ServiceBuilder.getRouter(context).getContracts(id);
         view.loading(true);
-        getContracts.enqueue(new Callback<Result<ContactsModel>>() {
+        getContracts.enqueue(new Callback<Result<Contractmodel>>() {
             @Override
-            public void onResponse(Call<Result<ContactsModel>> call, Response<Result<ContactsModel>> response) {
+            public void onResponse(Call<Result<Contractmodel>> call, Response<Result<Contractmodel>> response) {
                 view.loading(false);
                 if(response.isSuccessful()){
                     view.onSuccess(response.body().getData());
@@ -48,7 +48,7 @@ public class ContractsPresenter {
             }
 
             @Override
-            public void onFailure(Call<Result<ContactsModel>> call, Throwable t) {
+            public void onFailure(Call<Result<Contractmodel>> call, Throwable t) {
                 view.loading(false);
                 view.onFailed(t.getMessage());
             }
