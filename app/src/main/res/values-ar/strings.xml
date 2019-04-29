@@ -9,12 +9,14 @@
     <string name="my_account">حسابي</string>
     <string name="my_trips">رحلاتى</string>
     <string name="favorite_places">الأمكان المفضله</string>
-    <string name="messages">الرسائل</string>
+    <string name="messages">حسابات البنوك</string>
     <string name="send">إرسال</string>
     <string name="save">حفظ</string>
     <string name="support">الدعم</string>
     <string name="settings">الاعدادات</string>
     <string name="home">الرئيسية</string>
+    <string name="emailreq">البريد الإلكترونى مطلوب</string>
+    <string name="msgrequired">الرساله مطلوبه</string>
     <string name="login">تسجيل الدخول</string>
     <string name="skip">تخطى</string>
     <string name="custlogin">تسجيل دخول عميل</string>

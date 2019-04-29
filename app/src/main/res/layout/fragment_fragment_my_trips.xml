@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:background="@color/sidemenu"
@@ -12,5 +12,13 @@
         android:layout_height="wrap_content">
 
     </android.support.v7.widget.RecyclerView>
-
-</FrameLayout>
+    <TextView
+        android:id="@+id/txtnodata"
+        android:layout_width="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="لا توجد بيانات "
+        android:textColor="@color/colorAccent"
+        android:textSize="13sp"
+        android:visibility="gone"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

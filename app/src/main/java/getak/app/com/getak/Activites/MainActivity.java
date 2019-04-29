@@ -211,7 +211,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             }
             case R.id.rel_fav_places : {
                 if(SessionHelper.isLogin(this)) {
-                    switchToPage(MY_TRIPS,null,getResources().getString(R.string.favorite_places));
+                    switchToPage(MY_FAV_PLACES,null,getResources().getString(R.string.favorite_places));
                     itemAddContract.setVisible(false);
                 }else {
                     startActivity(new Intent(this,LoginActivity.class));

@@ -193,7 +193,7 @@
                         android:padding="@dimen/_2sdp"
                         android:text="@string/support"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/_15sdp" />
+                        android:textSize="@dimen/_13sdp" />
                 </com.andexert.library.RippleView>
                 <com.andexert.library.RippleView
                     android:id="@+id/rel_logout"
@@ -211,7 +211,7 @@
                         android:padding="@dimen/_2sdp"
                         android:text="@string/logout"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/_15sdp" />
+                        android:textSize="@dimen/_13sdp" />
                 </com.andexert.library.RippleView>
                 <com.andexert.library.RippleView
                     android:id="@+id/rel_settings"

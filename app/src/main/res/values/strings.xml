@@ -68,6 +68,7 @@
     <string name="emailreq">البريد الإلكترونى مطلوب</string>
     <string name="emailvalid">البريد الإلكتروني غير صحيح</string>
     <string name="namereq">الأسم مطلوب</string>
+    <string name="msgrequired">الرساله مطلوبه</string>
     <string name="phonereq">رقم الجوال مطلوب</string>
     <string name="logout">تسجيل خروج</string>
     <string name="usernamereq">أدخل أسم المستخدم</string>
