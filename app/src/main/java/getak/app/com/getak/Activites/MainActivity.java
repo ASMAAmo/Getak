@@ -16,8 +16,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.andexert.library.RippleView;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlacePicker;
 import com.squareup.picasso.Picasso;
 
 import org.greenrobot.eventbus.EventBus;
@@ -204,7 +207,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                     switchToPage(MY_ACCOUNT, null, getResources().getString(R.string.my_account));
                     itemAddContract.setVisible(false);
                 }else {
-                    startActivity(new Intent(this,LoginActivity.class));
+                    startActivity(new Intent(this,IntroActivity.class));
                 }
                 drawer.closeDrawers();
                 break;
@@ -214,7 +217,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                     switchToPage(MY_FAV_PLACES,null,getResources().getString(R.string.favorite_places));
                     itemAddContract.setVisible(false);
                 }else {
-                    startActivity(new Intent(this,LoginActivity.class));
+                    startActivity(new Intent(this,IntroActivity.class));
                 }
                 drawer.closeDrawers();
                 break;
@@ -224,7 +227,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                     switchToPage(MY_TRIPS,null,getResources().getString(R.string.my_trips));
                     itemAddContract.setVisible(false);
                 }else {
-                    startActivity(new Intent(this,LoginActivity.class));
+                    startActivity(new Intent(this,IntroActivity.class));
                 }
                 drawer.closeDrawers();
                 break;
@@ -234,7 +237,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                     switchToPage(MESSAGES,null,getResources().getString(R.string.messages));
                     itemAddContract.setVisible(false);
                 }else {
-                    startActivity(new Intent(this,LoginActivity.class));
+                    startActivity(new Intent(this,IntroActivity.class));
                 }
                 drawer.closeDrawers();
                 break;
@@ -260,7 +263,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                         itemAddContract.setVisible(true);
                     }
                 }else {
-                    startActivity(new Intent(this,LoginActivity.class));
+                    startActivity(new Intent(this,IntroActivity.class));
                 }
                 drawer.closeDrawers();
                 break;
@@ -379,6 +382,17 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             });
             builder.show();
             return;
+        }
+    }
+
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                Place place = PlacePicker.getPlace(data, this);
+                String toastMsg = String.format("Place: %s", place.getName());
+                Toast.makeText(this, toastMsg, Toast.LENGTH_LONG).show();
+            }
         }
     }
 }

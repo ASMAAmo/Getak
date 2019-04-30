@@ -4,8 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Getak.iml" filepath="$PROJECT_DIR$/Getak.iml" />
       <module fileurl="file://E:/Getak-master/Getak-master/Getak.iml" filepath="E:/Getak-master/Getak-master/Getak.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Getak-master.iml" filepath="$PROJECT_DIR$/Getak-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Getak-master.iml" filepath="$PROJECT_DIR$/.idea/Getak-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Getak-master.iml" filepath="$PROJECT_DIR$/Getak-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/newGgetak.iml" filepath="$PROJECT_DIR$/.idea/newGgetak.iml" />
     </modules>

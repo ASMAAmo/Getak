@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_400sdp"
+    xmlns:tools="http://schemas.android.com/tools">
+    <fragment
+        android:id="@+id/picker_map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="gharaief.app.com.uberapp.MapsActivity" />
+<ImageView
+    android:layout_width="@dimen/_50sdp"
+    android:layout_height="@dimen/_50sdp"
+    android:src="@drawable/ic_location_on_black_24dp"
+    android:layout_centerInParent="true"/>
+    <Button
+        android:id="@+id/pick_location_btn"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_below="@id/main_layout"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_margin="@dimen/_10sdp"
+        android:background="@drawable/button_bg"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:text="أختر الموقع"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_10sdp" />
+</RelativeLayout>
