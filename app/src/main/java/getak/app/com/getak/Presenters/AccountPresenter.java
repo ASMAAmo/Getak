@@ -111,4 +111,35 @@ public class AccountPresenter {
             }
         });
     }
+    public static void updateClientProfile(Context context ,int id,RequestBody requestBody, final AccountView view){
+        view.loading(true);
+        Call<Result<ClientRegisterationData>> clientRegisterCall = ServiceBuilder.getRouter(context).updateClientProfile(id,requestBody);
+        clientRegisterCall.enqueue(new Callback<Result<ClientRegisterationData>>() {
+            @Override
+            public void onResponse(Call<Result<ClientRegisterationData>> call, Response<Result<ClientRegisterationData>> response) {
+                view.loading(false);
+                if(response.isSuccessful()){
+                    view.onSuccess(response.body());
+                }else {
+                    try {
+                        JSONObject jsonObject = new JSONObject(response.errorBody().string());
+                        String ErrorMessage="";
+                        if (!jsonObject.getBoolean("status"))
+                            ErrorMessage = jsonObject.getString("message");
+                        view.onFailed(ErrorMessage);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Result<ClientRegisterationData>> call, Throwable t) {
+                view.loading(false);
+                view.onFailed(t.getMessage());
+            }
+        });
+    }
 }

@@ -5,6 +5,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Criteria;
@@ -15,6 +16,8 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 
 import com.google.android.gms.maps.CameraUpdate;
@@ -57,7 +60,6 @@ public class CustomPlacePicker extends Dialog implements  OnMapReadyCallback {
         if (fm != null) {
             fm.getMapAsync(this);
         }
-
     }
 
 
@@ -126,5 +128,13 @@ public class CustomPlacePicker extends Dialog implements  OnMapReadyCallback {
                 Log.w("Current loction", "Canont get Address!");
             }
             return strAdd;
+    }
+
+
+    public void removeMapFragment(Context context){
+        SupportMapFragment fm = (SupportMapFragment) ((FragmentActivity) context).getSupportFragmentManager().findFragmentById(R.id.picker_map);
+        FragmentTransaction fragmentTransaction = ((FragmentActivity) context).getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.remove(fm);
+        fragmentTransaction.commit();
     }
 }

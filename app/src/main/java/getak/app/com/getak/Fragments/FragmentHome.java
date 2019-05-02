@@ -8,6 +8,7 @@ import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -34,6 +35,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.kaopiz.kprogresshud.KProgressHUD;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -41,15 +43,21 @@ import butterknife.OnClick;
 import getak.app.com.getak.Activites.IntroActivity;
 import getak.app.com.getak.Dialogs.CustomPlacePicker;
 import getak.app.com.getak.GpsUtils.GPSTracker;
+import getak.app.com.getak.Model.Requests.FastTripRequest;
+import getak.app.com.getak.Model.Responses.FastTripResponse.FastTripResModel;
+import getak.app.com.getak.Model.Trips;
 import getak.app.com.getak.Presenters.AccountPresenter;
+import getak.app.com.getak.Presenters.TripsRequestsPresenter;
 import getak.app.com.getak.R;
 import getak.app.com.getak.Session.SessionHelper;
+import getak.app.com.getak.Views.TripsRequestsView;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 
-public class FragmentHome extends Fragment implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, com.google.android.gms.location.LocationListener, CustomPlacePicker.PlacePickerInteraction {
+public class FragmentHome extends Fragment implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, com.google.android.gms.location.LocationListener, CustomPlacePicker.PlacePickerInteraction, TripsRequestsView {
 
     View v;
+    public static KProgressHUD dialog;
     private final static int TARGET_LOCATION=0;
     private final static int CURRENT_LOCATION=1;
     private static int selection=5;
@@ -60,7 +68,7 @@ public class FragmentHome extends Fragment implements OnMapReadyCallback, Google
     public FusedLocationProviderClient mFusedLocationProviderClient;
     LocationRequest mLocationrequest;
     GPSTracker gpsTracker;
-
+    static FastTripRequest fastTripRequest;
     @BindView(R.id.current_location)
     TextView currentLocation;
     @BindView(R.id.target)
@@ -81,7 +89,6 @@ public class FragmentHome extends Fragment implements OnMapReadyCallback, Google
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_fragment_home, container, false);
         ButterKnife.bind(this,v);
-        customPlacePicker=new CustomPlacePicker(getContext(),this);
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         if (mapFragment != null) {
             mapFragment.getMapAsync(this);
@@ -102,6 +109,13 @@ public class FragmentHome extends Fragment implements OnMapReadyCallback, Google
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         gpsTracker = new GPSTracker(getContext());
+        if(customPlacePicker==null) {
+            try {
+                customPlacePicker = new CustomPlacePicker(getActivity(), this);
+            }catch (Exception e){}
+        }
+        dialog=new KProgressHUD(getContext());
+        fastTripRequest=new FastTripRequest();
     }
 
 
@@ -202,8 +216,8 @@ public class FragmentHome extends Fragment implements OnMapReadyCallback, Google
             // form field with an error.
             focusView.requestFocus();
         } else {
-
-
+            fastTripRequest.setClient_id(SessionHelper.getUserSession(getContext()).getId()+"");
+            TripsRequestsPresenter.requstFastTrip(getContext(),fastTripRequest,this);
         }
     }
 
@@ -230,14 +244,60 @@ public class FragmentHome extends Fragment implements OnMapReadyCallback, Google
         switch (selection){
             case TARGET_LOCATION : {
                 target.setText(locationName);
+                fastTripRequest.setDestination_lat(location.latitude);
+                fastTripRequest.setDestination_long(location.longitude);
                 break;
             }
             case CURRENT_LOCATION : {
                 currentLocation.setText(locationName);
+                fastTripRequest.setCurrentLat(location.latitude);
+                fastTripRequest.setCurrentLong(location.longitude);
                 break;
             }
         }
 
         Toast.makeText(getContext(),location.latitude+" "+location.longitude,Toast.LENGTH_LONG).show();
+    }
+
+
+
+
+    @Override
+    public void onTripRequestSuccess(FastTripResModel fastTripResModel) {
+        //Do something when fast trip response success
+    }
+
+    @Override
+    public void onTripRequestFailure(String err) {
+        Snackbar.make(getActivity().findViewById(android.R.id.content),err, Snackbar.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void progress(boolean status) {
+        if(status){
+            dialog.show();
+        }else {
+            if (dialog.isShowing()) {
+                dialog.dismiss();
+            }
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        customPlacePicker.removeMapFragment(getContext());
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        customPlacePicker.removeMapFragment(getContext());
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        customPlacePicker.removeMapFragment(getContext());
     }
 }

@@ -44,11 +44,6 @@ public class TripsPresenter {
                 if (response.isSuccessful()) {
                     MyTrips  model = response.body();
                     view.onSuccess(model.getData().getTrips());
-                    // view.affFav(model.getStatus());
-                    ;
-                    // contactview.getContacts(model.getAbout());
-                    // view.getProductdetails(model.getService());
-
 
                 } else {
 

@@ -5,6 +5,8 @@ import getak.app.com.getak.Model.Contractmodel;
 import getak.app.com.getak.Model.ContactsModel;
 import getak.app.com.getak.Model.FavModel;
 import getak.app.com.getak.Model.MyTrips;
+import getak.app.com.getak.Model.Requests.FastTripRequest;
+import getak.app.com.getak.Model.Responses.FastTripResponse.FastTripResModel;
 import getak.app.com.getak.Model.Responses.LoginResponse.ClientLoginResponse;
 import getak.app.com.getak.Model.Responses.RegisterationResponse.ClientRegisterationData;
 import getak.app.com.getak.Model.Responses.Result;
@@ -38,6 +40,11 @@ public interface Router {
     // get contracts
     @POST("clientContracts")
     Call<Result<Contractmodel>> getContracts(@Body Object data);
-
+    // Fast Trip Request
+    @POST("makeTrip")
+    Call<Result<FastTripResModel>> requestFastTrip (@Body FastTripRequest fastTripRequest);
+    //Update Profile
+    @POST("clientUpdateProfile/{id}")
+    Call<Result<ClientRegisterationData>> updateClientProfile (@Path("id") int id,@Body RequestBody requestBody);
 
 }
