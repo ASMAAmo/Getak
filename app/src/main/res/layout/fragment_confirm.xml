@@ -28,14 +28,14 @@
             android:id="@+id/name_input"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_30sdp"
-            android:inputType="text"
             android:layout_below="@+id/user_name_lbl"
-            android:singleLine="true"
-            android:textSize="13sp"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:textColor="@color/sidemenu"
+            android:layout_marginTop="20dp"
             android:background="@drawable/input_txt_bg"
-            android:padding="@dimen/_5sdp" />
+            android:inputType="text"
+            android:padding="@dimen/_5sdp"
+            android:singleLine="true"
+            android:textColor="@color/sidemenu"
+            android:textSize="13sp" />
         <TextView
             android:id="@+id/user_startdate_lbl"
             android:layout_width="wrap_content"
@@ -102,13 +102,14 @@
             android:id="@+id/ed_startplace"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_30sdp"
-            android:inputType="text"
             android:layout_below="@+id/startplace"
-            android:singleLine="true"
-            android:textSize="13sp"
-            android:textColor="@color/sidemenu"
+            android:layout_marginTop="24dp"
             android:background="@drawable/input_txt_bg"
-            android:padding="@dimen/_5sdp" />
+            android:inputType="text"
+            android:padding="@dimen/_5sdp"
+            android:singleLine="true"
+            android:textColor="@color/sidemenu"
+            android:textSize="13sp" />
         <TextView
             android:id="@+id/endplace"
             android:layout_width="wrap_content"
@@ -227,7 +228,7 @@
             android:layout_alignParentRight="true"
             android:checkedButton="@+id/saturday" >
 
-            <RadioButton
+            <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/saturday"
@@ -237,7 +238,7 @@
                 android:layout_gravity="right"
                 android:text="@string/sat" />
 
-            <RadioButton
+            <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/sunday"
@@ -247,7 +248,7 @@
                 android:layout_gravity="right"
                 android:text="@string/sun" />
 
-            <RadioButton
+            <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/monday"
@@ -256,7 +257,7 @@
                 android:drawableRight="@android:drawable/btn_radio"
                 android:layout_gravity="right"
                 android:text="@string/mon" />
-            <RadioButton
+            <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tuesday"
@@ -265,7 +266,7 @@
                 android:drawableRight="@android:drawable/btn_radio"
                 android:layout_gravity="right"
                 android:text="@string/tue" />
-            <RadioButton
+            <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/wednesday"
@@ -274,7 +275,7 @@
                 android:drawableRight="@android:drawable/btn_radio"
                 android:layout_gravity="right"
                 android:text="@string/wed" />
-            <RadioButton
+            <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/thursday"
@@ -283,7 +284,7 @@
                 android:drawableRight="@android:drawable/btn_radio"
                 android:layout_gravity="right"
                 android:text="@string/the" />
-            <RadioButton
+            <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/friday"
@@ -294,15 +295,16 @@
                 android:text="@string/fri" />
 
         </RadioGroup>
+
         <Button
-            android:id="@+id/login_btn"
+            android:id="@+id/save_btn"
             android:layout_width="200dp"
             android:layout_height="@dimen/_30sdp"
+            android:layout_below="@+id/myRadioGroup"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/_10sdp"
             android:background="@drawable/button_bg"
             android:text="@string/save"
-            android:layout_marginBottom="@dimen/_10sdp"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/myRadioGroup"
             android:textColor="@color/white"
             android:textSize="@dimen/_13sdp" />
     </RelativeLayout>

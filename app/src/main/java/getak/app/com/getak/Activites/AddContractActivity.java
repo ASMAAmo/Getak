@@ -1,5 +1,7 @@
 package getak.app.com.getak.Activites;
 
+import android.app.Activity;
+import android.content.Context;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +9,10 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
+import com.kaopiz.kprogresshud.KProgressHUD;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -19,8 +25,14 @@ import getak.app.com.getak.Events.ContractCreationStepsEvent;
 import getak.app.com.getak.Fragments.AddingContractSteps.ConfirmFragment;
 import getak.app.com.getak.Fragments.AddingContractSteps.ContractDaysFragment;
 import getak.app.com.getak.Fragments.AddingContractSteps.DriversListFragment;
+import getak.app.com.getak.Model.Requests.CreateContractRequest;
+import getak.app.com.getak.Model.Responses.AllDriversResponse.Datum;
+import getak.app.com.getak.Model.Responses.ContractsType.Type;
+import getak.app.com.getak.Model.Responses.Result;
+import getak.app.com.getak.Presenters.ContractsPresenter;
 import getak.app.com.getak.R;
 import getak.app.com.getak.Session.SessionHelper;
+import getak.app.com.getak.Views.ContractsView;
 
 public class AddContractActivity extends BaseActivity {
     public static final int CONTRACT_DAYS=0;
@@ -34,6 +46,8 @@ public class AddContractActivity extends BaseActivity {
     ContractDaysFragment contractDaysFragment;
     DriversListFragment driversListFragment;
     ConfirmFragment confirmFragment;
+    public static CreateContractRequest createContractRequest;
+    public static KProgressHUD dialog;
 //
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +61,8 @@ public class AddContractActivity extends BaseActivity {
         driversListFragment=new DriversListFragment();
         confirmFragment=new ConfirmFragment();
         switchToPage(CONTRACT_DAYS);
+        createContractRequest=new CreateContractRequest();
+        dialog=new KProgressHUD(this);
     }
 
 
@@ -143,7 +159,50 @@ public class AddContractActivity extends BaseActivity {
     @Subscribe
     public void onEvent(ContractCreationStepsEvent event){
         if (event.isSucess()){
-            switchToPage(event.getPageIndex());
+            switch (event.getPageIndex()){
+                case CONTRACT_DAYS :{
+                    switchToPage(CONTRACT_DAYS);
+                    break;
+                }
+                case DRIVERS_LIST :{
+                    switchToPage(DRIVERS_LIST);
+                    createContractRequest.setPeriod(((Type)event.getPayload()).getId());
+                    break;
+                }
+                case CONFIRM :{
+                    switchToPage(CONFIRM);
+                    createContractRequest.setDriver_id(((Datum)event.getPayload()).getId());
+                    break;
+                }
+            }
         }
     }
+
+    public static void createContract(final Context context){
+        ContractsPresenter.createContract(context, createContractRequest, new ContractsView() {
+            @Override
+            public void onSuccess(Object obj) {
+               Toast.makeText(context, ((Result<Object>)obj).getMessage()+"",Toast.LENGTH_LONG).show();
+                ((Activity)context).finish();
+            }
+
+            @Override
+            public void onFailed(String err) {
+                Toast.makeText(context, err,Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void loading(boolean status) {
+                if(status){
+                    dialog.show();
+                }else {
+                    if (dialog.isShowing()) {
+                        dialog.dismiss();
+                    }
+                }
+            }
+        });
+    }
+
+
 }

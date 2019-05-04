@@ -2,10 +2,10 @@ package getak.app.com.getak.Events;
 
 public class ContractCreationStepsEvent {
     private boolean isSucess;
-    private String payload;
+    private Object payload;
     private int pageIndex;
 
-    public ContractCreationStepsEvent(boolean isSucess, String payload,int target) {
+    public ContractCreationStepsEvent(boolean isSucess, Object payload,int target) {
         this.isSucess = isSucess;
         this.payload = payload;
         this.pageIndex=target;
@@ -15,7 +15,7 @@ public class ContractCreationStepsEvent {
         return isSucess;
     }
 
-    public String getPayload() {
+    public Object getPayload() {
         return payload;
     }
 

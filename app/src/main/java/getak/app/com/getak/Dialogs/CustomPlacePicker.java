@@ -135,6 +135,6 @@ public class CustomPlacePicker extends Dialog implements  OnMapReadyCallback {
         SupportMapFragment fm = (SupportMapFragment) ((FragmentActivity) context).getSupportFragmentManager().findFragmentById(R.id.picker_map);
         FragmentTransaction fragmentTransaction = ((FragmentActivity) context).getSupportFragmentManager().beginTransaction();
         fragmentTransaction.remove(fm);
-        fragmentTransaction.commit();
+        fragmentTransaction.commitAllowingStateLoss();
     }
 }

@@ -11,6 +11,8 @@ import java.util.HashMap;
 import getak.app.com.getak.Model.ContactsModel;
 import getak.app.com.getak.Model.Contract;
 import getak.app.com.getak.Model.Contractmodel;
+import getak.app.com.getak.Model.Requests.CreateContractRequest;
+import getak.app.com.getak.Model.Responses.ContractsType.ContractsTypes;
 import getak.app.com.getak.Model.Responses.LoginResponse.ClientLoginResponse;
 import getak.app.com.getak.Model.Responses.RegisterationResponse.ClientRegisterationData;
 import getak.app.com.getak.Model.Responses.Result;
@@ -49,6 +51,67 @@ public class ContractsPresenter {
 
             @Override
             public void onFailure(Call<Result<Contractmodel>> call, Throwable t) {
+                view.loading(false);
+                view.onFailed(t.getMessage());
+            }
+        });
+    }
+    public static void getContractsTypes(Context context, final ContractsView view){
+        Call<Result<ContractsTypes>> getContractTypes = ServiceBuilder.getRouter(context).getContractsTypes();
+        getContractTypes.enqueue(new Callback<Result<ContractsTypes>>() {
+            @Override
+            public void onResponse(Call<Result<ContractsTypes>> call, Response<Result<ContractsTypes>> response) {
+                view.loading(false);
+                if (response.isSuccessful()){
+                    view.onSuccess(response.body().getData());
+                }else {
+                    try {
+                        JSONObject jsonObject = new JSONObject(response.errorBody().string());
+                        String ErrorMessage="";
+                        if (!jsonObject.getBoolean("status"))
+                            ErrorMessage = jsonObject.getString("message");
+                        view.onFailed(ErrorMessage);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Result<ContractsTypes>> call, Throwable t) {
+                view.loading(false);
+                view.onFailed(t.getMessage());
+            }
+        });
+    }
+    public static void createContract(Context context, CreateContractRequest request, final ContractsView view){
+        Call<Result<Object>> createContractCall = ServiceBuilder.getRouter(context).createContract(request);
+        view.loading(true);
+        createContractCall.enqueue(new Callback<Result<Object>>() {
+            @Override
+            public void onResponse(Call<Result<Object>> call, Response<Result<Object>> response) {
+                view.loading(false);
+                if(response.isSuccessful()) {
+                    view.onSuccess(response.body());
+                }else {
+                    try {
+                        JSONObject jsonObject = new JSONObject(response.errorBody().string());
+                        String ErrorMessage="";
+                        if (!jsonObject.getBoolean("status"))
+                            ErrorMessage = jsonObject.getString("message");
+                        view.onFailed(ErrorMessage);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Result<Object>> call, Throwable t) {
                 view.loading(false);
                 view.onFailed(t.getMessage());
             }

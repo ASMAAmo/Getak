@@ -5,7 +5,10 @@ import getak.app.com.getak.Model.Contractmodel;
 import getak.app.com.getak.Model.ContactsModel;
 import getak.app.com.getak.Model.FavModel;
 import getak.app.com.getak.Model.MyTrips;
+import getak.app.com.getak.Model.Requests.CreateContractRequest;
 import getak.app.com.getak.Model.Requests.FastTripRequest;
+import getak.app.com.getak.Model.Responses.AllDriversResponse.AllDrivers;
+import getak.app.com.getak.Model.Responses.ContractsType.ContractsTypes;
 import getak.app.com.getak.Model.Responses.FastTripResponse.FastTripResModel;
 import getak.app.com.getak.Model.Responses.LoginResponse.ClientLoginResponse;
 import getak.app.com.getak.Model.Responses.RegisterationResponse.ClientRegisterationData;
@@ -46,5 +49,13 @@ public interface Router {
     //Update Profile
     @POST("clientUpdateProfile/{id}")
     Call<Result<ClientRegisterationData>> updateClientProfile (@Path("id") int id,@Body RequestBody requestBody);
-
+    //Get Contracts Type
+    @POST("contracts")
+    Call<Result<ContractsTypes>> getContractsTypes ();
+    //Get All Drivers
+    @POST("allDrivers?")
+    Call<Result<AllDrivers>> getAllDrivers (@Query("page") int pageNum);
+    //Create contract
+    @POST("contract")
+    Call<Result<Object>> createContract (@Body CreateContractRequest request);
 }
