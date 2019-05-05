@@ -2,6 +2,7 @@ package getak.app.com.getak.Activites;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.opengl.Visibility;
@@ -30,6 +31,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 import getak.app.com.getak.BaseActivity;
+import getak.app.com.getak.Dialogs.DriverButtomDialog;
 import getak.app.com.getak.Events.ContractCreationStepsEvent;
 import getak.app.com.getak.Fragments.FragmentAccount;
 import getak.app.com.getak.Fragments.FragmentContracts;
@@ -117,6 +119,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         relLogOut.setOnClickListener(this);
         switchToPage(HOME,null,getResources().getString(R.string.home));
         EventBus.getDefault().register(this);
+        userTypeConfig(this);
         if(SessionHelper.isLogin(this)) {
             Picasso.get()
                     .load("https://"+SessionHelper.getUserSession(this).getClientAvatar())
@@ -124,7 +127,20 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                     .into(avatar);
         }
 
+
+
     }
+
+    //Check user type and perform configurations
+    private void userTypeConfig(Context context) {
+        if(SessionHelper.isDriver(context)){
+            relFavPlacesBtn.setVisibility(View.GONE);
+        }else {
+            relFavPlacesBtn.setVisibility(View.VISIBLE);
+        }
+    }
+
+
 
     @Subscribe
     public void onEvent(ContractCreationStepsEvent event){
@@ -204,7 +220,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             }
             case R.id.rel_my_account : {
                 if(SessionHelper.isLogin(this)) {
-                    switchToPage(MY_ACCOUNT, null, getResources().getString(R.string.my_account));
+                    if(SessionHelper.isDriver(this)){
+                        //Switch to driver fragment
+                    }else {
+                        switchToPage(MY_ACCOUNT, null, getResources().getString(R.string.my_account));
+                    }
                     itemAddContract.setVisible(false);
                 }else {
                     startActivity(new Intent(this,IntroActivity.class));
@@ -259,7 +279,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 if(SessionHelper.isLogin(this)) {
                     switchToPage(CONTRACTS,null,getResources().getString(R.string.contracts));
                     //Check if user is driver or clint
-                    if(true) {
+                    if(!SessionHelper.isDriver(this)) {
                         itemAddContract.setVisible(true);
                     }
                 }else {

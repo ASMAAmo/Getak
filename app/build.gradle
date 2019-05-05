@@ -26,10 +26,10 @@ android {
     buildTypes {
         release {
             buildConfigField("String", "BASIC_URL", "\"https://getak.mpgline.com/\"")
-            buildConfigField("String", "API_URl", "\"https://getak.mpgline.com//api/\"")
+            buildConfigField("String", "API_URl", "\"https://getak.mpgline.com/api/\"")
             buildConfigField("int", "DELAY", "0")
             minifyEnabled false
-//            signingConfig signingConfigs.release
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {

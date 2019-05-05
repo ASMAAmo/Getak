@@ -2,6 +2,7 @@ package getak.app.com.getak.Fragments;
 
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -17,6 +18,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -73,6 +75,8 @@ public class FragmentHome extends Fragment implements OnMapReadyCallback, Google
     TextView currentLocation;
     @BindView(R.id.target)
     TextView target;
+    @BindView(R.id.user_main_layout)
+    RelativeLayout userMainLayout;
 
 
     @Override
@@ -108,6 +112,7 @@ public class FragmentHome extends Fragment implements OnMapReadyCallback, Google
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        userTypeConfig(getContext());
         gpsTracker = new GPSTracker(getContext());
         if(customPlacePicker==null) {
             try {
@@ -116,8 +121,18 @@ public class FragmentHome extends Fragment implements OnMapReadyCallback, Google
         }
         dialog=new KProgressHUD(getContext());
         fastTripRequest=new FastTripRequest();
+
     }
 
+
+    //Check user type ind perform configurations
+    public void userTypeConfig(Context context) {
+        if(SessionHelper.isDriver(getContext())){
+            userMainLayout.setVisibility(View.GONE);
+        }else {
+            userMainLayout.setVisibility(View.VISIBLE);
+        }
+    }
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {

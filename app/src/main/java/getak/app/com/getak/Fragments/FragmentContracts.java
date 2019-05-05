@@ -53,7 +53,11 @@ public class FragmentContracts extends Fragment implements ContractsView {
         super.onStart();
 
         HashMap id =new HashMap();
-        id.put("client_id", SessionHelper.getUserSession(getContext()).getId());
+        if(SessionHelper.isDriver(getContext())) {
+            id.put("driver_id", SessionHelper.getUserSession(getContext()).getId());
+        }else {
+            id.put("client_id", SessionHelper.getUserSession(getContext()).getId());
+        }
         ContractsPresenter.getContracts(getContext(),id,this);
     }
 
@@ -67,8 +71,6 @@ public class FragmentContracts extends Fragment implements ContractsView {
         contractsList.setLayoutManager(new LinearLayoutManager(getContext()));
         contractsList.setHasFixedSize(true);
     }
-
-
 
     @Override
     public void onSuccess(Object obj) {

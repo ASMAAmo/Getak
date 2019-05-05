@@ -44,6 +44,7 @@ import okhttp3.RequestBody;
 
 public class RegisterActivity extends BaseActivity implements AccountView {
     public static KProgressHUD dialog;
+    String loginType;
     @BindView(R.id.reg_type_tab)
     TabLayout regTypeSwitch;
     @BindView(R.id.name_input)
@@ -79,7 +80,17 @@ public class RegisterActivity extends BaseActivity implements AccountView {
         regTypeSwitch.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
+                switch (tab.getPosition()){
+                    case 0 : {
+                        loginType=DRIVER;
+                        break;
+                    }
 
+                    case 1 : {
+                        loginType=CLIENT;
+                        break;
+                    }
+                }
             }
 
             @Override
@@ -237,6 +248,7 @@ public class RegisterActivity extends BaseActivity implements AccountView {
     @Override
     public void onSuccess(Object object) {
         if(object!=null) {
+            SessionHelper.setUserType(this,loginType);
             SessionHelper.setUserSession(this, ((Result<ClientRegisterationData>)object).getData().getClient());
             Toast.makeText(this,  ((Result<ClientRegisterationData>)object).getMessage(), Toast.LENGTH_LONG).show();
             startActivity(new Intent(this, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));

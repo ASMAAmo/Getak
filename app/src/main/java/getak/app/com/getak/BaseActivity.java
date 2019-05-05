@@ -22,6 +22,8 @@ import android.view.animation.AlphaAnimation;
 import getak.app.com.getak.Session.SessionHelper;
 
 public class BaseActivity extends AppCompatActivity {
+    public final String DRIVER="driver";
+    public final String CLIENT="client";
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);

@@ -1,7 +1,7 @@
 package getak.app.com.getak.Fragments.AddingContractSteps;
 
-import android.content.Context;
-import android.net.Uri;
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,21 +13,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.RadioGroup;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.Gson;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnFocusChange;
 import getak.app.com.getak.Activites.AddContractActivity;
 import getak.app.com.getak.Dialogs.CustomPlacePicker;
 import getak.app.com.getak.Model.Days;
@@ -38,8 +42,6 @@ import static getak.app.com.getak.Activites.AddContractActivity.createContractRe
 
 
 public class ConfirmFragment extends Fragment implements CustomPlacePicker.PlacePickerInteraction {
-    @BindView(R.id.name_input)
-    EditText driverName;
     @BindView(R.id.ed_startdate)
     EditText contractStartDate;
     @BindView(R.id.ed_enddate)
@@ -92,7 +94,100 @@ public class ConfirmFragment extends Fragment implements CustomPlacePicker.Place
             }catch (Exception e){}
         }
 
+        contractStartDate.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    final Calendar myCalendar = Calendar.getInstance(Locale.ENGLISH);
+                    DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+                        @Override
+                        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                            // TODO Auto-generated method stub
+                            myCalendar.set(Calendar.YEAR, year);
+                            myCalendar.set(Calendar.MONTH, monthOfYear);
+                            myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                            String myFormat = "dd-MM-yyyy"; // your format
+                            SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.ENGLISH);
+
+                            contractStartDate.setText(sdf.format(myCalendar.getTime()));
+                        }
+                    };
+                    new DatePickerDialog(getContext(), date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                }
+            }
+        });
+
+        contractEndDate.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    final Calendar myCalendar = Calendar.getInstance(Locale.ENGLISH);
+                    DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+                        @Override
+                        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                            // TODO Auto-generated method stub
+                            myCalendar.set(Calendar.YEAR, year);
+                            myCalendar.set(Calendar.MONTH, monthOfYear);
+                            myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                            String myFormat = "dd-MM-yyyy"; // your format
+                            SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.ENGLISH);
+                            contractEndDate.setText(sdf.format(myCalendar.getTime()));
+                        }
+                    };
+                    new DatePickerDialog(getContext(), date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                }
+            }
+        });
+
+
+        goingTime.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus){
+                    // TODO Auto-generated method stub
+                    Calendar mcurrentTime = Calendar.getInstance(Locale.ENGLISH);
+                    int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                    int minute = mcurrentTime.get(Calendar.MINUTE);
+                    TimePickerDialog mTimePicker;
+                    mTimePicker = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
+                        @Override
+                        public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                            goingTime.setText( selectedHour + ":" + selectedMinute);
+                        }
+                    }, hour, minute, false);//Yes 24 hour time
+                    mTimePicker.setTitle("أختر وقت الذهاب");
+                    mTimePicker.show();
+                }
+            }
+        });
+
+
+        returnTime.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus){
+                    // TODO Auto-generated method stub
+                    Calendar mcurrentTime = Calendar.getInstance(Locale.ENGLISH);
+                    int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                    int minute = mcurrentTime.get(Calendar.MINUTE);
+                    TimePickerDialog mTimePicker;
+                    mTimePicker = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
+                        @Override
+                        public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                            returnTime.setText( selectedHour + ":" + selectedMinute);
+                        }
+                    }, hour, minute, false);//Yes 24 hour time
+                    mTimePicker.setTitle("أختر وقت العودة");
+                    mTimePicker.show();
+                }
+            }
+        });
     }
+
+
+
+
+
 
     void fireLocationPicker(int requestType){
         if(customPlacePicker!=null){
@@ -175,7 +270,6 @@ public class ConfirmFragment extends Fragment implements CustomPlacePicker.Place
     }
 
     void createContract(){
-        driverName.setError(null);
         contractStartDate.setError(null);
         contractEndDate.setError(null);
         goingPlace.setError(null);
@@ -184,7 +278,6 @@ public class ConfirmFragment extends Fragment implements CustomPlacePicker.Place
         returnTime.setError(null);
         personsNumber.setError(null);
 
-        String driverNameSt=driverName.getText().toString();
         String startDate=contractStartDate.getText().toString();
         String endDate=contractEndDate.getText().toString();
         String gonigPlaceSt=goingPlace.getText().toString();
@@ -196,11 +289,6 @@ public class ConfirmFragment extends Fragment implements CustomPlacePicker.Place
         boolean cancel = false;
         View focusView = null;
 
-        if (TextUtils.isEmpty(driverNameSt)) {
-            driverName.setError("");
-            focusView = driverName;
-            cancel = true;
-        }
 
         if (TextUtils.isEmpty(startDate)) {
             contractStartDate.setError("أدخل تاريخ بداية العقد");
@@ -273,15 +361,21 @@ public class ConfirmFragment extends Fragment implements CustomPlacePicker.Place
 
 
 
-    @OnClick(R.id.ed_startplace)
-    void goinPlace(){
-        fireLocationPicker(0);
+    @OnFocusChange(R.id.ed_startplace)
+    void goinPlace(boolean focused){
+        if(focused) {
+            fireLocationPicker(0);
+        }
     }
 
-    @OnClick(R.id.ed_endplace)
-    void returnPlace(){
-        fireLocationPicker(1);
+    @OnFocusChange(R.id.ed_endplace)
+    void returnPlace(boolean focused){
+        if(focused) {
+            fireLocationPicker(1);
+        }
     }
+
+
 
     @OnClick(R.id.save_btn)
     void save (){
@@ -289,6 +383,7 @@ public class ConfirmFragment extends Fragment implements CustomPlacePicker.Place
         Gson gson =new Gson();
         Log.e("Data ",gson.toJson(createContractRequest));
     }
+
 
 
 

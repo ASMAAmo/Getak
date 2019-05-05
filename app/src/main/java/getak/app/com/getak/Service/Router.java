@@ -31,9 +31,12 @@ public interface Router {
     //Get Profile for client
     @POST("clientProfile/{id}")
     Call<Result<ClientRegisterationData>> getProfile(@Path("id") int id);
-    // get trips
+    // get client trips
     @POST("clientTrips")
-    Call<MyTrips> getTrips(@Body Object data,@Query("page") String page);
+    Call<MyTrips> getTrips(@Body Object data);
+    //Get Drivers trips
+    @POST("driverTrips")
+    Call<MyTrips> getDriverTrips(@Body Object data);
     // contact us
     @POST("contactUs")
     Call<Result<ContactsModel>> contactUs(@Body RequestBody requestBody);
@@ -43,6 +46,9 @@ public interface Router {
     // get contracts
     @POST("clientContracts")
     Call<Result<Contractmodel>> getContracts(@Body Object data);
+    //Get Driver Contracts
+    @POST("driverContracts")
+    Call<Result<Contractmodel>> getDriverContracts(@Body Object data);
     // Fast Trip Request
     @POST("makeTrip")
     Call<Result<FastTripResModel>> requestFastTrip (@Body FastTripRequest fastTripRequest);

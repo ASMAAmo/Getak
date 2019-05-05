@@ -62,13 +62,13 @@ public class LoginActivity extends BaseActivity implements AccountView {
                 switch (tab.getPosition()){
                     case 0 : {
                         loginLbl.setText(getString(R.string.custlogin));
-                        loginType="client";
+                        loginType=CLIENT;
                         break;
                     }
 
                     case 1 : {
                         loginLbl.setText(getString(R.string.driverlogin));
-                        loginType="driver";
+                        loginType=DRIVER;
                         break;
                     }
                 }
@@ -124,6 +124,7 @@ public class LoginActivity extends BaseActivity implements AccountView {
     @Override
     public void onSuccess(Object obj) {
         if(obj!=null) {
+            SessionHelper.setUserType(this,loginType);
             SessionHelper.setUserSession(this, ((Result<ClientLoginResponse>)obj).getData().getClient());
             Toast.makeText(this,  ((Result<ClientLoginResponse>)obj).getMessage(), Toast.LENGTH_LONG).show();
             EventBus.getDefault().post(new LoginEvent(true, ""));

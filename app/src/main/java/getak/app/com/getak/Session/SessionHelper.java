@@ -23,7 +23,7 @@ public class SessionHelper {
     private static final String ACCESS_TOKEN = SHARED_PREFERENCES_FILE + ".accesstoken";
     private static final String LANGUAGE = SHARED_PREFERENCES_FILE + ".language";
     private static final String PUSH_TOKEN = SHARED_PREFERENCES_FILE + ".pushtoken";
-
+    private static final String USER_TYPE = SHARED_PREFERENCES_FILE + ".usertype";
     private static final String ARABIC = "عربى";
     private static final String ENGLISH = "English";
 
@@ -159,8 +159,24 @@ public class SessionHelper {
     }
 
 
+    public static void setUserType(Context context, String type) {
+        SharedPreferences sharedPref = context.getSharedPreferences(NOTIFICATIONS_SHAREDPREFS, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString(USER_TYPE, type);
+        editor.apply();
+    }
 
 
+    public static boolean isDriver(Context context){
+        SharedPreferences sharedPref = context.getSharedPreferences(NOTIFICATIONS_SHAREDPREFS, Context.MODE_PRIVATE);
+        return sharedPref.getString(USER_TYPE, "").equals("driver");
+    }
+
+
+    public static String getUserType(Context context) {
+        SharedPreferences sharedPref = context.getSharedPreferences(NOTIFICATIONS_SHAREDPREFS, Context.MODE_PRIVATE);
+        return sharedPref.getString(USER_TYPE, "");
+    }
 
 
     public void saveKeyValue(Context context, String key, String value) {

@@ -158,13 +158,6 @@ public class FragmentAccount extends Fragment implements AccountView {
             // form field with an error.
             focusView.requestFocus();
         } else {
-            RequestBody avatar =null;
-            if(selectedFilePath!=null){
-                File file = new File(selectedFilePath);
-                avatar = RequestBody.create(MediaType.parse("image/*"), file);
-            }else {
-                avatar = RequestBody.create(MediaType.parse("text/plain"), "");
-            }
             RequestBody requestBody = new MultipartBody.Builder()
                     .setType(MultipartBody.FORM)
                     .addFormDataPart("client_name", name)
@@ -175,7 +168,6 @@ public class FragmentAccount extends Fragment implements AccountView {
                     .addFormDataPart("client_gender",clientGender)
                     .addFormDataPart("password",password)
                     .addFormDataPart("password_confirmation",rePassword)
-                    .addFormDataPart("avatar", "Avatar",avatar)
                     .build();
             AccountPresenter.updateClientProfile(getContext(),SessionHelper.getUserSession(getContext()).getId(),requestBody,this);
         }
@@ -194,14 +186,15 @@ public class FragmentAccount extends Fragment implements AccountView {
          phoneInput.setText(profile.getClientPhone());
          email_input.setText(profile.getClientEmail());
          addressInput.setText(profile.getClientAddress());
-         if(profile.getClientGender().contains("male")){
-             gender.check(R.id.male);
-             clientGender="male";
-         }else {
-             gender.check(R.id.female);
-             clientGender="female";
-         }
-
+       if(profile.getClientGender()!=null) {
+           if (profile.getClientGender().contains("male")) {
+               gender.check(R.id.male);
+               clientGender = "male";
+           } else {
+               gender.check(R.id.female);
+               clientGender = "female";
+           }
+       }
             gender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -221,7 +214,10 @@ public class FragmentAccount extends Fragment implements AccountView {
                 Picasso.get().load("https://"+profile.getClientAvatar()).placeholder(R.drawable.ic_person_black_24dp).fit().into(profile_image);
             }
 
+            SessionHelper.setUserSession(getContext(),profile);
+
     }
+
     }
 
     @Override

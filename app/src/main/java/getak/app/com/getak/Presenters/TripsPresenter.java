@@ -9,6 +9,7 @@ import cc.cloudist.acplibrary.ACProgressConstant;
 import cc.cloudist.acplibrary.ACProgressFlower;
 import getak.app.com.getak.Model.MyTrips;
 import getak.app.com.getak.Service.Router;
+import getak.app.com.getak.Session.SessionHelper;
 import getak.app.com.getak.Views.MyTripsview;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,30 +34,55 @@ public class TripsPresenter {
                 .fadeColor(Color.DKGRAY).build();
 
         dialog.show();
-        HashMap input = new HashMap();
-        input.put("client_id",id);
-        // Log.e("inpp", input + "");
-        Constanturl.createService(Router.class).getTrips(input,"1").enqueue(new Callback<MyTrips >() {
-            @Override
-            public void onResponse(Call<MyTrips> call, Response<MyTrips > response) {
-                if (dialog.isShowing())
-                    dialog.dismiss();
-                if (response.isSuccessful()) {
-                    MyTrips  model = response.body();
-                    view.onSuccess(model.getData().getTrips());
+        if(SessionHelper.isDriver(context)){
+            HashMap input = new HashMap();
+            input.put("driver_id",id);
+            Constanturl.createService(Router.class).getDriverTrips(input).enqueue(new Callback<MyTrips >() {
+                @Override
+                public void onResponse(Call<MyTrips> call, Response<MyTrips > response) {
+                    if (dialog.isShowing())
+                        dialog.dismiss();
+                    if (response.isSuccessful()) {
+                        MyTrips  model = response.body();
+                        view.onSuccess(model.getData().getTrips());
 
-                } else {
+                    } else {
+
+                    }
 
                 }
 
-            }
+                @Override
+                public void onFailure(Call<MyTrips > call, Throwable t) {
+                    if (dialog.isShowing())
+                        dialog.dismiss();
 
-            @Override
-            public void onFailure(Call<MyTrips > call, Throwable t) {
-                if (dialog.isShowing())
-                    dialog.dismiss();
+                }
+            });
+        }else {
+            HashMap input = new HashMap();
+            input.put("client_id",id);
+            Constanturl.createService(Router.class).getTrips(input).enqueue(new Callback<MyTrips >() {
+                @Override
+                public void onResponse(Call<MyTrips> call, Response<MyTrips > response) {
+                    if (dialog.isShowing())
+                        dialog.dismiss();
+                    if (response.isSuccessful()) {
+                        MyTrips  model = response.body();
+                        view.onSuccess(model.getData().getTrips());
 
-            }
-        });
+                    } else {
+
+                    }
+
+                }
+
+                @Override
+                public void onFailure(Call<MyTrips > call, Throwable t) {
+                    if (dialog.isShowing())
+                        dialog.dismiss();
+
+                }
+            });        }
     }
 }
