@@ -3,18 +3,18 @@ package getak.app.com.getak.Model.Responses.RegisterationResponse;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import getak.app.com.getak.Model.Responses.UserModel;
+import getak.app.com.getak.Model.Responses.Driver;
 
 public class DriverRegisterationData {
     @SerializedName("driver")
     @Expose
-    private UserModel client;
+    private Driver driver;
 
-    public UserModel getClient() {
-        return client;
+    public Driver getDriver() {
+        return driver;
     }
 
-    public void setClient(UserModel client) {
-        this.client = client;
+    public void setDriver(Driver driver) {
+        this.driver = driver;
     }
 }

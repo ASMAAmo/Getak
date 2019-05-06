@@ -1,6 +1,5 @@
 package getak.app.com.getak.Service;
 
-import getak.app.com.getak.Model.Contract;
 import getak.app.com.getak.Model.Contractmodel;
 import getak.app.com.getak.Model.ContactsModel;
 import getak.app.com.getak.Model.FavModel;
@@ -10,8 +9,9 @@ import getak.app.com.getak.Model.Requests.FastTripRequest;
 import getak.app.com.getak.Model.Responses.AllDriversResponse.AllDrivers;
 import getak.app.com.getak.Model.Responses.ContractsType.ContractsTypes;
 import getak.app.com.getak.Model.Responses.FastTripResponse.FastTripResModel;
-import getak.app.com.getak.Model.Responses.LoginResponse.ClientLoginResponse;
+import getak.app.com.getak.Model.Responses.LoginResponse.LoginResponse;
 import getak.app.com.getak.Model.Responses.RegisterationResponse.ClientRegisterationData;
+import getak.app.com.getak.Model.Responses.RegisterationResponse.DriverRegisterationData;
 import getak.app.com.getak.Model.Responses.Result;
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -27,7 +27,7 @@ public interface Router {
     Call<Result<ClientRegisterationData>> register(@Body RequestBody requestBody);
     //Login
     @POST("login")
-    Call<Result<ClientLoginResponse>> login(@Body RequestBody requestBody);
+    Call<Result<LoginResponse>> login(@Body RequestBody requestBody);
     //Get Profile for client
     @POST("clientProfile/{id}")
     Call<Result<ClientRegisterationData>> getProfile(@Path("id") int id);
@@ -64,4 +64,7 @@ public interface Router {
     //Create contract
     @POST("contract")
     Call<Result<Object>> createContract (@Body CreateContractRequest request);
+    //Get Driver profile
+    @POST("driverProfile/{id}")
+    Call<Result<DriverRegisterationData>> getDriverProfile(@Path("id") int id);
 }

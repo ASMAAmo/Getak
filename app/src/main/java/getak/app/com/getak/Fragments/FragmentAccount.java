@@ -48,10 +48,6 @@ public class FragmentAccount extends Fragment implements AccountView {
     RadioGroup gender;
     @BindView(R.id.age_in)
     EditText age_input;
-    @BindView(R.id.password_input)
-    EditText password_input;
-    @BindView(R.id.re_password_input)
-    EditText passwordconf_input;
     String clientGender="";
     String selectedFilePath;
 
@@ -87,34 +83,18 @@ public class FragmentAccount extends Fragment implements AccountView {
         name_input.setError(null);
         phoneInput.setError(null);
         email_input.setError(null);
-        password_input.setError(null);
-        passwordconf_input.setError(null);
         addressInput.setError(null);
         age_input.setError(null);
 
         String name = name_input.getText().toString();
         String phone = phoneInput.getText().toString();
         String email = email_input.getText().toString();
-        String password = password_input.getText().toString();
-        String rePassword= passwordconf_input.getText().toString();
         String address= addressInput.getText().toString();
         String age= age_input.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
 
-        // Check for a valid password, if the user entered one.
-        if (TextUtils.isEmpty(password)) {
-            password_input.setError(getString(R.string.reqage));
-            focusView = password_input;
-            cancel = true;
-        }
-
-        if (TextUtils.isEmpty(rePassword)) {
-            passwordconf_input.setError(getString(R.string.passreq));
-            focusView = passwordconf_input;
-            cancel = true;
-        }
 
         if (TextUtils.isEmpty(address)) {
             addressInput.setError(getString(R.string.addressreq));
@@ -166,8 +146,6 @@ public class FragmentAccount extends Fragment implements AccountView {
                     .addFormDataPart("client_address",address)
                     .addFormDataPart("client_age",age)
                     .addFormDataPart("client_gender",clientGender)
-                    .addFormDataPart("password",password)
-                    .addFormDataPart("password_confirmation",rePassword)
                     .build();
             AccountPresenter.updateClientProfile(getContext(),SessionHelper.getUserSession(getContext()).getId(),requestBody,this);
         }
@@ -182,12 +160,13 @@ public class FragmentAccount extends Fragment implements AccountView {
     public void onSuccess(Object obj) {
         if(obj!=null) {
             UserModel profile = ((Result<ClientRegisterationData>)obj).getData().getClient();
+            SessionHelper.setUserSession(getContext(),profile);
          name_input.setText(profile.getClientName());
          phoneInput.setText(profile.getClientPhone());
          email_input.setText(profile.getClientEmail());
          addressInput.setText(profile.getClientAddress());
        if(profile.getClientGender()!=null) {
-           if (profile.getClientGender().contains("male")) {
+           if (profile.getClientGender().equals("male")) {
                gender.check(R.id.male);
                clientGender = "male";
            } else {
@@ -213,8 +192,6 @@ public class FragmentAccount extends Fragment implements AccountView {
             if(profile.getClientAvatar()!=null && !profile.getClientAvatar().isEmpty()) {
                 Picasso.get().load("https://"+profile.getClientAvatar()).placeholder(R.drawable.ic_person_black_24dp).fit().into(profile_image);
             }
-
-            SessionHelper.setUserSession(getContext(),profile);
 
     }
 

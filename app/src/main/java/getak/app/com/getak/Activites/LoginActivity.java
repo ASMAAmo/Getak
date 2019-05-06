@@ -1,8 +1,6 @@
 package getak.app.com.getak.Activites;
 
-import android.content.Intent;
 import android.support.design.widget.TabLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -19,8 +17,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import getak.app.com.getak.BaseActivity;
 import getak.app.com.getak.Events.LoginEvent;
-import getak.app.com.getak.Model.Responses.LoginResponse.ClientLoginResponse;
-import getak.app.com.getak.Model.Responses.RegisterationResponse.ClientRegisterationData;
+import getak.app.com.getak.Model.Responses.LoginResponse.LoginResponse;
 import getak.app.com.getak.Model.Responses.Result;
 import getak.app.com.getak.Presenters.AccountPresenter;
 import getak.app.com.getak.R;
@@ -125,8 +122,8 @@ public class LoginActivity extends BaseActivity implements AccountView {
     public void onSuccess(Object obj) {
         if(obj!=null) {
             SessionHelper.setUserType(this,loginType);
-            SessionHelper.setUserSession(this, ((Result<ClientLoginResponse>)obj).getData().getClient());
-            Toast.makeText(this,  ((Result<ClientLoginResponse>)obj).getMessage(), Toast.LENGTH_LONG).show();
+            SessionHelper.setUserSession(this, ((Result<LoginResponse>)obj).getData().getClient());
+            Toast.makeText(this,  ((Result<LoginResponse>)obj).getMessage(), Toast.LENGTH_LONG).show();
             EventBus.getDefault().post(new LoginEvent(true, ""));
             LoginActivity.this.finish();
         }

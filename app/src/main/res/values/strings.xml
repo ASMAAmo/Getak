@@ -75,4 +75,18 @@
     <string name="exit">هل تريد الخروج من التطبيق ؟</string>
     <string name="yes">نعم</string>
     <string name="no">لا</string>
+    <string name="personalid">رقم الهويه</string>
+    <string name="license_type">نوع الرخصة</string>
+    <string name="expired">تاريخ إنتهاء الرخصة</string>
+    <string name="cartypetext">نوع السيارة</string>
+    <string name="carmodel">موديل السيارة</string>
+    <string name="bankaccount">رقم الحساب البنكي</string>
+    <string name="carcolor">لون السيارة</string>
+    <string name="tripsnumber">عدد الرحلات التى يمكن أن تقوم بها فى اليوم</string>
+    <string name="workingdays">أيام الأسبوع المتاح فيها للعمل</string>
+    <string name="idpic">رفع صورة الهوية</string>
+    <string name="licenspic">رفع صورة الرخصة</string>
+    <string name="carpic">رفع صورة السيارة</string>
+    <string name="male">ذكر</string>
+    <string name="female">أنثي</string>
 </resources>

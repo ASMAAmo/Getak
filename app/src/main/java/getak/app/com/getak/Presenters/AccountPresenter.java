@@ -7,8 +7,9 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
-import getak.app.com.getak.Model.Responses.LoginResponse.ClientLoginResponse;
+import getak.app.com.getak.Model.Responses.LoginResponse.LoginResponse;
 import getak.app.com.getak.Model.Responses.RegisterationResponse.ClientRegisterationData;
+import getak.app.com.getak.Model.Responses.RegisterationResponse.DriverRegisterationData;
 import getak.app.com.getak.Model.Responses.Result;
 import getak.app.com.getak.Service.ServiceBuilder;
 import getak.app.com.getak.Views.AccountView;
@@ -51,10 +52,10 @@ public class AccountPresenter {
     }
     public static void clientLogin(Context context, RequestBody requestBody, final AccountView view){
         view.loading(true);
-        Call<Result<ClientLoginResponse>> clientLoginCall = ServiceBuilder.getRouter(context).login(requestBody);
-        clientLoginCall.enqueue(new Callback<Result<ClientLoginResponse>>() {
+        Call<Result<LoginResponse>> clientLoginCall = ServiceBuilder.getRouter(context).login(requestBody);
+        clientLoginCall.enqueue(new Callback<Result<LoginResponse>>() {
             @Override
-            public void onResponse(Call<Result<ClientLoginResponse>> call, Response<Result<ClientLoginResponse>> response) {
+            public void onResponse(Call<Result<LoginResponse>> call, Response<Result<LoginResponse>> response) {
                 view.loading(false);
                 if(response.isSuccessful()){
                     view.onSuccess(response.body());
@@ -74,7 +75,7 @@ public class AccountPresenter {
             }
 
             @Override
-            public void onFailure(Call<Result<ClientLoginResponse>> call, Throwable t) {
+            public void onFailure(Call<Result<LoginResponse>> call, Throwable t) {
                 view.loading(false);
                 view.onFailed(t.getMessage());
             }
@@ -137,6 +138,37 @@ public class AccountPresenter {
 
             @Override
             public void onFailure(Call<Result<ClientRegisterationData>> call, Throwable t) {
+                view.loading(false);
+                view.onFailed(t.getMessage());
+            }
+        });
+    }
+    public static void getDriverProfile(Context context, int id, final AccountView view){
+        view.loading(true);
+        Call<Result<DriverRegisterationData>> getDriverProfileCall = ServiceBuilder.getRouter(context).getDriverProfile(id);
+        getDriverProfileCall.enqueue(new Callback<Result<DriverRegisterationData>>() {
+            @Override
+            public void onResponse(Call<Result<DriverRegisterationData>> call, Response<Result<DriverRegisterationData>> response) {
+                view.loading(true);
+                if(response.isSuccessful()){
+                    view.onSuccess(response.body());
+                }else {
+                    try {
+                        JSONObject jsonObject = new JSONObject(response.errorBody().string());
+                        String ErrorMessage = "";
+                        if (!jsonObject.getBoolean("status"))
+                            ErrorMessage = jsonObject.getString("message");
+                        view.onFailed(ErrorMessage);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Result<DriverRegisterationData>> call, Throwable t) {
                 view.loading(false);
                 view.onFailed(t.getMessage());
             }

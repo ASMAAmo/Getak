@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import getak.app.com.getak.Model.Responses.UserModel;
 
-public class ClientLoginResponse {
+public class LoginResponse {
     @SerializedName("user")
     @Expose
     private UserModel client;

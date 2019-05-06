@@ -33,6 +33,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import getak.app.com.getak.BaseActivity;
 import getak.app.com.getak.Dialogs.DriverButtomDialog;
 import getak.app.com.getak.Events.ContractCreationStepsEvent;
+import getak.app.com.getak.Fragments.DriverAccount;
 import getak.app.com.getak.Fragments.FragmentAccount;
 import getak.app.com.getak.Fragments.FragmentContracts;
 import getak.app.com.getak.Fragments.FragmentFavPlaces;
@@ -91,6 +92,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     public static final int SUPPORT = 5;
     public static final int SETTINGS = 6;
     public static final int CONTRACTS=7;
+    public static final int DRIVER_ACCOUNT=8;
     public static int pageIndex=0;
 
 
@@ -221,7 +223,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             case R.id.rel_my_account : {
                 if(SessionHelper.isLogin(this)) {
                     if(SessionHelper.isDriver(this)){
-                        //Switch to driver fragment
+                        switchToPage(DRIVER_ACCOUNT, null, getResources().getString(R.string.my_account));
                     }else {
                         switchToPage(MY_ACCOUNT, null, getResources().getString(R.string.my_account));
                     }
@@ -373,6 +375,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 FragmentContracts fragmentContracts =new FragmentContracts();
                 transaction.replace(R.id.main_container, fragmentContracts);
                 pageIndex = CONTRACTS;
+                transaction.commit();
+                titleTv.setText(name);
+                break;
+            }
+
+            case DRIVER_ACCOUNT : {
+                DriverAccount driverAccount =new DriverAccount();
+                transaction.replace(R.id.main_container, driverAccount);
+                pageIndex = DRIVER_ACCOUNT;
                 transaction.commit();
                 titleTv.setText(name);
                 break;

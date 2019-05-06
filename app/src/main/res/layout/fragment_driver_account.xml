@@ -1,0 +1,550 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:scrollbars="none"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:id="@+id/user_name_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/reg_type_tab"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_10sdp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_70sdp"
+                android:padding="@dimen/_5sdp"
+                android:src="@drawable/ic_person_black_24dp"
+                app:civ_border_color="@color/white"
+                app:civ_border_width="@dimen/_2sdp"
+                android:id="@+id/profile_image"
+                android:layout_margin="@dimen/_10sdp"/>
+
+            <TextView
+                android:id="@+id/user_name_lbl"
+                android:layout_width="wrap_content"
+                android:layout_gravity="right"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:text="@string/name"
+                android:textColor="@color/sidemenu"
+                android:textSize="@dimen/_13sdp" />
+
+            <EditText
+                android:id="@+id/name_input"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:inputType="text"
+                android:singleLine="true"
+                android:textSize="13sp"
+                android:textColor="@color/sidemenu"
+                android:background="@drawable/input_txt_bg"
+                android:padding="@dimen/_5sdp" />
+            <TextView
+                android:id="@+id/user_login_lbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:text="@string/phone_number"
+                android:textColor="@color/sidemenu"
+                android:textSize="@dimen/_13sdp" />
+
+            <EditText
+                android:id="@+id/phone_input"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:inputType="number"
+                android:textSize="13sp"
+                android:singleLine="true"
+                android:textColor="@color/sidemenu"
+                android:background="@drawable/input_txt_bg"
+                android:padding="@dimen/_5sdp" />
+            <TextView
+                android:id="@+id/email_lbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:text="@string/email"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <EditText
+                android:id="@+id/email_address"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:inputType="textEmailAddress"
+                android:singleLine="true"
+                android:textColor="@color/sidemenu"
+                android:background="@drawable/input_txt_bg"
+                android:padding="@dimen/_5sdp" />
+
+
+            <TextView
+                android:id="@+id/address_lbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="@string/address"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <EditText
+                android:id="@+id/address_input"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:inputType="textMultiLine"
+                android:singleLine="true"
+                android:textColor="@color/sidemenu"
+                android:background="@drawable/input_txt_bg"
+                android:padding="@dimen/_5sdp" />
+
+            <TextView
+                android:id="@+id/agelbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="@string/age"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <EditText
+                android:id="@+id/age_input"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:background="@drawable/input_txt_bg"
+                android:inputType="number"
+                android:padding="@dimen/_5sdp"
+                android:singleLine="true"
+                android:textColor="@color/sidemenu" />
+
+            <TextView
+                android:id="@+id/gender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="@string/gender"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <Spinner
+                android:id="@+id/gender_sp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:inputType="number"
+                android:singleLine="true"
+                android:textColor="@color/sidemenu"
+                android:background="@drawable/input_txt_bg"
+                android:padding="@dimen/_5sdp" />
+
+
+
+
+            <TextView
+                android:id="@+id/personalidlbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="@string/personalid"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <EditText
+                android:id="@+id/personal_id"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:inputType="number"
+                android:singleLine="true"
+                android:textColor="@color/sidemenu"
+                android:background="@drawable/input_txt_bg"
+                android:padding="@dimen/_5sdp" />
+
+            <TextView
+            android:id="@+id/license_type_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:text="@string/license_type"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/_13sdp" />
+
+            <EditText
+                android:id="@+id/license_type_input"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:inputType="number"
+                android:singleLine="true"
+                android:textColor="@color/sidemenu"
+                android:background="@drawable/input_txt_bg"
+                android:padding="@dimen/_5sdp" />
+
+            <TextView
+                android:id="@+id/expired_date_lbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="@string/expired"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <EditText
+                android:id="@+id/expired_date_input"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:inputType="number"
+                android:singleLine="true"
+                android:textColor="@color/sidemenu"
+                android:background="@drawable/input_txt_bg"
+                android:padding="@dimen/_5sdp" />
+
+
+            <TextView
+                android:id="@+id/cartypelbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="@string/cartypetext"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <EditText
+                android:id="@+id/car_typeinput"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:inputType="number"
+                android:singleLine="true"
+                android:textColor="@color/sidemenu"
+                android:background="@drawable/input_txt_bg"
+                android:padding="@dimen/_5sdp" />
+
+            <TextView
+                android:id="@+id/carmodellbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="@string/carmodel"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <EditText
+                android:id="@+id/car_model_input"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:inputType="number"
+                android:singleLine="true"
+                android:textColor="@color/sidemenu"
+                android:background="@drawable/input_txt_bg"
+                android:padding="@dimen/_5sdp" />
+
+            <TextView
+                android:id="@+id/bankaccountlbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="@string/bankaccount"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <EditText
+                android:id="@+id/bank_account_input"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:inputType="number"
+                android:singleLine="true"
+                android:textColor="@color/sidemenu"
+                android:background="@drawable/input_txt_bg"
+                android:padding="@dimen/_5sdp" />
+
+            <TextView
+                android:id="@+id/car_color_lbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="@string/carcolor"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <EditText
+                android:id="@+id/car_color_input"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:inputType="number"
+                android:singleLine="true"
+                android:textColor="@color/sidemenu"
+                android:background="@drawable/input_txt_bg"
+                android:padding="@dimen/_5sdp" />
+
+            <TextView
+                android:id="@+id/trips_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="@string/tripsnumber"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <EditText
+                android:id="@+id/trips_number_input"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:inputType="number"
+                android:singleLine="true"
+                android:textColor="@color/sidemenu"
+                android:background="@drawable/input_txt_bg"
+                android:padding="@dimen/_5sdp" />
+
+            <TextView
+                android:id="@+id/daysflight"
+                android:layout_width="wrap_content"
+                android:layout_gravity="right"
+                android:layout_below="@+id/ed_numofpeople"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_alignParentRight="true"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:text="@string/workingdays"
+                android:textColor="@color/sidemenu"
+                android:textSize="@dimen/_13sdp" />
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/daysflight"
+                android:id="@+id/myRadioGroup"
+                android:inputType="text"
+                android:layout_gravity="right"
+                android:layout_alignParentRight="true"
+                android:checkedButton="@+id/saturday" >
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/saturday"
+                    android:button="@null"
+                    android:drawablePadding="30dp"
+                    android:drawableRight="@android:drawable/btn_radio"
+                    android:layout_gravity="right"
+                    android:text="@string/sat" />
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/sunday"
+                    android:button="@null"
+                    android:drawablePadding="30dp"
+                    android:drawableRight="@android:drawable/btn_radio"
+                    android:layout_gravity="right"
+                    android:text="@string/sun" />
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/monday"
+                    android:button="@null"
+                    android:drawablePadding="30dp"
+                    android:drawableRight="@android:drawable/btn_radio"
+                    android:layout_gravity="right"
+                    android:text="@string/mon" />
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tuesday"
+                    android:button="@null"
+                    android:drawablePadding="30dp"
+                    android:drawableRight="@android:drawable/btn_radio"
+                    android:layout_gravity="right"
+                    android:text="@string/tue" />
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/wednesday"
+                    android:button="@null"
+                    android:drawablePadding="30dp"
+                    android:drawableRight="@android:drawable/btn_radio"
+                    android:layout_gravity="right"
+                    android:text="@string/wed" />
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/thursday"
+                    android:button="@null"
+                    android:drawablePadding="30dp"
+                    android:drawableRight="@android:drawable/btn_radio"
+                    android:layout_gravity="right"
+                    android:text="@string/the" />
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/friday"
+                    android:button="@null"
+                    android:drawablePadding="30dp"
+                    android:drawableRight="@android:drawable/btn_radio"
+                    android:layout_gravity="right"
+                    android:text="@string/fri" />
+
+            </RadioGroup>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:id="@+id/id_pic_box"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_height="@dimen/_60sdp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:background="@color/white"
+                    android:layout_height="@dimen/_1sdp"></LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/id_pic"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/logo" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/idpic"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:gravity="center_vertical"
+                        android:textSize="@dimen/_13sdp"
+                        android:layout_weight="1"
+                        android:textColor="@color/colorPrimary"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:id="@+id/license_pic_box"
+                android:layout_height="@dimen/_60sdp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:background="@color/white"
+                    android:layout_height="@dimen/_1sdp"></LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/license_pic"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/logo" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/licenspic"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:gravity="center_vertical"
+                        android:textSize="@dimen/_13sdp"
+                        android:layout_weight="1"
+                        android:textColor="@color/colorPrimary"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:id="@+id/car_pic_box"
+                android:layout_height="@dimen/_60sdp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:background="@color/white"
+                    android:layout_height="@dimen/_1sdp"></LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/car_pic"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/logo" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/carpic"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:gravity="center_vertical"
+                        android:textSize="@dimen/_13sdp"
+                        android:layout_weight="1"
+                        android:textColor="@color/colorPrimary"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:background="@color/white"
+                    android:layout_height="@dimen/_1sdp"></LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/buttons_box"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginBottom="@dimen/_15sdp"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/saveBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_30sdp"
+                    android:background="@drawable/button_bg"
+                    android:text="@string/save"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_13sdp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</ScrollView>
