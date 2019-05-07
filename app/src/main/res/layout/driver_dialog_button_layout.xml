@@ -1,7 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="@dimen/_300sdp"
-    android:background="@color/sidemenu">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/button_dialog_bg">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:id="@+id/driver_info_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/_15sdp">
+
+        <TextView
+            android:id="@+id/driver_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="أسم السائق"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_18sdp" />
+
+        <TextView
+            android:id="@+id/car_model"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:text="موديل السيارة"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_13sdp" />
+
+        <RatingBar
+            android:id="@+id/driver_rate_bar"
+            style="@style/Widget.AppCompat.RatingBar.Indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:padding="0dp"
+            android:progressTint="@color/white"
+            android:rating="2" />
+
+        <TextView
+            android:id="@+id/review_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:text="التقييم العام"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_13sdp" />
+
+        <TextView
+            android:id="@+id/total_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:text="40 ريال"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/_18sdp" />
+
+        <com.andexert.library.RippleView
+            android:id="@+id/call_driver_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:drawableStart="@drawable/ic_call_black_24dp"
+                android:drawablePadding="@dimen/_5sdp"
+                android:text="الإتصال بالسائق"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/_13sdp" />
+        </com.andexert.library.RippleView>
+    </LinearLayout>
+    <com.github.siyamed.shapeimageview.RoundedImageView
+        android:layout_width="@dimen/_120sdp"
+        android:layout_height="@dimen/_120sdp"
+        android:id="@+id/avatar"
+        android:layout_toEndOf="@id/driver_info_box"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:src="@drawable/ic_person_black_24dp"
+
+        app:siRadius="6dp"
+        app:siSquare="true"/>
+</RelativeLayout>

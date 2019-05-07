@@ -44,6 +44,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import getak.app.com.getak.Activites.IntroActivity;
 import getak.app.com.getak.Dialogs.CustomPlacePicker;
+import getak.app.com.getak.Dialogs.DriverButtomDialog;
 import getak.app.com.getak.GpsUtils.GPSTracker;
 import getak.app.com.getak.Model.Requests.FastTripRequest;
 import getak.app.com.getak.Model.Responses.FastTripResponse.FastTripResModel;
@@ -121,6 +122,8 @@ public class FragmentHome extends Fragment implements OnMapReadyCallback, Google
         }
         dialog=new KProgressHUD(getContext());
         fastTripRequest=new FastTripRequest();
+
+
 
     }
 
@@ -279,7 +282,7 @@ public class FragmentHome extends Fragment implements OnMapReadyCallback, Google
 
     @Override
     public void onTripRequestSuccess(FastTripResModel fastTripResModel) {
-        //Do something when fast trip response success
+        new DriverButtomDialog(getContext(),fastTripResModel).show();
     }
 
     @Override
