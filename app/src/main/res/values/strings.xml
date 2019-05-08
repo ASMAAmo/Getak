@@ -89,4 +89,14 @@
     <string name="carpic">رفع صورة السيارة</string>
     <string name="male">ذكر</string>
     <string name="female">أنثي</string>
+    <string name="licenceid">رقم الرخصة</string>
+    <string name="malaky">ملاكي</string>
+    <string name="ogra">أجرة</string>
+    <string name="iderr">أدخل رقم الهويه</string>
+    <string name="cartypeerr">أدخل نوع السيارة</string>
+    <string name="licenseerr">أدخل رقم الرخصة</string>
+    <string name="carmodelerr">أدخل نوع السيارة</string>
+    <string name="tripserrr">أدخل عدد الرحلات التي يمكنك تنفيذها فى اليوم</string>
+    <string name="bankaccounterr">أدخل رقم حسابك البنكي</string>
+    <string name="colorerr">أدخل لون السيارة</string>
 </resources>
