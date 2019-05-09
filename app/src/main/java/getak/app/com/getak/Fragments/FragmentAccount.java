@@ -190,7 +190,7 @@ public class FragmentAccount extends Fragment implements AccountView {
 
          age_input.setText(profile.getClientAge()+"");
             if(profile.getClientAvatar()!=null && !profile.getClientAvatar().isEmpty()) {
-                Picasso.get().load("https://"+profile.getClientAvatar()).placeholder(R.drawable.ic_person_black_24dp).fit().into(profile_image);
+                Picasso.get().load(profile.getClientAvatar()).placeholder(R.drawable.ic_person_black_24dp).fit().into(profile_image);
             }
 
     }

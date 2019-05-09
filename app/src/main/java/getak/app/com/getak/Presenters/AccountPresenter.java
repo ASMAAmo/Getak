@@ -174,4 +174,35 @@ public class AccountPresenter {
             }
         });
     }
+    public static void registerDriver(Context context ,RequestBody requestBody, final AccountView view){
+        view.loading(true);
+        Call<Result<DriverRegisterationData>> clientRegisterCall = ServiceBuilder.getRouter(context).registerDriver(requestBody);
+        clientRegisterCall.enqueue(new Callback<Result<DriverRegisterationData>>() {
+            @Override
+            public void onResponse(Call<Result<DriverRegisterationData>> call, Response<Result<DriverRegisterationData>> response) {
+                view.loading(false);
+                if(response.isSuccessful()){
+                    view.onSuccess(response.body());
+                }else {
+                    try {
+                        JSONObject jsonObject = new JSONObject(response.errorBody().string());
+                        String ErrorMessage="";
+                        if (!jsonObject.getBoolean("status"))
+                            ErrorMessage = jsonObject.getString("message");
+                        view.onFailed(ErrorMessage);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Result<DriverRegisterationData>> call, Throwable t) {
+                view.loading(false);
+                view.onFailed(t.getMessage());
+            }
+        });
+    }
 }

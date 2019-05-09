@@ -29,6 +29,7 @@ android {
             buildConfigField("String", "API_URl", "\"https://getak.mpgline.com/api/\"")
             buildConfigField("int", "DELAY", "0")
             minifyEnabled false
+            debuggable false
             //    signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -36,6 +37,7 @@ android {
             buildConfigField("String", "BASIC_URL", "\"https://getak.mpgline.com//\"")
             buildConfigField("String", "API_URl", "\"https://getak.mpgline.com/api/\"")
             buildConfigField("int", "DELAY", "0")
+            debuggable true
         }
     }
     sourceSets {

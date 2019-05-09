@@ -124,7 +124,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         userTypeConfig(this);
         if(SessionHelper.isLogin(this)) {
             Picasso.get()
-                    .load("https://"+SessionHelper.getUserSession(this).getClientAvatar())
+                    .load(SessionHelper.getUserSession(this).getClientAvatar())
                     .placeholder(R.drawable.ic_person_black_24dp)
                     .into(avatar);
         }

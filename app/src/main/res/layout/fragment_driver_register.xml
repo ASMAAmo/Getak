@@ -232,27 +232,6 @@
                 android:textColor="@color/sidemenu" />
 
             <TextView
-                android:id="@+id/license_number"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:layout_marginBottom="@dimen/_10sdp"
-                android:text="@string/licenceid"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/_13sdp" />
-
-            <EditText
-                android:id="@+id/license_number_input"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_30sdp"
-                android:background="@drawable/input_txt_bg"
-                android:inputType="textMultiLine"
-                android:padding="@dimen/_5sdp"
-                android:singleLine="true"
-                android:textColor="@color/sidemenu" />
-
-            <TextView
                 android:id="@+id/rokhsatype_lbl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -271,7 +250,6 @@
                 android:padding="5dp">
 
             </android.support.v7.widget.AppCompatSpinner>
-
             <TextView
                 android:id="@+id/cartype_lbl"
                 android:layout_width="wrap_content"
@@ -282,13 +260,33 @@
                 android:text="@string/cartypetext"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/_13sdp" />
-
             <EditText
                 android:id="@+id/edcartype"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_30sdp"
                 android:background="@drawable/input_txt_bg"
                 android:inputType="textMultiLine"
+                android:padding="@dimen/_5sdp"
+                android:singleLine="true"
+                android:textColor="@color/sidemenu" />
+
+            <TextView
+                android:id="@+id/licence_expiredinputlbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:text="@string/licenceexpired"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <EditText
+                android:id="@+id/licence_expiredinput"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:background="@drawable/input_txt_bg"
+                android:inputType="date"
                 android:padding="@dimen/_5sdp"
                 android:singleLine="true"
                 android:textColor="@color/sidemenu" />
@@ -374,7 +372,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_30sdp"
                 android:background="@drawable/input_txt_bg"
-                android:inputType="text"
+                android:inputType="number"
                 android:padding="@dimen/_5sdp"
                 android:singleLine="true"
                 android:textColor="@color/sidemenu" />

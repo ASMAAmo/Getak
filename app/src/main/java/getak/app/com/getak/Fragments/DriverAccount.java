@@ -120,13 +120,13 @@ public class DriverAccount extends Fragment implements AccountView {
             licenseExpiredDate.setText(driverProfile.getLicenseExpireDate());
             carTypeInput.setText(driverProfile.getCarType());
             carModelInput.setText(driverProfile.getCarModel());
-            bankAccountInput.setText(driverProfile.getBankAccount());
+            bankAccountInput.setText(driverProfile.getBankAccount().toString());
             carColorInput.setText(driverProfile.getCarColor());
             tripsNumber.setText(driverProfile.getTripNumbersPerDay()+"");
-            Picasso.get().load("https://"+driverProfile.getDriverAvatar()).fit().into(profile_image);
-            Picasso.get().load("https://"+driverProfile.getDriverPersonalIdPic()).fit().into(carPic);
-            Picasso.get().load("https://"+driverProfile.getDriverLicenceIdPic()).fit().into(licensePic);
-            Picasso.get().load("https://"+driverProfile.getCarPic()).fit().into(carPic);
+            Picasso.get().load(driverProfile.getDriverAvatar().toString()).fit().into(profile_image);
+            Picasso.get().load(driverProfile.getDriverPersonalIdPic().toString()).fit().into(idPic);
+            Picasso.get().load(driverProfile.getDriverLicenceIdPic().toString()).fit().into(licensePic);
+            Picasso.get().load(driverProfile.getCarPic().toString()).fit().into(carPic);
         }
     }
 

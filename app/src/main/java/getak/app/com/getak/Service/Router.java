@@ -67,4 +67,7 @@ public interface Router {
     //Get Driver profile
     @POST("driverProfile/{id}")
     Call<Result<DriverRegisterationData>> getDriverProfile(@Path("id") int id);
+    //Register Driver
+    @POST("registerDriver")
+    Call<Result<DriverRegisterationData>> registerDriver(@Body RequestBody requestBody);
 }

@@ -99,4 +99,6 @@
     <string name="tripserrr">أدخل عدد الرحلات التي يمكنك تنفيذها فى اليوم</string>
     <string name="bankaccounterr">أدخل رقم حسابك البنكي</string>
     <string name="colorerr">أدخل لون السيارة</string>
+    <string name="licenceexpired">تاريخ إنتهاء الرخصة</string>
+    <string name="expiredlicenceerr">أدخل تاريخ إنتهاء الرخصة</string>
 </resources>

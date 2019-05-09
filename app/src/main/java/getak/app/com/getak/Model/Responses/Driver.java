@@ -4,21 +4,9 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Driver {
-    @SerializedName("id")
-    @Expose
-    private Integer id;
     @SerializedName("driver_name")
     @Expose
     private String driverName;
-    @SerializedName("driver_avatar")
-    @Expose
-    private String driverAvatar;
-    @SerializedName("driver_gender")
-    @Expose
-    private String driverGender;
-    @SerializedName("driver_age")
-    @Expose
-    private Integer driverAge;
     @SerializedName("driver_email")
     @Expose
     private String driverEmail;
@@ -28,15 +16,18 @@ public class Driver {
     @SerializedName("driver_address")
     @Expose
     private String driverAddress;
+    @SerializedName("driver_gender")
+    @Expose
+    private String driverGender;
+    @SerializedName("driver_age")
+    @Expose
+    private String driverAge;
+    @SerializedName("password")
+    @Expose
+    private String password;
     @SerializedName("driver_personal_id")
     @Expose
     private String driverPersonalId;
-    @SerializedName("driver_personal_id_pic")
-    @Expose
-    private String driverPersonalIdPic;
-    @SerializedName("driver_licence_id_pic")
-    @Expose
-    private String driverLicenceIdPic;
     @SerializedName("license_type")
     @Expose
     private String licenseType;
@@ -46,68 +37,51 @@ public class Driver {
     @SerializedName("car_type")
     @Expose
     private String carType;
-    @SerializedName("car_pic")
-    @Expose
-    private String carPic;
     @SerializedName("car_model")
     @Expose
     private String carModel;
     @SerializedName("bank_account")
     @Expose
-    private String bankAccount;
+    private Object bankAccount;
     @SerializedName("car_color")
     @Expose
     private String carColor;
     @SerializedName("trip_numbers_per_day")
     @Expose
-    private Integer tripNumbersPerDay;
+    private String tripNumbersPerDay;
     @SerializedName("work_days")
     @Expose
     private WorkDays workDays;
-    @SerializedName("password")
-    @Expose
-    private String password;
     @SerializedName("deviceType")
     @Expose
     private String deviceType;
     @SerializedName("token")
     @Expose
-    private Object token;
-    @SerializedName("lng")
-    @Expose
-    private String lng;
-    @SerializedName("lat")
-    @Expose
-    private String lat;
+    private String token;
     @SerializedName("notifications")
     @Expose
     private Integer notifications;
-    @SerializedName("star")
+    @SerializedName("driver_avatar")
     @Expose
-    private Integer star;
-    @SerializedName("available")
+    private Object driverAvatar;
+    @SerializedName("driver_personal_id_pic")
     @Expose
-    private Integer available;
-    @SerializedName("status")
+    private Object driverPersonalIdPic;
+    @SerializedName("driver_licence_id_pic")
     @Expose
-    private Integer status;
-    @SerializedName("created_at")
+    private Object driverLicenceIdPic;
+    @SerializedName("car_pic")
     @Expose
-    private String createdAt;
+    private Object carPic;
     @SerializedName("updated_at")
     @Expose
     private String updatedAt;
-    @SerializedName("rating")
+    @SerializedName("created_at")
     @Expose
-    private Integer rating;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    private String createdAt;
+    @SerializedName("id")
+    @Expose
+    private Integer id;
 
     public String getDriverName() {
         return driverName;
@@ -115,30 +89,6 @@ public class Driver {
 
     public void setDriverName(String driverName) {
         this.driverName = driverName;
-    }
-
-    public String getDriverAvatar() {
-        return driverAvatar;
-    }
-
-    public void setDriverAvatar(String driverAvatar) {
-        this.driverAvatar = driverAvatar;
-    }
-
-    public String getDriverGender() {
-        return driverGender;
-    }
-
-    public void setDriverGender(String driverGender) {
-        this.driverGender = driverGender;
-    }
-
-    public Integer getDriverAge() {
-        return driverAge;
-    }
-
-    public void setDriverAge(Integer driverAge) {
-        this.driverAge = driverAge;
     }
 
     public String getDriverEmail() {
@@ -165,28 +115,36 @@ public class Driver {
         this.driverAddress = driverAddress;
     }
 
+    public String getDriverGender() {
+        return driverGender;
+    }
+
+    public void setDriverGender(String driverGender) {
+        this.driverGender = driverGender;
+    }
+
+    public String getDriverAge() {
+        return driverAge;
+    }
+
+    public void setDriverAge(String driverAge) {
+        this.driverAge = driverAge;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getDriverPersonalId() {
         return driverPersonalId;
     }
 
     public void setDriverPersonalId(String driverPersonalId) {
         this.driverPersonalId = driverPersonalId;
-    }
-
-    public String getDriverPersonalIdPic() {
-        return driverPersonalIdPic;
-    }
-
-    public void setDriverPersonalIdPic(String driverPersonalIdPic) {
-        this.driverPersonalIdPic = driverPersonalIdPic;
-    }
-
-    public String getDriverLicenceIdPic() {
-        return driverLicenceIdPic;
-    }
-
-    public void setDriverLicenceIdPic(String driverLicenceIdPic) {
-        this.driverLicenceIdPic = driverLicenceIdPic;
     }
 
     public String getLicenseType() {
@@ -213,14 +171,6 @@ public class Driver {
         this.carType = carType;
     }
 
-    public String getCarPic() {
-        return carPic;
-    }
-
-    public void setCarPic(String carPic) {
-        this.carPic = carPic;
-    }
-
     public String getCarModel() {
         return carModel;
     }
@@ -229,11 +179,11 @@ public class Driver {
         this.carModel = carModel;
     }
 
-    public String getBankAccount() {
+    public Object getBankAccount() {
         return bankAccount;
     }
 
-    public void setBankAccount(String bankAccount) {
+    public void setBankAccount(Object bankAccount) {
         this.bankAccount = bankAccount;
     }
 
@@ -245,11 +195,11 @@ public class Driver {
         this.carColor = carColor;
     }
 
-    public Integer getTripNumbersPerDay() {
+    public String getTripNumbersPerDay() {
         return tripNumbersPerDay;
     }
 
-    public void setTripNumbersPerDay(Integer tripNumbersPerDay) {
+    public void setTripNumbersPerDay(String tripNumbersPerDay) {
         this.tripNumbersPerDay = tripNumbersPerDay;
     }
 
@@ -261,14 +211,6 @@ public class Driver {
         this.workDays = workDays;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getDeviceType() {
         return deviceType;
     }
@@ -277,28 +219,12 @@ public class Driver {
         this.deviceType = deviceType;
     }
 
-    public Object getToken() {
+    public String getToken() {
         return token;
     }
 
-    public void setToken(Object token) {
+    public void setToken(String token) {
         this.token = token;
-    }
-
-    public String getLng() {
-        return lng;
-    }
-
-    public void setLng(String lng) {
-        this.lng = lng;
-    }
-
-    public String getLat() {
-        return lat;
-    }
-
-    public void setLat(String lat) {
-        this.lat = lat;
     }
 
     public Integer getNotifications() {
@@ -309,36 +235,36 @@ public class Driver {
         this.notifications = notifications;
     }
 
-    public Integer getStar() {
-        return star;
+    public Object getDriverAvatar() {
+        return driverAvatar;
     }
 
-    public void setStar(Integer star) {
-        this.star = star;
+    public void setDriverAvatar(Object driverAvatar) {
+        this.driverAvatar = driverAvatar;
     }
 
-    public Integer getAvailable() {
-        return available;
+    public Object getDriverPersonalIdPic() {
+        return driverPersonalIdPic;
     }
 
-    public void setAvailable(Integer available) {
-        this.available = available;
+    public void setDriverPersonalIdPic(Object driverPersonalIdPic) {
+        this.driverPersonalIdPic = driverPersonalIdPic;
     }
 
-    public Integer getStatus() {
-        return status;
+    public Object getDriverLicenceIdPic() {
+        return driverLicenceIdPic;
     }
 
-    public void setStatus(Integer status) {
-        this.status = status;
+    public void setDriverLicenceIdPic(Object driverLicenceIdPic) {
+        this.driverLicenceIdPic = driverLicenceIdPic;
     }
 
-    public String getCreatedAt() {
-        return createdAt;
+    public Object getCarPic() {
+        return carPic;
     }
 
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
+    public void setCarPic(Object carPic) {
+        this.carPic = carPic;
     }
 
     public String getUpdatedAt() {
@@ -349,11 +275,19 @@ public class Driver {
         this.updatedAt = updatedAt;
     }
 
-    public Integer getRating() {
-        return rating;
+    public String getCreatedAt() {
+        return createdAt;
     }
 
-    public void setRating(Integer rating) {
-        this.rating = rating;
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }
