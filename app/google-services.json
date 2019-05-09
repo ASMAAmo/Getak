@@ -1,35 +1,42 @@
 {
   "project_info": {
-    "project_number": "246265916456",
-    "firebase_url": "https://getak-237512.firebaseio.com",
-    "project_id": "getak-237512",
-    "storage_bucket": "getak-237512.appspot.com"
+    "project_number": "779639191409",
+    "firebase_url": "https://getak-226821.firebaseio.com",
+    "project_id": "getak-226821",
+    "storage_bucket": "getak-226821.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:246265916456:android:72aa8a93e87b818b",
+        "mobilesdk_app_id": "1:779639191409:android:72aa8a93e87b818b",
         "android_client_info": {
           "package_name": "getak.app.com.getak"
         }
       },
       "oauth_client": [
         {
-          "client_id": "246265916456-8shj4l7l359bi1edavth2nkcp3abq9q8.apps.googleusercontent.com",
+          "client_id": "779639191409-6rgv1c7sc6kkghvmcvr9f7n7g5dgunec.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDF6kgXLw19d1F3oJIBE2Sv_oVR79Aspz8"
+          "current_key": "AIzaSyC1oLCYUGehf26xFquXR-DNxr6oEkypky8"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "246265916456-8shj4l7l359bi1edavth2nkcp3abq9q8.apps.googleusercontent.com",
+              "client_id": "779639191409-6rgv1c7sc6kkghvmcvr9f7n7g5dgunec.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "779639191409-12mj4aqg1mjea1pcj5i8rjd9e3l1qtd7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.Getak.Getak-App"
+              }
             }
           ]
         }

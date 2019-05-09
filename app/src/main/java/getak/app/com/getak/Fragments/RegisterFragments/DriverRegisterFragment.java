@@ -21,8 +21,16 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.androidnetworking.interfaces.UploadProgressListener;
 import com.kaopiz.kprogresshud.KProgressHUD;
+
+import org.json.JSONObject;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -31,6 +39,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cc.cloudist.acplibrary.ACProgressConstant;
+import cc.cloudist.acplibrary.ACProgressFlower;
 import de.hdodenhof.circleimageview.CircleImageView;
 import getak.app.com.getak.Presenters.AccountPresenter;
 import getak.app.com.getak.R;
@@ -41,7 +51,7 @@ import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 
 public class DriverRegisterFragment extends Fragment implements AccountView {
-    public static KProgressHUD dialog;
+    public static ACProgressFlower dialog;
     public final String DRIVER="driver";
     @BindView(R.id.name_input)
     TextView nameInput;
@@ -93,7 +103,7 @@ public class DriverRegisterFragment extends Fragment implements AccountView {
     public static String driverIdSelectedFilePath;
     public static String driverLicenceSelectedFilePath;
     public static String driverCarSelectedFilePath;
-
+public String url="";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -112,7 +122,7 @@ public class DriverRegisterFragment extends Fragment implements AccountView {
         driverPersonalIdPic=view.findViewById(R.id.img_idpic);
         driverLicenceIdPic=view.findViewById(R.id.img_idrokhsa);
         driverCar=view.findViewById(R.id.img_idcarpic);
-        dialog=new KProgressHUD(getContext());
+        //dialog=new KProgressHUD(getContext());
         genderGroup.check(R.id.male);
         genderGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -320,31 +330,10 @@ public class DriverRegisterFragment extends Fragment implements AccountView {
             }else {
                 avatar = RequestBody.create(MediaType.parse("text/plain"), "");
             }
-            RequestBody requestBody = new MultipartBody.Builder()
-                    .setType(MultipartBody.FORM)
-                    .addFormDataPart("driver_name", name)
-                    .addFormDataPart("driver_email", email)
-                    .addFormDataPart("driver_phone",phone)
-                    .addFormDataPart("driver_address",address)
-                    .addFormDataPart("password",password)
-                    .addFormDataPart("password_confirmation",rePassword)
-                    .addFormDataPart("deviceType","Android")
-                    .addFormDataPart("token",SessionHelper.getPushNotificationToken(getContext()))
-                    .addFormDataPart("avatar","Avatar",avatar)
-                    .addFormDataPart("driver_gender", gender)
-                    .addFormDataPart("driver_personal_id", personalIdNumber)
-                    .addFormDataPart("driver_personal_id_pic", "Avatar",avatar)
-                    .addFormDataPart("driver_licence_id", licenseNumber)
-                    .addFormDataPart("driver_licence_id_pic", "Avatar",avatar)
-                    .addFormDataPart("license_type", licenseTypeSt)
-                    .addFormDataPart("license_expire_date", "")
-                    .addFormDataPart("car_pic", "Avatar",avatar)
-                    .addFormDataPart("car_model", carModel)
-                    .addFormDataPart("car_date", "")
-                    .addFormDataPart("car_color", carColor)
-                    .addFormDataPart("trip_numbers_per_day", tripsNumber)
-                    .addFormDataPart("work_days", "Avatar",avatar)
-                    .build();
+            registerDriver(name,email,phone)
+        /*    RequestBody requestBody = new MultipartBody.Builder()
+                    .setType(MultipartBody.FORM)*/
+
 
             //Invoke driver registration presenter here
         }
@@ -386,5 +375,70 @@ public class DriverRegisterFragment extends Fragment implements AccountView {
     @Override
     public void loading(boolean status) {
 
+    }
+    public void registerDriver(String drivername,String email,String phone,String address,String password,String rePassword,String avatar,
+                            String gender,String personalIdNumber, String licenseNumber ,String carModel,String carColor,String tripsNumber) {
+
+        dialog = new ACProgressFlower.Builder(getActivity())
+                .direction(ACProgressConstant.DIRECT_CLOCKWISE)
+                .themeColor(getResources().getColor(R.color.sidemenu))
+                .fadeColor(getResources().getColor(R.color.sidemenu)).build();
+        dialog.show();
+
+        AndroidNetworking.upload(url);
+        RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("driver_name", drivername)
+                .addFormDataPart("driver_email", email)
+                .addFormDataPart("driver_phone",phone)
+                .addFormDataPart("driver_address",address)
+                .addFormDataPart("password",password)
+                .addFormDataPart("password_confirmation",rePassword)
+                .addFormDataPart("deviceType","Android")
+                .addFormDataPart("token",SessionHelper.getPushNotificationToken(getContext()))
+                .addFormDataPart("avatar","Avatar",avatar)
+                .addFormDataPart("driver_gender", gender)
+                .addFormDataPart("driver_personal_id", personalIdNumber)
+                .addFormDataPart("driver_personal_id_pic", "Avatar",avatar)
+                .addFormDataPart("driver_licence_id", licenseNumber)
+                .addFormDataPart("driver_licence_id_pic", "Avatar",avatar)
+                .addFormDataPart("license_type", licenseTypeSt)
+                .addFormDataPart("license_expire_date", "")
+                .addFormDataPart("car_pic", "Avatar",avatar)
+                .addFormDataPart("car_model", carModel)
+                .addFormDataPart("car_date", "")
+                .addFormDataPart("car_color", carColor)
+                .addFormDataPart("trip_numbers_per_day", tripsNumber)
+                .addFormDataPart("work_days", "Avatar",avatar)
+                .build()
+                .setUploadProgressListener(new UploadProgressListener() {
+                    @Override
+                    public void onProgress(long bytesUploaded, long totalBytes) {
+                        // do anything with progress
+
+                        if (bytesUploaded == totalBytes) {
+                            dialog.dismiss();
+                        }
+
+
+
+                    }
+                })
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        dialog.dismiss();
+                        //  Toast.makeText(getActivity(), "Successfully uploaded", Toast.LENGTH_SHORT).show();
+                        // Log.v("re", response.toString());
+                        //  Toast.makeText(getActivity(),getResources().getString(R.string.datachanged),Toast.LENGTH_LONG).show();
+
+                    }
+
+                    @Override
+                    public void onError(ANError error) {
+                        dialog.dismiss();
+                        Toast.makeText(getActivity(),error.toString(),Toast.LENGTH_LONG).show();
+                    }
+                });
     }
 }
