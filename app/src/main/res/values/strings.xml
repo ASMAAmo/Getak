@@ -101,4 +101,5 @@
     <string name="colorerr">أدخل لون السيارة</string>
     <string name="licenceexpired">تاريخ إنتهاء الرخصة</string>
     <string name="expiredlicenceerr">أدخل تاريخ إنتهاء الرخصة</string>
+    <string name="chose_contract_days">قم بإختيار عقدك</string>
 </resources>

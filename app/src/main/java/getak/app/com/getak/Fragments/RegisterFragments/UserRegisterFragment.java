@@ -235,7 +235,6 @@ public class UserRegisterFragment extends Fragment implements AccountView {
     public void onSuccess(Object obj) {
         if(obj!=null) {
             SessionHelper.setUserType(getContext(),CLIENT);
-            SessionHelper.setUserSession(getContext(), ((Result<ClientRegisterationData>)obj).getData().getClient());
             Toast.makeText(getContext(),  ((Result<ClientRegisterationData>)obj).getMessage(), Toast.LENGTH_LONG).show();
             startActivity(new Intent(getContext(), MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
             EventBus.getDefault().post(new LoginEvent(true, ""));

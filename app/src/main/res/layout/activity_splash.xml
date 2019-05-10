@@ -7,4 +7,14 @@
     android:layout_height="match_parent"
     tools:context="getak.app.com.getak.Activites.Splash">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="مرحبا بك "
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/_25sdp"
+        android:textSize="@dimen/_30sdp"
+        android:textColor="@color/colorAccent" />
 </RelativeLayout>

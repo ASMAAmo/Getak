@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "779639191409-cc3ap3rrnjeknk2io1boio784g5mcfrk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "getak.app.com.getak",
+            "certificate_hash": "c022c4c58d7703279d5dc35caa49cf584cd76070"
+          }
+        },
+        {
+          "client_id": "779639191409-mlgem9bc7k6p1921joa2ahen4hjcokns.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "getak.app.com.getak",
+            "certificate_hash": "b447588d75c2b0be3ff53a6cf43de77b0d37786d"
+          }
+        },
+        {
           "client_id": "779639191409-6rgv1c7sc6kkghvmcvr9f7n7g5dgunec.apps.googleusercontent.com",
           "client_type": 3
         }

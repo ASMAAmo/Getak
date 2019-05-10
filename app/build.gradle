@@ -30,7 +30,7 @@ android {
             buildConfigField("int", "DELAY", "0")
             minifyEnabled false
             debuggable false
-            //    signingConfig signingConfigs.release
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
@@ -57,9 +57,9 @@ dependencies {
     implementation 'com.google.android.gms:play-services:11.0.4'
     implementation 'com.google.android.gms:play-services-maps:11.0.4'
     implementation 'com.google.android.gms:play-services-location:11.0.4'
+    implementation "com.google.android.gms:play-services-places:10.2.0"
     implementation 'com.google.firebase:firebase-core:11.0.4'
     implementation 'com.google.firebase:firebase-messaging:11.0.4'
-    implementation "com.google.android.gms:play-services-places:10.2.0"
     testImplementation 'junit:junit:4.12'
     implementation 'com.amitshekhar.android:android-networking:1.0.2'
     implementation 'com.intuit.sdp:sdp-android:1.0.6'

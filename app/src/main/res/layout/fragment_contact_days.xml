@@ -3,40 +3,57 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/intro_bg"
     android:layout_height="match_parent"
+    android:background="@drawable/bg2"
     tools:context="getak.app.com.getak.Activites.Splash">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="قم بإختيار عقدك"
-        android:textColor="@android:color/black"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/_200sdp"
-        android:textSize="@dimen/_20sdp"/>
+    <RelativeLayout
+        android:id="@+id/top_h"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_250sdp"
+        android:layout_marginStart="@dimen/_30sdp"
+        android:layout_marginEnd="@dimen/_30sdp"
+        android:background="@drawable/bg_header">
+
+        <ImageView
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="@dimen/_150sdp"
+            android:id="@+id/logo"
+            android:layout_centerInParent="true"
+            android:src="@drawable/logo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/logo"
+            android:layout_centerHorizontal="true"
+            android:text="@string/chose_contract_days"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/_20sdp" />
+    </RelativeLayout>
+
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/days_list"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_200sdp"
-        android:layout_above="@+id/back_btn"></android.support.v7.widget.RecyclerView>
-
-
+        android:layout_above="@+id/back_btn"
+        android:layout_below="@+id/top_h"
+        android:layout_marginTop="@dimen/_10sdp"></android.support.v7.widget.RecyclerView>
 
 
     <Button
         android:id="@+id/back_btn"
         android:layout_width="@dimen/_100sdp"
-        android:layout_centerHorizontal="true"
         android:layout_height="@dimen/_30sdp"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:background="@drawable/button_bg"
-        android:text="رجوع"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginStart="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginEnd="@dimen/_25sdp"
         android:layout_marginBottom="@dimen/_25sdp"
-        android:layout_alignParentBottom="true"
+        android:background="@drawable/button_bg"
+        android:text="رجوع"
         android:textColor="@color/white"
         android:textSize="@dimen/_13sdp" />
 
