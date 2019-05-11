@@ -31,6 +31,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import getak.app.com.getak.BaseActivity;
 import getak.app.com.getak.Dialogs.DriverButtomDialog;
 import getak.app.com.getak.Events.ContractCreationStepsEvent;
+import getak.app.com.getak.Events.LoginEvent;
 import getak.app.com.getak.Fragments.DriverAccount;
 import getak.app.com.getak.Fragments.FragmentAccount;
 import getak.app.com.getak.Fragments.FragmentContracts;
@@ -161,7 +162,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
 
     @Subscribe
-    public void onEvent(ContractCreationStepsEvent event){
+    public void onEvent(LoginEvent event){
         if (event.isSucess()){
             relMyAccountBtn.setVisibility(View.VISIBLE);
             avatar.setVisibility(View.VISIBLE);

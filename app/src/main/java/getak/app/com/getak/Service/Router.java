@@ -79,4 +79,8 @@ public interface Router {
     //Change Driver location
     @POST("updateLocation")
     Call<Result<Object>> changeStatus(@Body HashMap request);
+    //Update Driver
+    @POST("driverUpdateProfile/{id}")
+    Call<Result<DriverRegisterationData>> updateDriver (@Path("id") int id,@Body RequestBody requestBody);
+
 }

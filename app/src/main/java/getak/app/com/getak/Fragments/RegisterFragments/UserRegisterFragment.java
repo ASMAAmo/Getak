@@ -32,6 +32,7 @@ import getak.app.com.getak.Activites.MainActivity;
 import getak.app.com.getak.Events.LoginEvent;
 import getak.app.com.getak.Model.Responses.RegisterationResponse.ClientRegisterationData;
 import getak.app.com.getak.Model.Responses.Result;
+import getak.app.com.getak.Model.Responses.UserModel;
 import getak.app.com.getak.Presenters.AccountPresenter;
 import getak.app.com.getak.R;
 import getak.app.com.getak.Session.SessionHelper;
@@ -235,6 +236,11 @@ public class UserRegisterFragment extends Fragment implements AccountView {
     public void onSuccess(Object obj) {
         if(obj!=null) {
             SessionHelper.setUserType(getContext(),CLIENT);
+            UserModel userSession =new UserModel();
+            userSession.setClientName(((Result<ClientRegisterationData>)obj).getData().getClient().getClientName());
+            userSession.setClientAvatar(((Result<ClientRegisterationData>)obj).getData().getClient().getClientAvatar());
+            userSession.setId(((Result<ClientRegisterationData>)obj).getData().getClient().getId());
+            SessionHelper.setUserSession(getContext(),userSession);
             Toast.makeText(getContext(),  ((Result<ClientRegisterationData>)obj).getMessage(), Toast.LENGTH_LONG).show();
             startActivity(new Intent(getContext(), MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
             EventBus.getDefault().post(new LoginEvent(true, ""));

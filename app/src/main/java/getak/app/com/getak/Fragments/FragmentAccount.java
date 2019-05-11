@@ -15,11 +15,14 @@ import android.widget.Toast;
 import com.kaopiz.kprogresshud.KProgressHUD;
 import com.squareup.picasso.Picasso;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.io.File;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import getak.app.com.getak.Events.LoginEvent;
 import getak.app.com.getak.Model.Responses.RegisterationResponse.ClientRegisterationData;
 import getak.app.com.getak.Model.Responses.Result;
 import getak.app.com.getak.Model.Responses.UserModel;
@@ -165,6 +168,7 @@ public class FragmentAccount extends Fragment implements AccountView {
          phoneInput.setText(profile.getClientPhone());
          email_input.setText(profile.getClientEmail());
          addressInput.setText(profile.getClientAddress());
+            EventBus.getDefault().post(new LoginEvent(true,""));
        if(profile.getClientGender()!=null) {
            if (profile.getClientGender().equals("male")) {
                gender.check(R.id.male);
