@@ -20,8 +20,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.andexert.library.RippleView;
-import com.google.android.gms.location.places.Place;
-import com.google.android.gms.location.places.ui.PlacePicker;
 import com.squareup.picasso.Picasso;
 
 import org.greenrobot.eventbus.EventBus;
@@ -78,7 +76,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     RippleView relLogOut;
     @BindView(R.id.avatar)
     CircleImageView avatar;
-
+    @BindView(R.id.user_name)
+    TextView userName;
 
 
     MenuItem itemAddContract;
@@ -119,18 +118,35 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         relHometBtn.setOnClickListener(this);
         relContracts.setOnClickListener(this);
         relLogOut.setOnClickListener(this);
-        switchToPage(HOME,null,getResources().getString(R.string.home));
+        switchToPage(HOME,null,getString(R.string.getk));
         EventBus.getDefault().register(this);
         userTypeConfig(this);
+        checkLoginStatus();
+
+
+
+    }
+
+    private void checkLoginStatus() {
         if(SessionHelper.isLogin(this)) {
-            Picasso.get()
-                    .load(SessionHelper.getUserSession(this).getClientAvatar())
-                    .placeholder(R.drawable.ic_person_black_24dp)
-                    .into(avatar);
+            if(SessionHelper.isDriver(this)){
+                Picasso.get()
+                        .load(SessionHelper.getUserSession(this).getDriverAvatar()+"")
+                        .placeholder(R.drawable.ic_person_black_24dp)
+                        .into(avatar);
+                userName.setVisibility(View.VISIBLE);
+                userName.setText(SessionHelper.getUserSession(this).getDriverName());
+            }else {
+                Picasso.get()
+                        .load(SessionHelper.getUserSession(this).getClientAvatar())
+                        .placeholder(R.drawable.ic_person_black_24dp)
+                        .into(avatar);
+                userName.setVisibility(View.VISIBLE);
+                userName.setText(SessionHelper.getUserSession(this).getClientName());
+            }
+        }else {
+            userName.setVisibility(View.GONE);
         }
-
-
-
     }
 
     //Check user type and perform configurations
@@ -150,9 +166,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             relMyAccountBtn.setVisibility(View.VISIBLE);
             avatar.setVisibility(View.VISIBLE);
             relLogOut.setVisibility(View.VISIBLE);
-            Picasso.get().load(SessionHelper.getUserSession(this).getClientAvatar())
-                    .fit()
-                    .into(avatar);
+            if(SessionHelper.isDriver(this)){
+                Picasso.get().load(SessionHelper.getUserSession(this).getDriverAvatar()+"")
+                        .fit()
+                        .into(avatar);
+            }else {
+                Picasso.get().load(SessionHelper.getUserSession(this).getClientAvatar())
+                        .fit()
+                        .into(avatar);
+            }
+            checkLoginStatus();
         }
     }
 
@@ -215,7 +238,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.rel_home : {
-                switchToPage(HOME,null,getResources().getString(R.string.home));
+                switchToPage(HOME,null,getResources().getString(R.string.getk));
                 itemAddContract.setVisible(false);
                 drawer.closeDrawers();
                 break;
@@ -413,17 +436,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             });
             builder.show();
             return;
-        }
-    }
-
-
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 1) {
-            if (resultCode == RESULT_OK) {
-                Place place = PlacePicker.getPlace(data, this);
-                String toastMsg = String.format("Place: %s", place.getName());
-                Toast.makeText(this, toastMsg, Toast.LENGTH_LONG).show();
-            }
         }
     }
 }

@@ -1,5 +1,7 @@
 package getak.app.com.getak.Service;
 
+import java.util.HashMap;
+
 import getak.app.com.getak.Model.Contractmodel;
 import getak.app.com.getak.Model.ContactsModel;
 import getak.app.com.getak.Model.FavModel;
@@ -7,6 +9,7 @@ import getak.app.com.getak.Model.MyTrips;
 import getak.app.com.getak.Model.Requests.CreateContractRequest;
 import getak.app.com.getak.Model.Requests.FastTripRequest;
 import getak.app.com.getak.Model.Responses.AllDriversResponse.AllDrivers;
+import getak.app.com.getak.Model.Responses.CheckStatus.Status;
 import getak.app.com.getak.Model.Responses.ContractsType.ContractsTypes;
 import getak.app.com.getak.Model.Responses.FastTripResponse.FastTripResModel;
 import getak.app.com.getak.Model.Responses.LoginResponse.LoginResponse;
@@ -70,4 +73,10 @@ public interface Router {
     //Register Driver
     @POST("registerDriver")
     Call<Result<DriverRegisterationData>> registerDriver(@Body RequestBody requestBody);
+    //Check status
+    @POST("check_status")
+    Call<Result<Status>> checkStatus(@Body HashMap request);
+    //Change Driver location
+    @POST("updateLocation")
+    Call<Result<Object>> changeStatus(@Body HashMap request);
 }

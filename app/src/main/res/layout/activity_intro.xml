@@ -4,21 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg2"
+    android:background="@drawable/bg1"
     tools:context="getak.app.com.getak.Activites.Splash">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_250sdp"
-        android:layout_marginStart="@dimen/_30sdp"
-        android:layout_marginEnd="@dimen/_30sdp"
+        android:layout_height="@dimen/_300sdp"
+        android:layout_marginStart="@dimen/_25sdp"
+        android:layout_marginEnd="@dimen/_25sdp"
         android:background="@drawable/bg_header">
+
         <ImageView
-            android:layout_width="@dimen/_200sdp"
-            android:layout_height="@dimen/_200sdp"
+            android:layout_width="@dimen/_230sdp"
+            android:layout_height="@dimen/_230sdp"
             android:layout_centerInParent="true"
-            android:src="@drawable/logo"/>
+            android:src="@drawable/logo" />
     </RelativeLayout>
+
     <LinearLayout
         android:id="@+id/buttons_box"
         android:layout_width="match_parent"

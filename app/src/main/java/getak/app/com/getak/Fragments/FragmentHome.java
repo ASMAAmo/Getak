@@ -2,6 +2,7 @@ package getak.app.com.getak.Fragments;
 
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -18,6 +19,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,6 +42,8 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.kaopiz.kprogresshud.KProgressHUD;
 
+import java.util.HashMap;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -47,17 +52,21 @@ import getak.app.com.getak.Dialogs.CustomPlacePicker;
 import getak.app.com.getak.Dialogs.DriverButtomDialog;
 import getak.app.com.getak.GpsUtils.GPSTracker;
 import getak.app.com.getak.Model.Requests.FastTripRequest;
+import getak.app.com.getak.Model.Responses.CheckStatus.Status;
 import getak.app.com.getak.Model.Responses.FastTripResponse.FastTripResModel;
+import getak.app.com.getak.Model.Responses.Result;
 import getak.app.com.getak.Model.Trips;
 import getak.app.com.getak.Presenters.AccountPresenter;
 import getak.app.com.getak.Presenters.TripsRequestsPresenter;
 import getak.app.com.getak.R;
 import getak.app.com.getak.Session.SessionHelper;
+import getak.app.com.getak.Views.AccountView;
+import getak.app.com.getak.Views.ChangeDriverStatusView;
 import getak.app.com.getak.Views.TripsRequestsView;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 
-public class FragmentHome extends Fragment implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, com.google.android.gms.location.LocationListener, CustomPlacePicker.PlacePickerInteraction, TripsRequestsView {
+public class FragmentHome extends Fragment implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, com.google.android.gms.location.LocationListener, CustomPlacePicker.PlacePickerInteraction, TripsRequestsView, AccountView , ChangeDriverStatusView {
 
     View v;
     public static KProgressHUD dialog;
@@ -78,8 +87,37 @@ public class FragmentHome extends Fragment implements OnMapReadyCallback, Google
     TextView target;
     @BindView(R.id.user_main_layout)
     RelativeLayout userMainLayout;
+    @BindView(R.id.set_active_btn)
+    Button setActiveBtn;
+    @BindView(R.id.set_dis_active_btn)
+    Button setDisActiveBtn;
+    @BindView(R.id.driver_layout)
+    FrameLayout driverLayout;
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if(SessionHelper.isLogin(getContext())&&SessionHelper.isDriver(getContext())){
+          checkDriverStatus();
+        }
+    }
 
 
+    private void checkDriverStatus() {
+        HashMap request =new HashMap();
+        request.clear();
+        request.put("user_id",SessionHelper.getUserSession(getContext()).getId());
+        request.put("type",SessionHelper.getUserType(getContext()));
+        AccountPresenter.checkDriverStatus(getContext(),request,this);
+    }
+    private void changeDriverStatus(int i) {
+        HashMap request=new HashMap();
+        request.put("driver_id",SessionHelper.getUserSession(getContext()).getId());
+        request.put("lat",gpsTracker.getLatitude());
+        request.put("long",gpsTracker.getLongitude());
+        request.put("status",i+"");
+        AccountPresenter.changeDriverStatus(getContext(),request,this);
+    }
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -132,11 +170,14 @@ public class FragmentHome extends Fragment implements OnMapReadyCallback, Google
     public void userTypeConfig(Context context) {
         if(SessionHelper.isDriver(getContext())){
             userMainLayout.setVisibility(View.GONE);
+            driverLayout.setVisibility(View.VISIBLE);
         }else {
             userMainLayout.setVisibility(View.VISIBLE);
+            driverLayout.setVisibility(View.GONE);
         }
     }
 
+    @SuppressLint("RestrictedApi")
     @Override
     public void onConnected(@Nullable Bundle bundle) {
         mLocationrequest = new LocationRequest();
@@ -317,5 +358,77 @@ public class FragmentHome extends Fragment implements OnMapReadyCallback, Google
     public void onStop() {
         super.onStop();
         customPlacePicker.removeMapFragment(getContext());
+    }
+
+
+
+
+
+
+
+    @Override
+    public void onSuccess(Object obj) {
+       switch (((Status)obj).getAvailable()){
+           case 1 : {
+               setDisActiveBtn.setVisibility(View.GONE);
+               setActiveBtn.setVisibility(View.VISIBLE);
+               break;
+           }
+           case 0 : {
+               setDisActiveBtn.setVisibility(View.VISIBLE);
+               setActiveBtn.setVisibility(View.GONE);
+               break;
+           }
+       }
+    }
+
+    @Override
+    public void onFailed(String err) {
+        Toast.makeText(getContext(), err, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void loading(boolean status) {
+
+    }
+
+    //Set Driver Active
+    @OnClick(R.id.set_active_btn)
+    void active(){
+       changeDriverStatus(0);
+    }
+
+
+
+    //Set Driver Dis active
+    @OnClick(R.id.set_dis_active_btn)
+    void disActive(){
+        changeDriverStatus(1);
+    }
+
+
+
+
+
+    @Override
+    public void onStatusChanged(Object object) {
+        checkDriverStatus();
+        Toast.makeText(getContext(), ((Result<Object>)object).getMessage(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onStatusChangedError(String err) {
+        Toast.makeText(getContext(), err, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void changingProgress(boolean status) {
+        if(status){
+            dialog.show();
+        }else {
+            if (dialog.isShowing()) {
+                dialog.dismiss();
+            }
+        }
     }
 }
