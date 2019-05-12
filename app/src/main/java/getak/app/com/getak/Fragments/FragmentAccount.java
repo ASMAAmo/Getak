@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kaopiz.kprogresshud.KProgressHUD;
@@ -51,6 +52,10 @@ public class FragmentAccount extends Fragment implements AccountView {
     RadioGroup gender;
     @BindView(R.id.age_in)
     EditText age_input;
+    @BindView(R.id.password_input)
+    TextView passwordInput;
+    @BindView(R.id.re_password_input)
+    TextView rePassworInput;
     String clientGender="";
     String selectedFilePath;
 
@@ -88,12 +93,16 @@ public class FragmentAccount extends Fragment implements AccountView {
         email_input.setError(null);
         addressInput.setError(null);
         age_input.setError(null);
+        passwordInput.setError(null);
+        rePassworInput.setError(null);
 
         String name = name_input.getText().toString();
         String phone = phoneInput.getText().toString();
         String email = email_input.getText().toString();
         String address= addressInput.getText().toString();
         String age= age_input.getText().toString();
+        String password =passwordInput.getText().toString();
+        String rePassword =rePassworInput.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
@@ -102,6 +111,18 @@ public class FragmentAccount extends Fragment implements AccountView {
         if (TextUtils.isEmpty(address)) {
             addressInput.setError(getString(R.string.addressreq));
             focusView = addressInput;
+            cancel = true;
+        }
+
+        if (TextUtils.isEmpty(password)) {
+            passwordInput.setError(getString(R.string.passreq));
+            focusView = passwordInput;
+            cancel = true;
+        }
+
+        if (TextUtils.isEmpty(rePassword)) {
+            rePassworInput.setError(getString(R.string.passreq));
+            focusView = rePassworInput;
             cancel = true;
         }
 
@@ -148,6 +169,8 @@ public class FragmentAccount extends Fragment implements AccountView {
                     .addFormDataPart("client_phone",phone)
                     .addFormDataPart("client_address",address)
                     .addFormDataPart("client_age",age)
+                    .addFormDataPart("password",password)
+                    .addFormDataPart("password_confirmation",rePassword)
                     .addFormDataPart("client_gender",clientGender)
                     .build();
             AccountPresenter.updateClientProfile(getContext(),SessionHelper.getUserSession(getContext()).getId(),requestBody,this);

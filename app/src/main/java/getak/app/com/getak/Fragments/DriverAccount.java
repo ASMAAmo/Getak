@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -62,6 +63,10 @@ public class DriverAccount extends Fragment implements AccountView {
     EditText phoneInput;
     @BindView(R.id.email_address)
     EditText email_input;
+    @BindView(R.id.password_input)
+    TextView passwordInput;
+    @BindView(R.id.re_password_input)
+    TextView rePassworInput;
     @BindView(R.id.address_input)
     EditText addressInput;
     @BindView(R.id.gender_sp)
@@ -217,6 +222,8 @@ public class DriverAccount extends Fragment implements AccountView {
         bankAccountInput.setError(null);
         tripsNumber.setError(null);
         licenseExpiredDate.setError(null);
+        passwordInput.setError(null);
+        rePassworInput.setError(null);
 
         String name = name_input.getText().toString();
         String phone = phoneInput.getText().toString();
@@ -231,6 +238,9 @@ public class DriverAccount extends Fragment implements AccountView {
         String tripsNumberst=tripsNumber.getText().toString();
         String licenceExpiredDate = licenseTypeInput.getText().toString();
         String licenseType=licenseTypeInput.getText().toString();
+        String password = passwordInput.getText().toString();
+        String repassword =rePassworInput.getText().toString();
+
 
 
         boolean cancel = false;
@@ -240,6 +250,20 @@ public class DriverAccount extends Fragment implements AccountView {
         if (TextUtils.isEmpty(address)) {
             addressInput.setError(getString(R.string.addressreq));
             focusView = addressInput;
+            cancel = true;
+        }
+
+
+        if (TextUtils.isEmpty(password)) {
+            passwordInput.setError(getString(R.string.passreq));
+            focusView = passwordInput;
+            cancel = true;
+        }
+
+
+        if (TextUtils.isEmpty(repassword)) {
+            rePassworInput.setError(getString(R.string.passreq));
+            focusView = rePassworInput;
             cancel = true;
         }
 
@@ -347,6 +371,8 @@ public class DriverAccount extends Fragment implements AccountView {
                     .addFormDataPart("driver_email", email)
                     .addFormDataPart("driver_phone",phone)
                     .addFormDataPart("driver_address",address)
+                    .addFormDataPart("password",password)
+                    .addFormDataPart("password_confirmation",repassword)
                     .addFormDataPart("deviceType","Android")
                     .addFormDataPart("token",SessionHelper.getPushNotificationToken(getContext()))
                     .addFormDataPart("driver_gender", gender)

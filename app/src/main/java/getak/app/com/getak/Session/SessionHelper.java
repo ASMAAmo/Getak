@@ -160,7 +160,7 @@ public class SessionHelper {
 
 
     public static void setUserType(Context context, String type) {
-        SharedPreferences sharedPref = context.getSharedPreferences(NOTIFICATIONS_SHAREDPREFS, Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = context.getSharedPreferences(SHARED_PREFERENCES_FILE, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString(USER_TYPE, type);
         editor.apply();
@@ -168,13 +168,13 @@ public class SessionHelper {
 
 
     public static boolean isDriver(Context context){
-        SharedPreferences sharedPref = context.getSharedPreferences(NOTIFICATIONS_SHAREDPREFS, Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = context.getSharedPreferences(SHARED_PREFERENCES_FILE, Context.MODE_PRIVATE);
         return sharedPref.getString(USER_TYPE, "").equals("driver");
     }
 
 
     public static String getUserType(Context context) {
-        SharedPreferences sharedPref = context.getSharedPreferences(NOTIFICATIONS_SHAREDPREFS, Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = context.getSharedPreferences(SHARED_PREFERENCES_FILE, Context.MODE_PRIVATE);
         return sharedPref.getString(USER_TYPE, "");
     }
 

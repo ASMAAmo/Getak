@@ -97,6 +97,7 @@ public class FragmentHome extends Fragment implements OnMapReadyCallback, Google
     @Override
     public void onStart() {
         super.onStart();
+        userTypeConfig(getContext());
         if(SessionHelper.isLogin(getContext())&&SessionHelper.isDriver(getContext())){
           checkDriverStatus();
         }
@@ -151,7 +152,6 @@ public class FragmentHome extends Fragment implements OnMapReadyCallback, Google
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        userTypeConfig(getContext());
         gpsTracker = new GPSTracker(getContext());
         if(customPlacePicker==null) {
             try {
@@ -168,7 +168,12 @@ public class FragmentHome extends Fragment implements OnMapReadyCallback, Google
 
     //Check user type ind perform configurations
     public void userTypeConfig(Context context) {
-        if(SessionHelper.isDriver(getContext())){
+        if(!SessionHelper.isLogin(context)){
+            userMainLayout.setVisibility(View.VISIBLE);
+            driverLayout.setVisibility(View.GONE);
+        }
+
+        if(SessionHelper.isDriver(context)){
             userMainLayout.setVisibility(View.GONE);
             driverLayout.setVisibility(View.VISIBLE);
         }else {
