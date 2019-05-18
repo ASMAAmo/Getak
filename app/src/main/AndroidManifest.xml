@@ -11,22 +11,24 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
+
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="false"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
-        android:largeHeap="true"
-        android:hardwareAccelerated="false"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".Activites.PriceActivity"></activity>
 
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
 
-        <activity android:name=".Activites.AddContractActivity"></activity>
+        <activity android:name=".Activites.AddContractActivity" />
         <activity android:name=".Activites.PhoneNumActivationActivity" />
         <activity android:name=".Activites.PhoneNumberActivity" />
         <activity android:name=".Activites.RegisterActivity" />
@@ -45,12 +47,18 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key"/>
+            android:value="@string/google_api_key" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version"/>
+
 
         <!-- Firebase Notifications -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorPrimary" />
+
         <service android:name=".FCM.MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
@@ -61,8 +69,10 @@
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
+
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="b3f9b98a2e355c96bf57a40b0dc45c0f97d61e42" />
     </application>
+
 </manifest>

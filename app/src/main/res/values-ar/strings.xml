@@ -105,4 +105,8 @@
     <string name="active">أنت متاح</string>
     <string name="notactive">أنت غير متاح</string>
     <string name="licensetype">أدخل نوع الرخصة</string>
+    <string name="accept">قبول</string>
+    <string name="cnacle">رفض</string>
+    <string name="end">إنهاء الرحلة</string>
+    <string name="endo">إنهاء</string>
 </resources>

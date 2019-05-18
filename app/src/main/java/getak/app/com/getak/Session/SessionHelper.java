@@ -15,6 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
+import getak.app.com.getak.Model.Responses.FastTripResponse.Trip;
 import getak.app.com.getak.Model.Responses.UserModel;
 
 public class SessionHelper {
@@ -24,6 +25,8 @@ public class SessionHelper {
     private static final String LANGUAGE = SHARED_PREFERENCES_FILE + ".language";
     private static final String PUSH_TOKEN = SHARED_PREFERENCES_FILE + ".pushtoken";
     private static final String USER_TYPE = SHARED_PREFERENCES_FILE + ".usertype";
+    private static final String USER_TRIP_INFO = SHARED_PREFERENCES_FILE + ".usertripinfo";
+    private static final String NOTIFICATIONS_PAYLOAD = SHARED_PREFERENCES_FILE + ".notificationspayload";
     private static final String ARABIC = "عربى";
     private static final String ENGLISH = "English";
 
@@ -35,6 +38,25 @@ public class SessionHelper {
 
 
 
+    public static void setUserTripInfo(Context context, Trip trip) {
+        SharedPreferences sharedPref = context.getSharedPreferences(SHARED_PREFERENCES_FILE, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(trip);
+        editor.putString(USER_TRIP_INFO, json);
+        editor.apply();
+    }
+
+
+    public static Trip getUserTripInfo(Context context) {
+            SharedPreferences sharedPref = context.getSharedPreferences(SHARED_PREFERENCES_FILE, Context.MODE_PRIVATE);
+            String json = sharedPref.getString(USER_TRIP_INFO, null);
+                Type type = new TypeToken<Trip>() {
+                }.getType();
+                Gson gson = new Gson();
+              return    gson.fromJson(json, type);
+
+    }
 
     public static void setUserSession(Context context, UserModel fUserSession) {
         SharedPreferences sharedPref = context.getSharedPreferences(SHARED_PREFERENCES_FILE, Context.MODE_PRIVATE);
@@ -45,6 +67,7 @@ public class SessionHelper {
         editor.apply();
         userSession = fUserSession;
     }
+
 
 
     @NonNull
@@ -164,6 +187,18 @@ public class SessionHelper {
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString(USER_TYPE, type);
         editor.apply();
+    }
+
+    public static void setNotificationPayload(Context context, String payload) {
+        SharedPreferences sharedPref = context.getSharedPreferences(SHARED_PREFERENCES_FILE, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString(NOTIFICATIONS_PAYLOAD, payload);
+        editor.apply();
+    }
+
+    public static String getNotificationsPayload(Context context) {
+        SharedPreferences sharedPref = context.getSharedPreferences(SHARED_PREFERENCES_FILE, Context.MODE_PRIVATE);
+        return sharedPref.getString(NOTIFICATIONS_PAYLOAD, "");
     }
 
 

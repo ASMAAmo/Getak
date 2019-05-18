@@ -23,6 +23,8 @@ import android.util.Log;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
@@ -45,21 +47,25 @@ public class CustomPlacePicker extends Dialog implements  OnMapReadyCallback {
     private LatLng currentLatLng;
     PlacePickerInteraction placePickerInteraction;
     GPSTracker gpsTracker;
-
+    MapView mapView;
     public CustomPlacePicker(Context context, PlacePickerInteraction placePickerInteraction) {
         super(context);
         this.placePickerInteraction = placePickerInteraction;
         setContentView(R.layout.place_picker_layout);
-        SupportMapFragment fm = (SupportMapFragment) ((FragmentActivity) context).getSupportFragmentManager().findFragmentById(R.id.picker_map);
+        // Gets the MapView from the XML layout and creates it
+        mapView = findViewById(R.id.mapview);
+
+        if (mapView != null) {
+            mapView.onCreate(null);
+            mapView.onResume();
+            mapView.getMapAsync(this);
+        }
         gpsTracker=new GPSTracker(context);
         if(!gpsTracker.canGetLocation()){
             gpsTracker.showSettingsAlert();
         }
         ButterKnife.bind(this);
-        // Getting GoogleMap object from the fragment
-        if (fm != null) {
-            fm.getMapAsync(this);
-        }
+
     }
 
 
@@ -68,6 +74,8 @@ public class CustomPlacePicker extends Dialog implements  OnMapReadyCallback {
 
     @Override
     public void onMapReady(final GoogleMap googleMap) {
+        MapsInitializer.initialize(getContext());
+        googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         this.googleMap = googleMap;
         // Enabling MyLocation Layer of Google Map
         if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -130,11 +138,4 @@ public class CustomPlacePicker extends Dialog implements  OnMapReadyCallback {
             return strAdd;
     }
 
-
-    public void removeMapFragment(Context context){
-        SupportMapFragment fm = (SupportMapFragment) ((FragmentActivity) context).getSupportFragmentManager().findFragmentById(R.id.picker_map);
-        FragmentTransaction fragmentTransaction = ((FragmentActivity) context).getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.remove(fm);
-        fragmentTransaction.commitAllowingStateLoss();
-    }
 }

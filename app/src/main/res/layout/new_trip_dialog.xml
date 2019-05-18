@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_10sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/button_dialog_bg">
+
+    <LinearLayout
+        android:id="@+id/driver_info_box"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_70sdp"
+        android:orientation="horizontal"
+        android:padding="@dimen/_15sdp">
+        <Button
+            android:id="@+id/accept_btn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:background="@drawable/button_bg"
+            android:text="@string/accept"
+            android:textColor="@color/white"
+            android:layout_weight="1"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:textSize="@dimen/_13sdp" />
+        <Button
+            android:id="@+id/cancel_btn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:background="@drawable/button_bg"
+            android:layout_weight="1"
+            android:text="@string/cnacle"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_13sdp" />
+
+    </LinearLayout>
+
+</RelativeLayout>

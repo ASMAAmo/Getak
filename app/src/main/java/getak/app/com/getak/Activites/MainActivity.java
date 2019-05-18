@@ -1,11 +1,11 @@
 package getak.app.com.getak.Activites;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.opengl.Visibility;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -17,21 +17,25 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.andexert.library.RippleView;
+import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 import getak.app.com.getak.BaseActivity;
-import getak.app.com.getak.Dialogs.DriverButtomDialog;
-import getak.app.com.getak.Events.ContractCreationStepsEvent;
+import getak.app.com.getak.Dialogs.NewTripDialog;
+import getak.app.com.getak.Events.AcceptTripEvent;
 import getak.app.com.getak.Events.LoginEvent;
+import getak.app.com.getak.Events.NotificationsEvent;
 import getak.app.com.getak.Fragments.DriverAccount;
 import getak.app.com.getak.Fragments.FragmentAccount;
 import getak.app.com.getak.Fragments.FragmentContracts;
@@ -41,6 +45,9 @@ import getak.app.com.getak.Fragments.FragmentMessages;
 import getak.app.com.getak.Fragments.FragmentMyTrips;
 import getak.app.com.getak.Fragments.FragmentSettings;
 import getak.app.com.getak.Fragments.FragmentSupport;
+import getak.app.com.getak.Model.NotificationModels.Client;
+import getak.app.com.getak.Model.NotificationModels.DriverNotification;
+import getak.app.com.getak.Model.NotificationModels.Trip;
 import getak.app.com.getak.R;
 import getak.app.com.getak.Session.SessionHelper;
 
@@ -80,7 +87,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @BindView(R.id.user_name)
     TextView userName;
 
-
+    public static NewTripDialog newTripDialog;
     MenuItem itemAddContract;
 
     //Pages
@@ -102,6 +109,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        EventBus.getDefault().register(this);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setUpSideMenuDrawer(toolbar);
@@ -120,11 +128,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         relContracts.setOnClickListener(this);
         relLogOut.setOnClickListener(this);
         switchToPage(HOME,null,getString(R.string.getk));
-        EventBus.getDefault().register(this);
         userTypeConfig(this);
         checkLoginStatus();
-
-
+        handlEventMessage(this,getApplicationContext());
 
     }
 
@@ -180,17 +186,44 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         }
     }
 
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(NotificationsEvent event) {
+        try {
+            JSONObject object = new JSONObject(event.getMessage());
+            if(object.optString("trip")!=null&&object.optString("client")!=null) {
+                String trip = object.optString("trip") ;
+                String client=object.getString("client");
+                Gson gson =new Gson();
+                Trip tripModel= gson.fromJson(trip,Trip.class);
+                Client clientModel =gson.fromJson(client,Client.class);
+                DriverNotification driverNotification =new DriverNotification();
+                driverNotification.setClient(clientModel);
+                driverNotification.setTrip(tripModel);
+                if(SessionHelper.isDriver(this)){
+                  new NewTripDialog(MainActivity.this,driverNotification).show();
+                }
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(AcceptTripEvent event) {
+        Gson gson =new Gson();
+        SessionHelper.setNotificationPayload(this,gson.toJson(event.getDriverNotification()));
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
+
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        EventBus.getDefault().unregister(this);
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -416,6 +449,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     }
 
 
+
     @Override
     public void onBackPressed() {
         if(getSupportFragmentManager().getBackStackEntryCount()==0) {
@@ -439,4 +473,33 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             return;
         }
     }
+
+
+    public  void handlEventMessage(final Context context,Context activity){
+        Bundle bundle = ((Activity)context).getIntent().getExtras();
+        if (bundle != null) {
+            String payload = bundle.getString("payload");
+            try {
+                JSONObject object = new JSONObject(payload);
+                if(object.optString("trip")!=null&&object.optString("client")!=null) {
+                    String trip = object.optString("trip") ;
+                    String client=object.getString("client");
+                    Gson gson =new Gson();
+                    Trip tripModel= gson.fromJson(trip,Trip.class);
+                    Client clientModel =gson.fromJson(client,Client.class);
+                    final DriverNotification driverNotification =new DriverNotification();
+                    driverNotification.setClient(clientModel);
+                    driverNotification.setTrip(tripModel);
+                    if(SessionHelper.isDriver(context)){
+                        newTripDialog = new NewTripDialog(context,driverNotification);
+                        newTripDialog.show();
+                    }
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 }

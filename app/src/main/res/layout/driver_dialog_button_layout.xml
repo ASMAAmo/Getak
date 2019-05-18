@@ -13,7 +13,7 @@
         android:padding="@dimen/_15sdp">
 
         <TextView
-            android:id="@+id/driver_name"
+            android:id="@+id/driver_name_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="أسم السائق"
@@ -74,15 +74,16 @@
                 android:textSize="@dimen/_13sdp" />
         </com.andexert.library.RippleView>
     </LinearLayout>
+
     <com.github.siyamed.shapeimageview.RoundedImageView
+        android:id="@+id/driver_pic"
         android:layout_width="@dimen/_120sdp"
         android:layout_height="@dimen/_120sdp"
-        android:id="@+id/avatar"
-        android:layout_toEndOf="@id/driver_info_box"
         android:layout_marginStart="@dimen/_15sdp"
         android:layout_marginTop="@dimen/_10sdp"
+        android:layout_toEndOf="@id/driver_info_box"
         android:src="@drawable/ic_person_black_24dp"
 
         app:siRadius="6dp"
-        app:siSquare="true"/>
+        app:siSquare="true" />
 </RelativeLayout>

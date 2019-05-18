@@ -15,6 +15,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.andexert.library.RippleView;
+import com.github.siyamed.shapeimageview.RoundedImageView;
 import com.github.siyamed.shapeimageview.ShapeImageView;
 import com.squareup.picasso.Picasso;
 
@@ -26,7 +27,7 @@ import getak.app.com.getak.R;
 
 public class DriverButtomDialog extends BottomSheetDialog {
 
-    @BindView(R.id.driver_name)
+    @BindView(R.id.driver_name_tv)
     TextView driverName;
     @BindView(R.id.car_model)
     TextView carModel;
@@ -36,8 +37,8 @@ public class DriverButtomDialog extends BottomSheetDialog {
     TextView reviewVal;
     @BindView(R.id.total_amount)
     TextView totalVal;
-    @BindView(R.id.avatar)
-    ShapeImageView avatar;
+    @BindView(R.id.driver_pic)
+    RoundedImageView driver_pic;
     @BindView(R.id.call_driver_btn)
     RippleView callDriver;
 
@@ -48,10 +49,10 @@ public class DriverButtomDialog extends BottomSheetDialog {
         ButterKnife.bind(this,contentView);
         setContentView(contentView);
         ((View) contentView.getParent()).setBackgroundColor(context.getResources().getColor(android.R.color.transparent));
-        driverName.setText(trip.getTrip().getDriver().getDriverName());
+        driverName.setText(trip.getTrip().getDriver().getDriverName()+"");
         carModel.setText("موديل السيارة : "+trip.getTrip().getDriver().getCarType());
         totalVal.setText(trip.getTrip().getPrice()+"ريال ");
-        Picasso.get().load("https://"+trip.getTrip().getDriver().getDriverAvatar()).fit().into(avatar);
+        Picasso.get().load("https://"+trip.getTrip().getDriver().getDriverAvatar()).fit().into(driver_pic);
         callDriver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

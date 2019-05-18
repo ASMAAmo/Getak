@@ -6,6 +6,7 @@ import getak.app.com.getak.Model.Contractmodel;
 import getak.app.com.getak.Model.ContactsModel;
 import getak.app.com.getak.Model.FavModel;
 import getak.app.com.getak.Model.MyTrips;
+import getak.app.com.getak.Model.NotificationModels.Trip;
 import getak.app.com.getak.Model.Requests.CreateContractRequest;
 import getak.app.com.getak.Model.Requests.FastTripRequest;
 import getak.app.com.getak.Model.Responses.AllDriversResponse.AllDrivers;
@@ -82,5 +83,11 @@ public interface Router {
     //Update Driver
     @POST("driverUpdateProfile/{id}")
     Call<Result<DriverRegisterationData>> updateDriver (@Path("id") int id,@Body RequestBody requestBody);
+    //Accept Trip
+    @POST("tripAccept")
+    Call<Result<Object>> acceptTrip (@Body Object requestBody);
+    //Trip Done
+    @POST("tripDone")
+    Call<Result<Trip>> finishTrip (@Body Object requestBody);
 
 }

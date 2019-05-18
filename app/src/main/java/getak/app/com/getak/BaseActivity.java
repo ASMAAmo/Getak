@@ -19,6 +19,15 @@ import android.view.View;
 import android.view.Window;
 import android.view.animation.AlphaAnimation;
 
+import com.google.gson.Gson;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import getak.app.com.getak.Dialogs.NewTripDialog;
+import getak.app.com.getak.Model.NotificationModels.Client;
+import getak.app.com.getak.Model.NotificationModels.DriverNotification;
+import getak.app.com.getak.Model.NotificationModels.Trip;
 import getak.app.com.getak.Session.SessionHelper;
 
 public class BaseActivity extends AppCompatActivity {
@@ -114,4 +123,6 @@ public class BaseActivity extends AppCompatActivity {
         anim.setDuration(1000);
         view.startAnimation(anim);
     }
+
+
 }
