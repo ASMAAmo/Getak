@@ -419,7 +419,7 @@ public class FragmentHome extends Fragment implements OnMapReadyCallback, EndTri
             }
         }
 
-        Toast.makeText(getContext(),location.latitude+" "+location.longitude,Toast.LENGTH_LONG).show();
+        //Toast.makeText(getContext(),location.latitude+" "+location.longitude,Toast.LENGTH_LONG).show();
     }
 
 
@@ -555,8 +555,10 @@ public class FragmentHome extends Fragment implements OnMapReadyCallback, EndTri
 
     @Override
     public void onTripEnded(Trip trip) {
+        Gson gson =new Gson();
+        DriverNotification driverNotification = gson.fromJson(SessionHelper.getNotificationsPayload(getContext()),DriverNotification.class);
+        startActivity(new Intent(getActivity(), PriceActivity.class).putExtra("price",driverNotification.getTrip().getPrice()+"").addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
         SessionHelper.setNotificationPayload(getContext(),"");
-        startActivity(new Intent(getActivity(), PriceActivity.class).putExtra("price",trip.getPrice()).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
         checkDriverStatus();
     }
 

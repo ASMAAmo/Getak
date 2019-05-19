@@ -131,7 +131,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         userTypeConfig(this);
         checkLoginStatus();
         handlEventMessage(this,getApplicationContext());
-
     }
 
     private void checkLoginStatus() {

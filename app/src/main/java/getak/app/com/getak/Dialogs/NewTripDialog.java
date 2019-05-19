@@ -59,7 +59,7 @@ public class NewTripDialog extends BottomSheetDialog implements IncomingTripInte
 
     @OnClick(R.id.cancel_btn)
     void canceled(){
-
+dismiss();
     }
 
 
@@ -68,7 +68,6 @@ public class NewTripDialog extends BottomSheetDialog implements IncomingTripInte
 
     @Override
     public void onAccepted(String msg) {
-        Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
         EventBus.getDefault().post(new AcceptTripEvent(driverNotification));
         dismiss();
     }

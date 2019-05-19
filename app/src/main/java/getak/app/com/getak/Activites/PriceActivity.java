@@ -19,7 +19,7 @@ public class PriceActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_price);
         ButterKnife.bind(this);
-        price.setText(getIntent().getFloatExtra("price",0)+" ريال");
+        price.setText(getIntent().getStringExtra("price")+" ريال");
     }
 
     @OnClick(R.id.end_price_btn)

@@ -45,11 +45,12 @@ public class Splash extends BaseActivity {
                                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                     }
                 }
-                if(!SessionHelper.isDriver(this))
-                if(bundle.getString("type").equals("5")){
-                    startActivity(new Intent(this, PriceActivity.class).putExtra("price",SessionHelper.getUserTripInfo(this).getPrice()).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-                    SessionHelper.setUserTripInfo(this,null);
-                    finish();
+                if(!SessionHelper.isDriver(this)) {
+                    if (bundle.getString("type").equals("5")) {
+                        startActivity(new Intent(this, PriceActivity.class).putExtra("price", SessionHelper.getUserTripInfo(this).getPrice() + "").addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                        SessionHelper.setUserTripInfo(this, null);
+                        finish();
+                    }
                 }
             }
         }else {
