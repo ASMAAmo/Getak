@@ -91,4 +91,39 @@ public class IncomingTripsPresenter {
             }
         });
     }
+    public static void cancelTrip(Context context, HashMap request , final IncomingTripInteraction incomingTripInteraction){
+        dialog=new KProgressHUD(context);
+        dialog.show();
+        Call<Result<Object>> acceptCall = ServiceBuilder.getRouter(context).acceptTrip(request);
+        acceptCall.enqueue(new Callback<Result<Object>>() {
+            @Override
+            public void onResponse(Call<Result<Object>> call, Response<Result<Object>> response) {
+                if(dialog.isShowing())
+                    dialog.dismiss();
+                if(response.isSuccessful()){
+                    incomingTripInteraction.onCanceled(response.body().getMessage());
+                }else {
+                    try {
+                        JSONObject jsonObject = new JSONObject(response.errorBody().string());
+                        String ErrorMessage = "";
+                        if (!jsonObject.getBoolean("status"))
+                            ErrorMessage = jsonObject.getString("message");
+                        incomingTripInteraction.onError(ErrorMessage);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Result<Object>> call, Throwable t) {
+                if(dialog.isShowing())
+                    dialog.dismiss();
+                incomingTripInteraction.onError(t.getMessage());
+            }
+        });
+
+    }
 }

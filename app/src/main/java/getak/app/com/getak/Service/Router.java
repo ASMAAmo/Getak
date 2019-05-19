@@ -89,5 +89,8 @@ public interface Router {
     //Trip Done
     @POST("tripDone")
     Call<Result<Trip>> finishTrip (@Body Object requestBody);
+    //Cancel trip
+    @POST("tripCancel")
+    Call<Result<Object>>cancelTrip(@Body Object requestBody);
 
 }
