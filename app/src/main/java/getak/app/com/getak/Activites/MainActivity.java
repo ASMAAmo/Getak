@@ -133,6 +133,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         handlEventMessage(this,getApplicationContext());
     }
 
+    //
+
     private void checkLoginStatus() {
         if(SessionHelper.isLogin(this)) {
             if(SessionHelper.isDriver(this)){
