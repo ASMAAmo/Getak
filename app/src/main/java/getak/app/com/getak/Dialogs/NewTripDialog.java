@@ -56,7 +56,7 @@ public class NewTripDialog extends BottomSheetDialog implements IncomingTripInte
         request.put("driver_id", SessionHelper.getUserSession(getContext()).getId());
         IncomingTripsPresenter.acceptTrip(context,request,this);
     }
-
+//
     @OnClick(R.id.cancel_btn)
     void canceled(){
 dismiss();
