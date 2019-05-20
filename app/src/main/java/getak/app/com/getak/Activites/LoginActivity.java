@@ -81,6 +81,10 @@ public class LoginActivity extends BaseActivity implements AccountView {
         });
     }
 
+    @OnClick(R.id.back_btn)
+    void back(){
+        finish();
+    }
 
     @OnClick(R.id.login_btn)
     void doLogin(){

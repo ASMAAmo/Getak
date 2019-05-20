@@ -37,7 +37,7 @@ public class Trip {
     private String updatedAt;
     @SerializedName("price")
     @Expose
-    private Integer price;
+    private float price;
     @SerializedName("start_place_lng")
     @Expose
     private String startPlaceLng;
@@ -131,11 +131,11 @@ public class Trip {
         this.updatedAt = updatedAt;
     }
 
-    public Integer getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 

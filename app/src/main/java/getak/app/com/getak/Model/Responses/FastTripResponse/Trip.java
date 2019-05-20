@@ -33,10 +33,10 @@ public class Trip {
     private String travelerNumber;
     @SerializedName("price")
     @Expose
-    private Integer price;
+    private float price;
     @SerializedName("distance")
     @Expose
-    private Integer distance;
+    private float distance;
     @SerializedName("status")
     @Expose
     private Integer status;
@@ -125,19 +125,19 @@ public class Trip {
         this.travelerNumber = travelerNumber;
     }
 
-    public Integer getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 
-    public Integer getDistance() {
+    public float getDistance() {
         return distance;
     }
 
-    public void setDistance(Integer distance) {
+    public void setDistance(float distance) {
         this.distance = distance;
     }
 
