@@ -156,7 +156,9 @@ public class FragmentHome extends Fragment implements OnMapReadyCallback, EndTri
     private void setUpDriverDialog(final Context context, final getak.app.com.getak.Model.Responses.FastTripResponse.Trip trip) {
         driverName.setText(trip.getDriver().getDriverName()+"");
         carModel.setText("موديل السيارة : "+trip.getDriver().getCarType());
-        Picasso.get().load("https://"+trip.getDriver().getDriverAvatar()).fit().into(driver_pic);
+        if(trip.getDriver().getDriverAvatar()!=null) {
+            Picasso.get().load(trip.getDriver().getDriverAvatar()).fit().into(driver_pic);
+        }
         callDriver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -199,7 +201,9 @@ public class FragmentHome extends Fragment implements OnMapReadyCallback, EndTri
         Gson gson =new Gson();
         final DriverNotification driverNotification = gson.fromJson(SessionHelper.getNotificationsPayload(context),DriverNotification.class);
         customerName.setText(driverNotification.getClient().getClientName()+"");
-        Picasso.get().load("https://"+driverNotification.getClient().getClientAvatar()).fit().into(customerPic);
+        if(driverNotification.getClient().getClientAvatar()!=null) {
+            Picasso.get().load(driverNotification.getClient().getClientAvatar()).fit().into(customerPic);
+        }
         callCustomer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -418,8 +422,6 @@ public class FragmentHome extends Fragment implements OnMapReadyCallback, EndTri
                 break;
             }
         }
-
-        //Toast.makeText(getContext(),location.latitude+" "+location.longitude,Toast.LENGTH_LONG).show();
     }
 
 
